@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form class="form" [formGroup]="spendingForm" (ngSubmit)="onSubmit(spendingForm)" #spendForm="ngForm">
+          <div class="mb-3">
+            <label for="amount" class="form-label">Spent:</label>
+            <input id="amount" class="form-control"
+              [ngClass]="{ 'is-invalid': (amount.touched || spendForm.submitted) && (amount.errors?.required)}" type="text"
+              placeholder="10000" formControlName="amount" required />
+            <div class="text-danger" *ngIf="(amount.touched || spendForm.submitted) && (amount.errors?.required)">
+              Amount is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="type" class="form-label">Type:</label>
+            <select id="type" class="form-control" formControlName="type" [ngClass]="{ 'is-invalid': (type.touched || spendForm.submitted) && (type.errors?.required)}">
+                <option *ngFor="let option of typeOptions" [value]="option">{{ option }}</option>
+            </select>
+            <div class="text-danger" *ngIf="(type.touched || spendForm.submitted) && (type.errors?.required)">
+              Type can't be empty
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="usedFor" class="form-label">Used for:</label>
+            <select id="usedFor" class="form-control" formControlName="usedFor" [ngClass]="{ 'is-invalid': (usedFor.touched || spendForm.submitted) && (usedFor.errors?.required)}">
+                <ng-template [ngIf]="type.value === 'Daily'">
+                    <option *ngFor="let option of dailyUsedForOptions" [value]="option">{{ option }}</option>
+                </ng-template>
+                <ng-template [ngIf]="type.value === 'Monthly'">
+                    <option *ngFor="let option of monthlyUsedForOptions" [value]="option">{{ option }}</option>
+                </ng-template>
+            </select>
+            <div class="text-danger" *ngIf="(usedFor.touched || spendForm.submitted) && (usedFor.errors?.required)">
+              Used for can't be empty
+            </div>
+          </div>
+          <div class="mb-3">
+              <input type="checkbox" id="isSpentAnotherDay" formControlName="isSpentAnotherDay">
+              <label for="isSpentAnotherDay" class="form-label">&nbsp;&nbsp;spent another day</label>
+          </div>
+          <div class="mb-3" *ngIf="isSpentAnotherDay.value">
+            <label for="spentAt" class="form-label">Spent At:</label>
+            <input type="date" id="spentAt" formControlName="spentAt" class="form-control">
+          </div>
+          <div class="mb-3">
+              <input type="checkbox" id="addComment" formControlName="addComment">
+              <label for="addComment" class="form-label">&nbsp;&nbsp;add comment</label>
+          </div>
+          <div class="mb-3" *ngIf="addComment.value">
+            <label for="comment" class="form-label">Comment:</label>
+            <input type="text" id="comment" formControlName="comment" class="form-control">
+          </div>
+          <div class="d-flex justify-content-center my-5">
+            <app-button [btnText]="'Add'" [iconName]="'check'"></app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

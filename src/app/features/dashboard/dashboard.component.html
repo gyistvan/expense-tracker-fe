@@ -1,0 +1,11 @@
+<app-header></app-header>
+<app-page>
+    <div class="row mb-5">
+        <app-button [iconName]="!showAddNewForm ? 'plus' : 'minus'" [btnText]="!showAddNewForm ? 'Add new' : 'Close Form'" (onClick)="changeShowAddNewForm()"></app-button>
+    </div>
+    <app-new-spending-form (closeForm)="closeForm($event)" *ngIf="showAddNewForm"></app-new-spending-form>
+    <div class="row mb-5">
+        <app-montly-spendings [transactions]="transactions"></app-montly-spendings>
+    </div>
+    <app-actual-week [transactions]="transactions"></app-actual-week>
+</app-page>

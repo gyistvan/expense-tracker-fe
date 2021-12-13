@@ -1,0 +1,16 @@
+<div class="day">
+    <h5 class="text-center">{{ displayedDate | date: 'yyyy-MM-dd'  }}</h5>
+    <div *ngIf="filteredTransactions.length > 0; else nothingToShow">
+        <spinner *ngIf="isLoading | async; else isLoaded"></spinner>
+        <ng-template #isLoaded>
+            <div *ngFor="let transaction of filteredTransactions">
+                <app-transaction-view [transaction]="transaction"></app-transaction-view>
+            </div>
+        </ng-template>
+    </div>
+    <ng-template #nothingToShow>
+        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+            There isn't any records for this day
+        </div>
+    </ng-template>
+</div>
