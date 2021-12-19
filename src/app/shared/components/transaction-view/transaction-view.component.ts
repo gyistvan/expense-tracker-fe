@@ -10,6 +10,8 @@ import { TransactionStateFacade } from 'src/app/store/transactions/facade';
 })
 export class TransactionViewComponent implements OnInit {
   @Input()
+  public index = 0;
+  @Input()
   public transaction!: Transaction;
   public isToday =
     moment().startOf('day').format() ===

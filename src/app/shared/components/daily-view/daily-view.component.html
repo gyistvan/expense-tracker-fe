@@ -22,7 +22,7 @@
     </thead>
     <ng-template [ngIf]="filteredTransactions.length > 0 && !isLoading">
         <tbody>
-            <app-transaction-view *ngFor="let transaction of filteredTransactions" [transaction]="transaction"></app-transaction-view>
+            <app-transaction-view *ngFor="let transaction of filteredTransactions; let i = index" [index]="i" [transaction]="transaction"></app-transaction-view>
         </tbody>
         <tfoot>
             <tr>

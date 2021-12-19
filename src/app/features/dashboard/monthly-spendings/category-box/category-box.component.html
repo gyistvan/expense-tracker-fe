@@ -19,7 +19,7 @@
         </th>
     </tr>
     <tbody>
-        <app-transaction-view *ngFor="let transaction of transactions; let i = index" [transaction]="transaction"></app-transaction-view>
+        <app-transaction-view *ngFor="let transaction of transactions; let i = index" [index]="i" [transaction]="transaction"></app-transaction-view>
     </tbody>
     <tfoot>
         <tr>

@@ -1,4 +1,7 @@
 import { createAction, props } from '@ngrx/store';
+import { PasswordPayload } from 'src/app/services/user/interfaces/passwordPayload';
+import { ProfilePayload } from 'src/app/services/user/interfaces/profilePayload';
+import { UserResponse } from 'src/app/services/user/interfaces/userResponse';
 
 export enum AuthActionTypes {
   requestLogin = '[AuthRequest] requestLogin',
@@ -9,6 +12,13 @@ export enum AuthActionTypes {
   requestRegisterFail = '[AuthRequest] requestRegisterFail',
   requestLogout = '[AuthRequest] requestLogout',
   requestLogoutSuccess = '[AuthRequest] requestLogoutSuccess',
+  requestUser = '[UserRequest] requestUser',
+  requestUserSuccess = '[UserRequest] requestUserSuccess',
+  requestUserFail = '[UserRequest] requestUserFail',
+  requestUpdatePassword = '[UserRequest] requestUpdatePassword',
+  requestUpdatePasswordSuccess = '[UserRequest] requestUpdatePasswordSuccess',
+  requestUpdatePasswordFail = '[UserRequest] requestUpdatePasswordFail',
+  requestUpdateProfile = '[UserRequest] requestUpdateProfile',
 }
 
 export const requestLogin = createAction(
@@ -45,4 +55,31 @@ export const requestLogout = createAction(AuthActionTypes.requestLogout);
 
 export const requestLogoutSuccess = createAction(
   AuthActionTypes.requestLogoutSuccess
+);
+
+export const requestUser = createAction(AuthActionTypes.requestUser);
+
+export const requestUserSuccess = createAction(
+  AuthActionTypes.requestUserSuccess,
+  props<{ userResponse: UserResponse }>()
+);
+
+export const requestUserFail = createAction(AuthActionTypes.requestUserFail);
+
+export const requestUpdatePassword = createAction(
+  AuthActionTypes.requestUpdatePassword,
+  props<{ passwordPayload: PasswordPayload }>()
+);
+
+export const requestUpdatePasswordSuccess = createAction(
+  AuthActionTypes.requestUpdatePasswordSuccess
+);
+
+export const requestUpdatePasswordFail = createAction(
+  AuthActionTypes.requestUpdatePasswordFail
+);
+
+export const requestUpdateProfile = createAction(
+  AuthActionTypes.requestUpdateProfile,
+  props<{ profilePayload: ProfilePayload }>()
 );

@@ -26,7 +26,12 @@ export const routes: Routes = [
       ),
     canLoad: [AuthorizedGuard],
   },
-
+  {
+    path: 'profile',
+    loadChildren: (): Promise<any> =>
+      import('./features/profile/profile.module').then((m) => m.ProfileModule),
+    canLoad: [AuthorizedGuard],
+  },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

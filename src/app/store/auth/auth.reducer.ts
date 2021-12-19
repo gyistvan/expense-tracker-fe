@@ -8,6 +8,7 @@ import {
   requestRegister,
   requestRegisterFail,
   requestRegisterSuccess,
+  requestUserSuccess,
 } from './auth.actions';
 
 export type AuthState = {
@@ -15,10 +16,16 @@ export type AuthState = {
   token?: string;
   loginErrorMessage?: string;
   registrationErrorMessage?: string;
+  userName: string | null;
+  userEmail: string | null;
+  userGroupId: string | null;
 };
 
 const initialState: AuthState = {
   isAuthorized: false,
+  userName: null,
+  userEmail: null,
+  userGroupId: null,
 };
 
 export const authDataReducer = createReducer(
@@ -44,6 +51,12 @@ export const authDataReducer = createReducer(
     ...state,
     token: undefined,
     isAuthorized: false,
+  })),
+  on(requestUserSuccess, (state, { userResponse }) => ({
+    ...state,
+    userName: userResponse.name,
+    userEmail: userResponse.email,
+    userGroupId: userResponse.groupId,
   }))
 );
 

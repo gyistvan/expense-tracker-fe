@@ -7,6 +7,10 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { LoginResponse } from 'src/app/services/auth/interfaces/responses';
 import { SessionStorageService } from 'src/app/services/session-storage/session-storage.service';
+import { PasswordPayload } from 'src/app/services/user/interfaces/passwordPayload';
+import { ProfilePayload } from 'src/app/services/user/interfaces/profilePayload';
+import { UserResponse } from 'src/app/services/user/interfaces/userResponse';
+import { UserService } from 'src/app/services/user/user.service';
 import {
   AuthActionTypes,
   requestLoginFail,
@@ -14,6 +18,9 @@ import {
   requestLogoutSuccess,
   requestRegisterFail,
   requestRegisterSuccess,
+  requestUpdatePasswordSuccess,
+  requestUserFail,
+  requestUserSuccess,
 } from './auth.actions';
 
 @Injectable()
@@ -71,9 +78,55 @@ export class AuthEffects {
     )
   );
 
+  getUser$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActionTypes.requestUser, AuthActionTypes.requestLoginSuccess),
+      mergeMap(() =>
+        this.userService.get().pipe(
+          map((userResponse: UserResponse) => {
+            return requestUserSuccess({ userResponse });
+          }),
+          catchError((err) => {
+            return of(requestUserFail());
+          })
+        )
+      )
+    )
+  );
+
+  updatePassword$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActionTypes.requestUpdatePassword),
+      mergeMap((passwordAction: { passwordPayload: PasswordPayload }) =>
+        this.userService.updatePassword(passwordAction.passwordPayload).pipe(
+          map(() => {
+            return requestUpdatePasswordSuccess();
+          })
+        )
+      )
+    )
+  );
+
+  updateProfile$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActionTypes.requestUpdateProfile),
+      mergeMap((profileAction: { profilePayload: ProfilePayload }) =>
+        this.userService.updateProfile(profileAction.profilePayload).pipe(
+          map((userResponse: UserResponse) => {
+            return requestUserSuccess({ userResponse });
+          }),
+          catchError((err) => {
+            return of(requestUserFail());
+          })
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private authService: AuthService,
+    private userService: UserService,
     private router: Router,
     private sessionStorageService: SessionStorageService
   ) {}

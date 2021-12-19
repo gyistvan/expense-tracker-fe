@@ -7,7 +7,7 @@
         <div class="col-12">
             <app-saving-form></app-saving-form>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
             <div class="col-12">
                 <app-button 
                     [iconName]="!showAddNewIncomeForm ? 'plus' : 'minus'" 
@@ -29,7 +29,7 @@
                 <app-monthly-spendings [transactions]="transactions"></app-monthly-spendings>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
             <app-actual-week [transactions]="transactions" [actualWeek]="getCurrentWeek()" *ngIf="isInDisplayedMonth()"></app-actual-week>
             <app-monthly-transactions [transactions]="transactions"  *ngIf="!isInDisplayedMonth()"></app-monthly-transactions>
         </div>

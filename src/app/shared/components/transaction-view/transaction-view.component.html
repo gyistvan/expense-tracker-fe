@@ -1,15 +1,12 @@
 
     <th>
-        {{ transaction.usedFor }}
+        {{ index + 1 }}
     </th>
-    <td [ngClass]="{
-            'isPaid': transaction.isPaid && transaction.type === 'Monthly', 
-            'isNotPaid': !transaction.isPaid && transaction.type === 'Monthly'
-        }">
+    <td [ngClass]="{'text-decoration-line-through': transaction.isPaid && transaction.type === 'Monthly'}">
         {{ transaction.amount | HufPipe}}
     </td>
-    <td>
-        <p *ngIf="transaction.comment else noComment">{{transaction.comment}}</p>
+    <td [ngClass]="{'text-decoration-line-through': transaction.isPaid && transaction.type === 'Monthly'}">
+        <p *ngIf="transaction.comment else noComment">{{ transaction.comment }}</p>
         <ng-template #noComment>
             -
         </ng-template>

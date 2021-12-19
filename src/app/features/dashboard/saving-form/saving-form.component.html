@@ -1,14 +1,14 @@
-  <div *ngIf="!showSavingForm && monthlySaving" class="text-center">
+  <div *ngIf="!showSavingForm && monthlySaving" class="text-center m-3">
     Saving for this month: {{ monthlySaving }} %
-    <app-button [iconName]="'pen'" btnText="Edit" (onClick)="switchShowSavingForm($event)"></app-button>
+    <app-button [iconName]="'pen'" buttonSize="small" btnText="Edit" (onClick)="switchShowSavingForm($event)"></app-button>
   </div>
-  <div *ngIf="!monthlySaving || showSavingForm">
+  <div *ngIf="!monthlySaving || showSavingForm" class="m-5">
       <form [formGroup]="savingForm" class="form" (ngSubmit)="onSubmit()" #saveForm="ngForm">
           <div class="row justify-content-center">
-            <div class="col-1">
+            <div class="col-12 col-lg-1">
               <label for="amount" class="form-label text-right">Saving:</label>
             </div>
-            <div class="col-1">
+            <div class="col-12 col-lg-1">
               <input id="amount" class="form-control"
                 [ngClass]="{ 'is-invalid': (amount.touched || saveForm.submitted) && (amount.errors?.required)}" type="text"
                 placeholder="5" formControlName="amount" required />
@@ -16,15 +16,15 @@
                   Saving is required
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-12 col-lg-2 m-2">
               <div class="row">
-                <div class="col-6">
+                <div class="col-6 text-center">
                   <app-button 
                     [btnText]="monthlySaving && showSavingForm ? 'Update' : 'Add'"
                     [iconName]="'check'">
                   </app-button>
                 </div>
-                <div class="col-6">
+                <div class="col-6 text-center">
                   <app-button 
                     btnText="Cancel"
                     [iconName]="'check'"
@@ -34,8 +34,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="d-flex justify-content-center my-5">
           </div>
         </form>
   </div>
