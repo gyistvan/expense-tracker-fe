@@ -1,5 +1,6 @@
 import { state } from '@angular/animations';
 import { Action, createReducer, on } from '@ngrx/store';
+import * as moment from 'moment';
 import { Transaction } from 'src/app/services/transaction/interfaces/transaction';
 import {
   requestTransactionAdd,
@@ -20,11 +21,15 @@ export type TransactionState = {
   transactions: Transaction[];
   isTransactionsLoading: boolean;
   errorMessage?: string;
+  startDate: string;
+  endDate: string;
 };
 
 const initialState: TransactionState = {
   transactions: [],
   isTransactionsLoading: false,
+  startDate: moment().startOf('month').toISOString(),
+  endDate: moment().endOf('month').toISOString(),
 };
 
 const transactionsDataReducer = createReducer(

@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <img src="../../../assets/login_pic.jpg" alt="" class="img-fluid" />
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <form class="form" [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm)" #regForm="ngForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input id="name" class="form-control"
+            [ngClass]="{ 'is-invalid': (name.touched || regForm.submitted) && (name.errors?.required)}" type="text"
+            placeholder="John Doe" formControlName="name" required />
+          <div class="text-danger" *ngIf="(name.touched || regForm.submitted) && (name.errors?.required)">
+            Name is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          <input id="email" class="form-control" type="text"
+            [ngClass]="{ 'is-invalid': (email.touched || regForm.submitted) && (email.errors?.required || email.errors?.invalidPassword)}"
+            placeholder="johndoe@test.com" formControlName="email" />
+          <div class="text-danger"
+            *ngIf="(email.touched || regForm.submitted) && (email.errors?.required || email.errors?.invalidPassword)">
+            Valid e-mail is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <div class="pos-relative">
+            <input id="password" class="form-control" type="password" toggleShowPassword #toggleShowPassword="toggleShowPassword"
+              [ngClass]="{ 'is-invalid': (password.touched || regForm.submitted) && (password.errors?.required || password.errors?.invalidPassword)}"
+              formControlName="password" />
+            <div class="toggleShowPassword">
+              <app-button [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'" [buttonSize]="'normal'"
+                (onClick)='toggleShowPassword.toggle($event)'></app-button>
+            </div>
+          </div>
+          <div class="text-danger"
+            *ngIf="(password.touched || regForm.submitted) && (password.errors?.required || password.errors?.invalidPassword)">
+            Password must contain min. 8 characters and at least one number and one letter
+          </div>
+          </div>
+          <div class="d-flex justify-content-center my-5">
+            <app-button [btnText]="'Registration'" [iconName]="'key'"></app-button>
+          </div>
+          <div class="d-flex justify-content-center">
+            <p>If you already registered you can login <a href="/login" class="text-info">here</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -2,17 +2,27 @@ import { createSelector } from '@ngrx/store';
 import { State } from '../index';
 import { TransactionState } from './reducers';
 
-export const selectAuthorsState = (state: State) => state.transactions;
+export const selectTransactionState = (state: State) => state.transactions;
 
 export const transactions = createSelector(
-  selectAuthorsState,
+  selectTransactionState,
   (state: TransactionState) => state.transactions
 );
 export const isTransactionsLoading = createSelector(
-  selectAuthorsState,
+  selectTransactionState,
   (state: TransactionState) => state.isTransactionsLoading
 );
 export const errorMessage = createSelector(
-  selectAuthorsState,
+  selectTransactionState,
   (state: TransactionState) => state.errorMessage
+);
+
+export const getStartDate = createSelector(
+  selectTransactionState,
+  (state: TransactionState) => state.startDate
+);
+
+export const getEndDate = createSelector(
+  selectTransactionState,
+  (state: TransactionState) => state.endDate
 );

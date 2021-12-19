@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form [formGroup]="incomesForm" class="form" (ngSubmit)="onSubmit()" #incomeForm="ngForm">
+          <div class="mb-3">
+            <label for="amount" class="form-label">Income:</label>
+            <input id="amount" class="form-control"
+              [ngClass]="{ 'is-invalid': (amount.touched || incomeForm.submitted) && (amount.errors?.required)}" type="text"
+              placeholder="10000" formControlName="amount" required />
+            <div class="text-danger" *ngIf="(amount.touched || incomeForm.submitted) && (amount.errors?.required)">
+              Income is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="amount" class="form-label">Whose:</label>
+            <input id="amount" class="form-control"
+              [ngClass]="{ 'is-invalid': (whose.touched || incomeForm.submitted) && (whose.errors?.required)}" type="text"
+              placeholder="Name..." formControlName="whose" required />
+            <div class="text-danger" *ngIf="(whose.touched || incomeForm.submitted) && (whose.errors?.required)">
+              Whose is required
+            </div>
+          </div>
+          <div class="d-flex justify-content-center my-5">
+            <app-button [btnText]="'Add'" [iconName]="'check'"></app-button>
+          </div>
+          <div class="mb-3">
+            <input type="checkbox" id="isSpentAnotherDay" formControlName="isSpentAnotherDay">
+            <label for="isSpentAnotherDay" class="form-label">&nbsp;&nbsp;spent another day</label>
+        </div>
+        <div class="mb-3" *ngIf="isSpentAnotherDay.value">
+          <label for="spentAt" class="form-label">Spent At:</label>
+          <input type="date" id="spentAt" formControlName="spentAt" class="form-control">
+        </div>
+        <div class="mb-3">
+            <input type="checkbox" id="addComment" formControlName="addComment">
+            <label for="addComment" class="form-label">&nbsp;&nbsp;add comment</label>
+        </div>
+        <div class="mb-3" *ngIf="addComment.value">
+          <label for="comment" class="form-label">Comment:</label>
+          <input type="text" id="comment" formControlName="comment" class="form-control">
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

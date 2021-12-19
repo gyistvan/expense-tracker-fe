@@ -1,6 +1,6 @@
 <div class="container-fluid">
-    <div class="day-box-container">
-        <div *ngFor="let day of actualWeek" class="day-box">
+    <div class="row">
+        <div *ngFor="let day of actualWeek" class="col-12">
             <app-daily-view [displayedDate]="day" [transactions]="transactions"></app-daily-view>
         </div>
     </div>

@@ -20,7 +20,8 @@ export enum TransactionActionTypes {
 }
 
 export const requestTransactions = createAction(
-  TransactionActionTypes.requestTransactions
+  TransactionActionTypes.requestTransactions,
+  props<{ requestUrl: string }>()
 );
 
 export const requestTransactionsSuccess = createAction(

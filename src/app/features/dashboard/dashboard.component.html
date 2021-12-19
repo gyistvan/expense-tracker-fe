@@ -1,11 +1,42 @@
 <app-header></app-header>
 <app-page>
-    <div class="row mb-5">
-        <app-button [iconName]="!showAddNewForm ? 'plus' : 'minus'" [btnText]="!showAddNewForm ? 'Add new' : 'Close Form'" (onClick)="changeShowAddNewForm()"></app-button>
+    <div class="row">
+        <div class="col-12">
+            <app-month-switch></app-month-switch>
+        </div>
+        <div class="col-12">
+            <app-saving-form></app-saving-form>
+        </div>
+        <div class="col-6">
+            <div class="col-12">
+                <app-button 
+                    [iconName]="!showAddNewIncomeForm ? 'plus' : 'minus'" 
+                    [btnText]="!showAddNewIncomeForm ? 'Add new income' : 'Close Form'" 
+                    (onClick)="changeShowAddNewIncomeForm()"
+                    buttonColor="success"
+                    >
+                </app-button>
+                <app-new-income-form (closeForm)="closeAddIncomeForm($event)" *ngIf="showAddNewIncomeForm"></app-new-income-form>
+                <app-incomes-table *ngIf="incomes | async" [incomes]="incomes | async"></app-incomes-table>
+            </div>
+            <div class="col-12">
+                <app-button 
+                    [iconName]="!showAddNewTransactionForm ? 'plus' : 'minus'" 
+                    [btnText]="!showAddNewTransactionForm ? 'Add new transaction' : 'Close Form'" 
+                    (onClick)="changeShowAddNewTransactionForm()">
+                </app-button>
+                <app-new-spending-form (closeForm)="closeAddTransactionForm($event)" *ngIf="showAddNewTransactionForm"></app-new-spending-form>
+                <app-monthly-spendings [transactions]="transactions"></app-monthly-spendings>
+            </div>
+        </div>
+        <div class="col-6">
+            <app-actual-week [transactions]="transactions" [actualWeek]="getCurrentWeek()" *ngIf="isInDisplayedMonth()"></app-actual-week>
+            <app-monthly-transactions [transactions]="transactions"  *ngIf="!isInDisplayedMonth()"></app-monthly-transactions>
+        </div>
     </div>
-    <app-new-spending-form (closeForm)="closeForm($event)" *ngIf="showAddNewForm"></app-new-spending-form>
-    <div class="row mb-5">
-        <app-montly-spendings [transactions]="transactions"></app-montly-spendings>
+    <div class="row">
+        <div class="col-12">
+            <app-monthly-transactions [transactions]="transactions" *ngIf="isInDisplayedMonth()"></app-monthly-transactions>
+        </div>
     </div>
-    <app-actual-week [transactions]="transactions"></app-actual-week>
 </app-page>

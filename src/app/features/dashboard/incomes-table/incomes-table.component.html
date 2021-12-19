@@ -1,0 +1,36 @@
+<table  class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">
+                #
+            </th>
+            <th scope="col">
+                Amount
+            </th>
+            <th scope="col">
+                Whose
+            </th>
+            <th>
+                Comment
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of incomes, let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ record.amount | HufPipe }}</td>
+            <td>{{ record.whose }}</td>
+            <td>{{ record.comment }}</td>
+            <td>
+                <app-button buttonSize="small" iconName="pen"></app-button>
+                <app-button buttonSize="small" iconName="trash" (onClick)="deleteIncome(record._id)"></app-button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Total:</th>
+            <td colspan="3">{{total | HufPipe}}</td>
+        </tr>
+    </tfoot>
+</table>

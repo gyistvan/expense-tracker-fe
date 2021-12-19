@@ -1,0 +1,68 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="4">    
+                {{ displayedDate | date: 'yyyy-MM-dd'  }}
+            </th>
+        </tr>
+        <tr>
+            <th scope="col">
+                Used for
+            </th>
+            <th scope="col">
+                Amount
+            </th>
+            <th scope="col">
+                Comment
+            </th>
+            <th scope="col">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <ng-template [ngIf]="filteredTransactions.length > 0 && !isLoading">
+        <tbody>
+            <app-transaction-view *ngFor="let transaction of filteredTransactions" [transaction]="transaction"></app-transaction-view>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total:</th>
+                <td>
+                    {{ getTotalForDay(filteredTransactions) | HufPipe }}
+                </td>
+                <th>Spendable:</th>
+                <td>{{ getSpendableMoneyPerDay(
+                         incomes | async,
+                         transactions | async,
+                         daysInInterval | async,
+                         monthlySaving | async) | HufPipe
+                    }}
+                </td>
+            </tr>
+        </tfoot>
+    </ng-template>
+    <ng-template [ngIf]="filteredTransactions.length === 0 || isLoading">
+        <spinner *ngIf="isLoading"></spinner>
+        <tbody *ngIf="filteredTransactions.length === 0">
+            <tr>
+                <td colspan="4">
+                    Nothing to show
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td></td>
+                <th>Spendable:</th>
+                <td>{{ getSpendableMoneyPerDay(
+                         incomes | async,
+                         transactions | async,
+                         daysInInterval | async,
+                         monthlySaving | async) | HufPipe
+                    }}
+                </td>
+            </tr>
+        </tfoot>
+    </ng-template>
+</table>

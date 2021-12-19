@@ -8,6 +8,8 @@ import {
   InfoComponent,
   SpinnerComponent,
   TransactionViewComponent,
+  MonthSwitchComponent,
+  DailyViewComponent,
 } from './components/index';
 import {
   FontAwesomeModule,
@@ -38,6 +40,8 @@ const components = [
   EmailValidatorDirective,
   PasswordValidatorDirective,
   TogglePasswordDirective,
+  MonthSwitchComponent,
+  DailyViewComponent,
 ];
 
 @NgModule({
@@ -48,7 +52,7 @@ const components = [
     LatinCharsValidatorDirective,
   ],
   declarations: components,
-  exports: components,
+  exports: [...components],
 })
 export class SharedModule {
   constructor(library: FaIconLibrary) {

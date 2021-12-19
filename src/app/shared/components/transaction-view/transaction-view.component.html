@@ -1,19 +1,25 @@
-<div *ngIf='transaction' class="d-flex flex-column border-bottom border-warning">
-    <span [ngClass]="{
+
+    <th>
+        {{ transaction.usedFor }}
+    </th>
+    <td [ngClass]="{
             'isPaid': transaction.isPaid && transaction.type === 'Monthly', 
             'isNotPaid': !transaction.isPaid && transaction.type === 'Monthly'
         }">
-        {{ transaction.amount | HufPipe}} - {{ transaction.usedFor }}
-    </span>
-    <div *ngIf="isToday" class="d-flex justify-content-around p-3">
+        {{ transaction.amount | HufPipe}}
+    </td>
+    <td>
+        <p *ngIf="transaction.comment else noComment">{{transaction.comment}}</p>
+        <ng-template #noComment>
+            -
+        </ng-template>
+    </td>
+    <td *ngIf="isToday">
         <app-button [iconName]="'pen'" [buttonSize]="'small'" ></app-button>
         <app-button [iconName]="'trash'" [buttonSize]="'small'" (onClick)="onDelete(transaction._id)"></app-button>
         <app-button [iconName]="'list'" [buttonSize]="'small'"></app-button>
         <ng-template [ngIf]="!transaction.isPaid && transaction.type === 'Monthly'">
             <app-button [iconName]="'check'" [buttonSize]="'small'" (onClick)="updateTransaction(transaction)"></app-button>
         </ng-template>
-    </div>
-    <div *ngIf="transaction.comment">
-        <p>{{transaction.comment}}</p>
-    </div>
-</div>
+    </td>
+

@@ -1,14 +1,24 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import * as moment from 'moment';
+import { forkJoin } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TransactionPayload } from 'src/app/services/transaction/interfaces/transaction';
 import { State } from 'src/app/store';
+import { AppStateFacade } from '../appStates/facade';
 import {
   requestTransactionAdd,
   requestTransactionDelete,
   requestTransactions,
   requestTransactionUpdate,
 } from './actions';
-import { errorMessage, isTransactionsLoading, transactions } from './selectors';
+import {
+  errorMessage,
+  getEndDate,
+  getStartDate,
+  isTransactionsLoading,
+  transactions,
+} from './selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -22,8 +32,12 @@ export class TransactionStateFacade {
 
   constructor(private store: Store<State>) {}
 
-  public getTransactions() {
-    this.store.dispatch(requestTransactions());
+  public getTransactions(requestUrl: string) {
+    this.store.dispatch(
+      requestTransactions({
+        requestUrl,
+      })
+    );
   }
 
   public deleteTransaction(id: string) {

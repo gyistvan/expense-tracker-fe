@@ -21,8 +21,8 @@ export class TransactionEffects {
   getTransactions$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TransactionActionTypes.requestTransactions),
-      mergeMap(() => {
-        return this.transactionService.getAll().pipe(
+      mergeMap(({ requestUrl }) => {
+        return this.transactionService.getAll(requestUrl).pipe(
           map((transactions) => requestTransactionsSuccess({ transactions })),
           catchError(() =>
             of({ type: TransactionActionTypes.requestTransactionsFail })

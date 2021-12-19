@@ -1,0 +1,6 @@
+
+    <div class="row">
+        <div class="col-12" *ngFor="let categoryName of categoryNames">
+            <app-category-box [categoryName]="categoryName" [transactions]="getFilteredTransactionsByUsage(categoryName)"></app-category-box>
+        </div>
+    </div>

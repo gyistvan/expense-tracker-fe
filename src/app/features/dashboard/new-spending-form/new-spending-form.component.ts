@@ -76,8 +76,8 @@ export class NewSpendingFormComponent implements OnInit {
     return this.spendingForm.get('comment') as AbstractControl;
   }
 
-  onSubmit(form: FormGroup): void {
-    if (form.valid) {
+  onSubmit(): void {
+    if (this.spendingForm.valid) {
       let transactionPayload: TransactionPayload = {
         amount: parseInt(this.amount.value),
         type: this.type.value,

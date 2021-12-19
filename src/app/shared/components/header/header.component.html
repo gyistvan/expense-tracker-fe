@@ -22,10 +22,18 @@
             
           </li>
           <li class="nav-item">
-            <app-button [btnText]="'Login'" buttonSize="normal"></app-button>
-            <ng-template #logout>
-              <app-button [btnText]="'Logout'" buttonSize="normal" (onClick)="logoutAndRedirect()"></app-button>
-            </ng-template>
+            <app-button 
+              [btnText]="'Login'"
+              buttonSize="normal"
+              (onClick)="navigateToLoginPage()"
+              *ngIf="!(isUserAuthorized | async)"
+              ></app-button>
+            <app-button 
+              [btnText]="'Logout'"
+              buttonSize="normal"
+              (onClick)="logoutAndRedirect()"
+              *ngIf="isUserAuthorized | async"
+              ></app-button>
           </li>
         </ul>
       </div>

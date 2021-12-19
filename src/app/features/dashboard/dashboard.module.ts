@@ -4,20 +4,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ActualWeekComponent } from './actual-week/actual-week.component';
-import { DailyViewComponent } from './actual-week/daily-view/daily-view.component';
 import { DashboardComponent } from './dashboard.component';
 import { NewSpendingFormComponent } from './new-spending-form/new-spending-form.component';
 import { DpDatePickerModule } from 'ng2-date-picker';
-import { MontlySpendingsComponent } from './montly-spendings/montly-spendings.component';
-import { CategoryBoxComponent } from './montly-spendings/category-box/category-box.component';
+import { NewIncomeFormComponent } from './new-income-form/new-income-form.component';
+import { IncomesTableComponent } from './incomes-table/incomes-table.component';
+import { MonthlyTransactionsComponent } from './monthly-transactions/monthly-transactions.component';
+import { CategoryBoxComponent } from './monthly-spendings/category-box/category-box.component';
+import { MontlySpendingsComponent } from './monthly-spendings/montly-spendings.component';
+import { SavingFormComponent } from './saving-form/saving-form.component';
 
 const COMPONENTS = [
   DashboardComponent,
-  DailyViewComponent,
   ActualWeekComponent,
   NewSpendingFormComponent,
-  MontlySpendingsComponent,
+  NewIncomeFormComponent,
+  IncomesTableComponent,
+  MonthlyTransactionsComponent,
+  ActualWeekComponent,
   CategoryBoxComponent,
+  MontlySpendingsComponent,
+  SavingFormComponent,
 ];
 const ROUTES = [{ path: '', component: DashboardComponent }];
 

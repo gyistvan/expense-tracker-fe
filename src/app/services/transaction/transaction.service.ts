@@ -16,8 +16,10 @@ import {
 export class TransactionService {
   constructor(private http: HttpClient) {}
 
-  public getAll(): Observable<Transaction[]> {
-    return this.http.get<any[]>(BASE_URL + apiUrls.TRANSACTIONS.GET_ALL);
+  public getAll(requestUrl: string): Observable<Transaction[]> {
+    return this.http.get<any[]>(
+      BASE_URL + apiUrls.TRANSACTIONS.GET_ALL + requestUrl
+    );
   }
 
   public delete(deleteAction: DeleteTransactionAction): Observable<any> {

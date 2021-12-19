@@ -7,7 +7,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { CorsInterceptor } from './CorsInterceptor';
+import { CorsInterceptor } from './interceptors/cors.interceptor';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 import { effects, reducers } from './store';
 
 @NgModule({
@@ -27,6 +28,11 @@ import { effects, reducers } from './store';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CorsInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
       multi: true,
     },
   ],

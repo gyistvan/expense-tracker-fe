@@ -8,7 +8,20 @@ export const apiUrls = {
     UPDATE: '/api/transactionById/',
   },
   INCOMES: {
-    ADD_NEW: '/api/income',
+    ADD_NEW: '/api/incomes',
+    GET_ALL: '/api/incomes',
+  },
+  INCOME: {
+    DELETE: '/api/incomeById/',
+  },
+  APP_STATE: {
+    GET: '/api/saving',
+    ADD: '/api/saving',
+  },
+  AUTH: {
+    LOGIN: '/api/login',
+    LOGOUT: '/api/logout/',
+    REGISTER: '/api/register',
   },
 };
 

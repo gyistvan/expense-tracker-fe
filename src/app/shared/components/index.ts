@@ -5,3 +5,5 @@ export * from './info/info.component';
 export * from './search/search.component';
 export * from './spinner/spinner.component';
 export * from './transaction-view/transaction-view.component';
+export * from './month-switch/month-switch.component';
+export * from './daily-view/daily-view.component';

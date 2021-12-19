@@ -1,0 +1,9 @@
+.pos-relative {
+    position: relative;
+}
+
+.toggleShowPassword {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

@@ -1,0 +1,31 @@
+<table class="table">
+    <tr>
+        <th>
+            {{ categoryName }}
+        </th>
+    </tr>
+    <tr>
+        <th scope="col">
+            Used for
+        </th>
+        <th scope="col">
+            Amount
+        </th>
+        <th scope="col">
+            Comment
+        </th>
+        <th scope="col">
+            Actions
+        </th>
+    </tr>
+    <tbody>
+        <app-transaction-view *ngFor="let transaction of transactions; let i = index" [transaction]="transaction"></app-transaction-view>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="2" scope="row">Total</th>
+            <td colspan="2">{{ total | HufPipe }}</td>
+        </tr>
+    </tfoot>
+</table>
+

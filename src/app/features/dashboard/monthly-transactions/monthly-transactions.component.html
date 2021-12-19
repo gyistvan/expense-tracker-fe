@@ -1,0 +1,7 @@
+<div class="container-fluid">
+    <div class="row">
+        <div *ngFor="let day of getMonth(daysInInterval | async)" class="col-12">
+            <app-daily-view [displayedDate]="day" [transactions]="transactions"></app-daily-view>
+        </div>
+    </div>
+</div>

@@ -1,29 +1,30 @@
-/*
- * Copyright © 2021 EPAM Systems, Inc. All Rights Reserved. All information contained herein is, and remains the
- * property of EPAM Systems, Inc. and/or its suppliers and is protected by international intellectual
- * property law. Dissemination of this information or reproduction of this material is strictly forbidden,
- * unless prior written permission is obtained from EPAM Systems, Inc
- */
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthorizedGuard } from './guards/authorized.guard';
+import { NotAuthorizedGuard } from './guards/not-authorized.guard';
 
 export const routes: Routes = [
-  /*{
+  {
     path: 'login',
-    loadChildren: (): Promise<any> => import('./features/login/login.module').then((m) => m.LoginModule),
+    loadChildren: (): Promise<any> =>
+      import('./features/login/login.module').then((m) => m.LoginModule),
+    canActivate: [NotAuthorizedGuard],
   },
   {
     path: 'registration',
     loadChildren: (): Promise<any> =>
-      import('./features/registration/registration.module').then((m) => m.RegistrationModule),
-  },*/
+      import('./features/registration/registration.module').then(
+        (m) => m.RegistrationModule
+      ),
+    canActivate: [NotAuthorizedGuard],
+  },
   {
     path: 'dashboard',
     loadChildren: (): Promise<any> =>
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
+    canLoad: [AuthorizedGuard],
   },
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

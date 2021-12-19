@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <img src="../../../assets/login_pic.jpg" alt="login image" class="img-fluid" />
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="alert alert-success" role="alert" *ngIf="successfulRegistration">
+        successful registration, you can log in now!
+      </div>
+      <form class="form" name="form" #loginData="ngForm" (ngSubmit)="onFormSubmit(loginData.form)">
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          <input
+            id="email"
+            name="email"
+            class="form-control"
+            [(ngModel)]="loginForm.email"
+            #email="ngModel"
+            placeholder="user@test.com"
+            required
+            [emailValidator]="email"
+            [ngClass]="{ 'is-invalid': (email.touched || loginData.submitted) && (email.errors?.required || email.errors?.invalidEmail)}"
+          />
+          <div class="text-danger py-3"
+            *ngIf="(email.touched || loginData.submitted) && (email.errors?.required || email.errors?.invalidEmail)">
+            Valid e-mail required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <div class="pos-relative">
+            <input id="password" name="password" class="form-control" [(ngModel)]="loginForm.password" #password="ngModel"
+              required toggleShowPassword #toggleShowPassword="toggleShowPassword" type="password" [passwordValidator]="password"
+              [ngClass]="{ 'is-invalid': (password.touched || loginData.submitted) && (password.errors?.required || password.errors?.invalidEmail)}" />
+            <div class="toggleShowPassword">
+              <app-button [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'" [buttonSize]="'normal'"
+                (onClick)='toggleShowPassword.toggle($event)'></app-button>
+            </div>
+          </div>
+          </div>
+          <div class="text-danger py-3"
+            *ngIf="(password.touched || loginData.submitted) && (password.errors?.required || password.errors?.invalidPassword)">
+            Password must contain min. 8 characters and at least one number and one letter
+          </div>
+          
+          <div class="d-flex justify-content-center my-5">
+            <app-button [btnText]="'Login'" [iconName]="'sign-in-alt'"></app-button>
+          </div>
+          <div class="d-flex justify-content-center">
+            <p>If you don't have an account, you can register <a routerLink='/registration' class="text-info">here</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
