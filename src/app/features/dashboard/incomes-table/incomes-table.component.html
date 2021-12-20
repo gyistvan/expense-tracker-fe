@@ -1,39 +1,37 @@
-<table  class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th scope="col">
-                #
-            </th>
-            <th scope="col">
-                Amount
-            </th>
-            <th scope="col">
-                Whose
-            </th>
-            <th>
-                Comment
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let record of incomes, let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ record.amount | HufPipe }}</td>
-            <td>{{ record.whose }}</td>
-            <td>{{ record.comment }}</td>
-            <td>
+<div class="d-flex flex-column">
+    <div class="d-flex">
+        <p class="flex-1">
+            #
+        </p>
+        <p class="flex-3">
+            Amount
+        </p>
+        <p class="flex-3">
+            Whose
+        </p>
+        <p class="flex-6">
+            Comment
+        </p>
+        <p class="flex-4 d-flex justify-content-end">
+            Actions
+        </p>
+    </div>
+    <app-show-hide>
+        <div class="d-flex pt-3" *ngFor="let record of incomes, let i = index" [ngClass]="{'bg-striped-light' : i % 2 === 0}">
+            <p class="flex-1">{{ i + 1 }}</p>
+            <p class="flex-3">{{ record.amount | HufPipe }}</p>
+            <p class="flex-3">{{ record.whose }}</p>
+            <p class="flex-6">{{ record.comment }}</p>
+            <p class="flex-4 d-flex justify-content-end">
                 <app-button buttonSize="small" iconName="pen"></app-button>
                 <app-button buttonSize="small" iconName="trash" (onClick)="deleteIncome(record._id)"></app-button>
-            </td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th>Total:</th>
-            <td colspan="3">{{total | HufPipe}}</td>
-        </tr>
-    </tfoot>
-</table>
+            </p>
+        </div>
+    </app-show-hide>
+    <div class="d-flex border-top border-bottom pt-2 border-secondary">
+        <h5 class="flex-1">Total</h5>
+        <h5 class="flex-4">{{ total | HufPipe }}</h5>
+        <p class="flex-6"></p>
+        <p class="flex-2"></p>
+    </div>
+</div>

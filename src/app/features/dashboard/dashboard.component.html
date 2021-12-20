@@ -8,6 +8,9 @@
             <app-saving-form></app-saving-form>
         </div>
         <div class="col-12 col-lg-6">
+            <h2 class="text-center">
+                Incomes
+            </h2>
             <div class="col-12">
                 <app-button 
                     [iconName]="!showAddNewIncomeForm ? 'plus' : 'minus'" 
@@ -19,6 +22,9 @@
                 <app-new-income-form (closeForm)="closeAddIncomeForm($event)" *ngIf="showAddNewIncomeForm"></app-new-income-form>
                 <app-incomes-table *ngIf="incomes | async" [incomes]="incomes | async"></app-incomes-table>
             </div>
+            <h2 class="text-center mt-5">
+                Monthly Spendings
+            </h2>
             <div class="col-12">
                 <app-button 
                     [iconName]="!showAddNewTransactionForm ? 'plus' : 'minus'" 
@@ -30,13 +36,19 @@
             </div>
         </div>
         <div class="col-12 col-lg-6">
-            <app-actual-week [transactions]="transactions" [actualWeek]="getCurrentWeek()" *ngIf="isInDisplayedMonth()"></app-actual-week>
-            <app-monthly-transactions [transactions]="transactions"  *ngIf="!isInDisplayedMonth()"></app-monthly-transactions>
+            <h2 class="text-center">
+                Daily spendings
+            </h2>
+            <div class="d-flex justify-content-around">
+                <app-button btnText="Show monthly view" iconName="list" (onClick)="displayMonthlyView()"></app-button>
+                <app-button btnText="Show weekly view" iconName="list" (onClick)="displayWeeklyView()" *ngIf="isInDisplayedMonth()"></app-button>
+            </div>
+            <app-actual-week [transactions]="transactions" [actualWeek]="getCurrentWeek()" *ngIf="isInDisplayedMonth() && !isMonthlyViewDisplayed"></app-actual-week>
+            <app-monthly-transactions *ngIf="isMonthlyViewDisplayed" [transactions]="transactions"></app-monthly-transactions>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <app-monthly-transactions [transactions]="transactions" *ngIf="isInDisplayedMonth()"></app-monthly-transactions>
         </div>
     </div>
 </app-page>

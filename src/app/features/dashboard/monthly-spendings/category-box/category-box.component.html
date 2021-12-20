@@ -1,31 +1,33 @@
-<table class="table">
-    <tr>
-        <th>
+<div class="d-flex flex-column pt-5">
+    <div>
+        <h3>
             {{ categoryName }}
-        </th>
-    </tr>
-    <tr>
-        <th scope="col">
-            Used for
-        </th>
-        <th scope="col">
+        </h3>
+    <div>
+    <div class="d-flex">
+        <p class="flex-1">
+            #
+        </p>
+        <p class="flex-4">
             Amount
-        </th>
-        <th scope="col">
+        </p>
+        <p class="flex-6">
             Comment
-        </th>
-        <th scope="col">
+        </p>
+        <p class="flex-2 d-flex justify-content-end">
             Actions
-        </th>
-    </tr>
-    <tbody>
-        <app-transaction-view *ngFor="let transaction of transactions; let i = index" [index]="i" [transaction]="transaction"></app-transaction-view>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th colspan="2" scope="row">Total</th>
-            <td colspan="2">{{ total | HufPipe }}</td>
-        </tr>
-    </tfoot>
-</table>
+        </p>
+    </div>
+    <div class="d-flex">
+        <app-show-hide>
+            <app-transaction-view *ngFor="let transaction of transactions; let i = index" [index]="i" [transaction]="transaction"></app-transaction-view>
+        </app-show-hide>
+    </div>
+    <div class="d-flex border-top border-bottom pt-2 border-secondary">
+        <h5 class="flex-1">Total: </h5>
+        <h5 class="flex-4">{{ total | HufPipe }}</h5>
+        <p class="flex-6"></p>
+        <p class="flex-2"></p>
+    </div>
+</div>
 

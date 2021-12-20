@@ -7,3 +7,6 @@ export * from './spinner/spinner.component';
 export * from './transaction-view/transaction-view.component';
 export * from './month-switch/month-switch.component';
 export * from './daily-view/daily-view.component';
+export * from './new-income-form/new-income-form.component';
+export * from './new-spending-form/new-spending-form.component';
+export * from './show-hide/show-hide.component';

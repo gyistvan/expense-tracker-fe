@@ -8,6 +8,7 @@ import { AuthStateFacade } from 'src/app/store/auth/auth.facade';
 })
 export class HeaderComponent implements OnInit {
   public isUserAuthorized = this.authStateFacade.isUserAuthorized$;
+  public isMenuOpen = false;
 
   constructor(
     private router: Router,
@@ -22,5 +23,9 @@ export class HeaderComponent implements OnInit {
 
   public navigateToLoginPage(): void {
     this.router.navigate(['login']);
+  }
+
+  public changeMenuState() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

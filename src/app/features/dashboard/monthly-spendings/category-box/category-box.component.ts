@@ -1,7 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Transaction } from 'src/app/services/transaction/interfaces/transaction';
-
-const DEFAULT_SHOW_AMOUNT = 2;
 
 @Component({
   selector: 'app-category-box',
@@ -15,8 +13,6 @@ export class CategoryBoxComponent {
   @Input()
   public transactions: Transaction[] = [];
 
-  public showAmount = DEFAULT_SHOW_AMOUNT;
-
   public total = 0;
 
   constructor() {}
@@ -25,11 +21,7 @@ export class CategoryBoxComponent {
     this.total = this.countTotal();
   }
 
-  showMore(): void {
-    this.showAmount += 2;
-  }
-
-  countTotal(): number {
+  public countTotal(): number {
     return this.transactions.reduce(
       (total: number, transaction: Transaction) =>
         (total = total + transaction.amount),

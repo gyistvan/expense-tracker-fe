@@ -32,6 +32,15 @@ export const routes: Routes = [
       import('./features/profile/profile.module').then((m) => m.ProfileModule),
     canLoad: [AuthorizedGuard],
   },
+
+  {
+    path: 'new-transaction',
+    loadChildren: (): Promise<any> =>
+      import('./features/new-transaction/new-transaction.module').then(
+        (m) => m.NewTransactionModule
+      ),
+    canLoad: [AuthorizedGuard],
+  },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

@@ -1,68 +1,45 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th colspan="4">    
-                {{ displayedDate | date: 'yyyy-MM-dd'  }}
-            </th>
-        </tr>
-        <tr>
-            <th scope="col">
-                Used for
-            </th>
-            <th scope="col">
-                Amount
-            </th>
-            <th scope="col">
-                Comment
-            </th>
-            <th scope="col">
-                Actions
-            </th>
-        </tr>
-    </thead>
+<div class="d-flex flex-column mt-5">
+    <div>
+        <h5>
+            {{ displayedDate | date: 'yyyy-MM-dd'  }}
+        </h5>
+    <div>
+    <div class="d-flex border-bottom border-secondary">
+        <p class="flex-1 ps-2">
+            #
+        </p>
+        <p class="flex-4">
+            Amount
+        </p>
+        <p class="flex-6">
+            Comment
+        </p>
+        <p class="flex-2 d-flex justify-content-end">
+            Actions
+        </p>
+    </div>
     <ng-template [ngIf]="filteredTransactions.length > 0 && !isLoading">
-        <tbody>
-            <app-transaction-view *ngFor="let transaction of filteredTransactions; let i = index" [index]="i" [transaction]="transaction"></app-transaction-view>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Total:</th>
-                <td>
-                    {{ getTotalForDay(filteredTransactions) | HufPipe }}
-                </td>
-                <th>Spendable:</th>
-                <td>{{ getSpendableMoneyPerDay(
-                         incomes | async,
-                         transactions | async,
-                         daysInInterval | async,
-                         monthlySaving | async) | HufPipe
-                    }}
-                </td>
-            </tr>
-        </tfoot>
+        <div class="d-flex">
+            <app-show-hide>
+                <app-transaction-view *ngFor="let transaction of filteredTransactions; let i = index" [index]="i" [transaction]="transaction"></app-transaction-view>
+            </app-show-hide>
+        </div>
     </ng-template>
     <ng-template [ngIf]="filteredTransactions.length === 0 || isLoading">
         <spinner *ngIf="isLoading"></spinner>
-        <tbody *ngIf="filteredTransactions.length === 0">
-            <tr>
-                <td colspan="4">
-                    Nothing to show
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th></th>
-                <td></td>
-                <th>Spendable:</th>
-                <td>{{ getSpendableMoneyPerDay(
-                         incomes | async,
-                         transactions | async,
-                         daysInInterval | async,
-                         monthlySaving | async) | HufPipe
-                    }}
-                </td>
-            </tr>
-        </tfoot>
+        <div *ngIf="filteredTransactions.length === 0">
+            <p class="p-2 mt-3">Nothing to show</p>
+        </div>
     </ng-template>
-</table>
+    <div class="d-flex border-top border-bottom pt-2 border-secondary">
+        <h5 class="flex-1">Total: </h5>
+        <h5 class="flex-4">{{ getTotalForDay(filteredTransactions) | HufPipe }}</h5>
+        <h5 class="flex-2">Spendable: </h5>
+        <h5 class="flex-6">{{ getSpendableMoneyPerDay(
+            incomes | async,
+            transactions | async,
+            daysInInterval | async,
+            monthlySaving | async) | HufPipe
+       }}</h5>
+    </div>
+</div>

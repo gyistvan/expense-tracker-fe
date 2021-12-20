@@ -1,4 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
-app-transaction-view {
-  display: table-row;
+app-transaction-view,
+app-show-hide {
+  display: inline-block;
+  width: 100%;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-4 {
+  flex: 4;
+}
+
+.flex-5 {
+  flex: 5;
+}
+
+.flex-6 {
+  flex: 6;
+}
+
+.bg-striped-light {
+  background: #00000010;
 }

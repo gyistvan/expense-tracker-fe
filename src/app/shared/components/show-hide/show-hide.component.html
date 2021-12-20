@@ -1,0 +1,6 @@
+<app-button 
+  [btnText]="isDisplayed ? 'Hide content' : 'Show content'"
+  [iconName]="isDisplayed ? 'arrow-up' : 'arrow-down'"
+  (onClick)="changeDisplayed()"
+></app-button>
+<ng-content *ngIf="isDisplayed"></ng-content>

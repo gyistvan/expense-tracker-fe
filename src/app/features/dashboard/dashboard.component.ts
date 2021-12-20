@@ -21,6 +21,7 @@ export class DashboardComponent {
   public showAddNewTransactionForm = false;
   public showAddNewIncomeForm = false;
   public monthlySaving = this.appStateFacade.monthlySaving$;
+  public isMonthlyViewDisplayed = !this.isInDisplayedMonth();
 
   constructor(
     private transactionStateFacade: TransactionStateFacade,
@@ -36,6 +37,7 @@ export class DashboardComponent {
       this.showDate = showDate;
       this.incomeStateFacade.getIncomes(this.createRequestUrl(showDate));
       this.appStateFacade.getMonthlySaving(this.createRequestUrl(showDate));
+      this.isMonthlyViewDisplayed = !this.isInDisplayedMonth();
     });
   }
 
@@ -51,6 +53,14 @@ export class DashboardComponent {
 
   public changeShowAddNewIncomeForm(): void {
     this.showAddNewIncomeForm = !this.showAddNewIncomeForm;
+  }
+
+  public displayWeeklyView(): void {
+    this.isMonthlyViewDisplayed = false;
+  }
+
+  public displayMonthlyView(): void {
+    this.isMonthlyViewDisplayed = true;
   }
 
   public closeAddTransactionForm(formState: boolean): void {

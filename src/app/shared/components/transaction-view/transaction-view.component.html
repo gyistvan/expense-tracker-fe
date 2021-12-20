@@ -1,22 +1,24 @@
 
-    <th>
-        {{ index + 1 }}
-    </th>
-    <td [ngClass]="{'text-decoration-line-through': transaction.isPaid && transaction.type === 'Monthly'}">
-        {{ transaction.amount | HufPipe}}
-    </td>
-    <td [ngClass]="{'text-decoration-line-through': transaction.isPaid && transaction.type === 'Monthly'}">
-        <p *ngIf="transaction.comment else noComment">{{ transaction.comment }}</p>
-        <ng-template #noComment>
-            -
-        </ng-template>
-    </td>
-    <td *ngIf="isToday">
-        <app-button [iconName]="'pen'" [buttonSize]="'small'" ></app-button>
-        <app-button [iconName]="'trash'" [buttonSize]="'small'" (onClick)="onDelete(transaction._id)"></app-button>
-        <app-button [iconName]="'list'" [buttonSize]="'small'"></app-button>
-        <ng-template [ngIf]="!transaction.isPaid && transaction.type === 'Monthly'">
-            <app-button [iconName]="'check'" [buttonSize]="'small'" (onClick)="updateTransaction(transaction)"></app-button>
-        </ng-template>
-    </td>
+    <div class="d-flex align-items-center pt-3" [ngClass]="{'bg-striped-light' : index % 2 === 0}">
+        <p class="flex-1 ps-2">
+            {{ index + 1 }}
+        </p>
+        <p class="flex-4" [ngClass]="{'text-decoration-line-through': transaction.isPaid && transaction.type === 'Monthly'}">
+            {{ transaction.amount | HufPipe}}
+        </p>
+        <p class="flex-6" [ngClass]="{'text-decoration-line-through': transaction.isPaid && transaction.type === 'Monthly'}">
+            <span *ngIf="transaction.comment else noComment">{{ transaction.comment }}</span>
+            <ng-template #noComment>
+                -
+            </ng-template>
+        </p>
+        <p class="flex-2 d-flex justify-content-end" *ngIf="isToday">
+            <app-button [iconName]="'pen'" [buttonSize]="'small'" ></app-button>
+            <app-button [iconName]="'trash'" [buttonSize]="'small'" (onClick)="onDelete(transaction._id)"></app-button>
+            <app-button [iconName]="'list'" [buttonSize]="'small'"></app-button>
+            <ng-template [ngIf]="!transaction.isPaid && transaction.type === 'Monthly'">
+                <app-button [iconName]="'check'" [buttonSize]="'small'" (onClick)="updateTransaction(transaction)"></app-button>
+            </ng-template>
+        </p>
+    </div>
 
