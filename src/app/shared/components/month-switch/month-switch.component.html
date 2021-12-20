@@ -2,21 +2,23 @@
     <div class="col-4 text-center">
         <app-button 
             buttonSize="normal" 
-            buttonColor="success" 
-            textContent="Previous"
+            buttonColor="info" 
             iconName="angle-double-left"
+            [tooltipText]="getPreviousMonth()"
             (onClick)="subtractOneMonth()">
         </app-button>
     </div>
     <div class="col-4 text-center">
-        {{ actualMonth | date: "YYYY MMMM" }}
+        <h3>
+            {{ actualMonth | date: "YYYY MMMM" }}
+        </h3>
     </div>
     <div class="col-4 text-center">
         <app-button 
             buttonSize="normal" 
-            buttonColor="success" 
-            textContent="Next"
+            buttonColor="info" 
             iconName="angle-double-right"
+            [tooltipText]="getNextMonth()"
             (onClick)="addOneMonth()">
         </app-button>
     </div>

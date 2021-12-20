@@ -4,7 +4,9 @@ import { IconName } from '@fortawesome/fontawesome-svg-core';
 @Component({
   selector: 'app-button',
   template: `<button
-    class="btn text-white text-bold"
+    [tooltip]="tooltipText"
+    [disabled]="isDisabled"
+    class="btn text-bold"
     (click)="click($event)"
     [ngClass]="{
       'btn-lg': buttonSize === 'lg',
@@ -13,7 +15,12 @@ import { IconName } from '@fortawesome/fontawesome-svg-core';
       'btn-secondary': buttonColor === 'secondary',
       'btn-dark': buttonColor === 'dark',
       'btn-primary': buttonColor === 'primary',
-      'btn-success': buttonColor === 'success'
+      'btn-success': buttonColor === 'success',
+      'btn-danger': buttonColor === 'danger',
+      'btn-warning': buttonColor === 'warning',
+      'btn-info': buttonColor === 'info',
+      'text-white': textColor === 'white',
+      'text-dark': textColor === 'dark'
     }"
   >
     <fa-icon *ngIf="iconName" [icon]="['fas', iconName]"></fa-icon>
@@ -25,6 +32,9 @@ export class ButtonComponent {
   @Input() public iconName?: IconName;
   @Input() public buttonSize = 'normal';
   @Input() public buttonColor = 'secondary';
+  @Input() public textColor = 'white';
+  @Input() public isDisabled = false;
+  @Input() public tooltipText = '';
 
   @Output() onClick = new EventEmitter<MouseEvent>();
 

@@ -1,10 +1,10 @@
   <div *ngIf="!showSavingForm && monthlySaving" class="text-center m-3">
     Saving for this month: {{ monthlySaving }} %
-    <app-button [iconName]="'pen'" buttonSize="small" btnText="Edit" (onClick)="switchShowSavingForm($event)"></app-button>
+    <app-button buttonColor="primary" tooltipText="Edit saving for the selected month" [iconName]="'pen'" buttonSize="small" btnText="Edit" (onClick)="switchShowSavingForm($event)"></app-button>
   </div>
   <div *ngIf="!monthlySaving || showSavingForm" class="m-5">
       <form [formGroup]="savingForm" class="form" (ngSubmit)="onSubmit()" #saveForm="ngForm">
-          <div class="row justify-content-center">
+          <div class="row justify-content-center align-items-center">
             <div class="col-12 col-lg-1">
               <label for="amount" class="form-label text-right">Saving:</label>
             </div>
@@ -20,15 +20,19 @@
               <div class="row">
                 <div class="col-6 text-center">
                   <app-button 
+                    [tooltipText]="monthlySaving && showSavingForm ? 'Updates the saving for the selected month' : 'Adds saving for the selected month'"
                     [btnText]="monthlySaving && showSavingForm ? 'Update' : 'Add'"
-                    [iconName]="'check'">
+                    [iconName]="'check'"
+                    buttonColor="primary">
                   </app-button>
                 </div>
                 <div class="col-6 text-center">
                   <app-button 
+                    tooltipText="Cancel"
                     btnText="Cancel"
                     [iconName]="'check'"
                     (onClick)="switchShowSavingForm($event)"
+                    buttonColor="dark"
                     >
                   </app-button>
                 </div>

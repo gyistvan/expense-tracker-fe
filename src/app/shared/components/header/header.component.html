@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="../../../../assets/logo.png" class="col-4 col-md-2" /></a>
+        <a class="navbar-brand" href="#"><img src="../../../../assets/logo.jpeg" class="col-4 col-md-2" /></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -33,12 +33,14 @@
               buttonSize="normal"
               (onClick)="navigateToLoginPage()"
               *ngIf="!(isUserAuthorized | async)"
+              buttonColor="primary"
               ></app-button>
             <app-button 
               [btnText]="'Logout'"
               buttonSize="normal"
               (onClick)="logoutAndRedirect()"
               *ngIf="isUserAuthorized | async"
+              buttonColor="dark"
               ></app-button>
           </li>
         </ul>

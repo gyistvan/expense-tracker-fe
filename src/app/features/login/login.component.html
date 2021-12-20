@@ -34,7 +34,10 @@
               required toggleShowPassword #toggleShowPassword="toggleShowPassword" type="password" [passwordValidator]="password"
               [ngClass]="{ 'is-invalid': (password.touched || loginData.submitted) && (password.errors?.required || password.errors?.invalidEmail)}" />
             <div class="toggleShowPassword">
-              <app-button [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'" [buttonSize]="'normal'"
+              <app-button
+                [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'" 
+                [buttonSize]="'normal'"
+                buttonColor="primary"
                 (onClick)='toggleShowPassword.toggle($event)'></app-button>
             </div>
           </div>
@@ -45,7 +48,7 @@
           </div>
           
           <div class="d-flex justify-content-center my-5">
-            <app-button [btnText]="'Login'" [iconName]="'sign-in-alt'"></app-button>
+            <app-button [btnText]="'Login'" [iconName]="'sign-in-alt'" buttonColor="primary"></app-button>
           </div>
           <div class="d-flex justify-content-center">
             <p>If you don't have an account, you can register <a routerLink='/registration' class="text-info">here</a></p>

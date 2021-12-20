@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { CorsInterceptor } from './interceptors/cors.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { effects, reducers } from './store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,12 +18,14 @@ import { effects, reducers } from './store';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       autoPause: true,
     }),
+    BrowserAnimationsModule,
   ],
   providers: [
     {

@@ -30,8 +30,8 @@ export class TransactionViewComponent implements OnInit {
     }
   }
 
-  public updateTransaction(t: Transaction): void {
-    let transaction = { ...t, isPaid: true };
+  public updateTransaction(t: Transaction, isPaid: boolean): void {
+    let transaction = { ...t, isPaid };
     this.transactionStateFacade.updateTransaction(t._id, transaction);
   }
 }

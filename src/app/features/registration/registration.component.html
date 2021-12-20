@@ -32,7 +32,11 @@
               [ngClass]="{ 'is-invalid': (password.touched || regForm.submitted) && (password.errors?.required || password.errors?.invalidPassword)}"
               formControlName="password" />
             <div class="toggleShowPassword">
-              <app-button [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'" [buttonSize]="'normal'"
+              <app-button 
+                [tooltipText]="toggleShowPassword._shown ? 'Hide password' : 'Display password'"
+                [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'"
+                [buttonSize]="'normal'"
+                buttonColor="primary"
                 (onClick)='toggleShowPassword.toggle($event)'></app-button>
             </div>
           </div>
@@ -42,7 +46,7 @@
           </div>
           </div>
           <div class="d-flex justify-content-center my-5">
-            <app-button [btnText]="'Registration'" [iconName]="'key'"></app-button>
+            <app-button buttonColor="primary" [btnText]="'Registration'" [iconName]="'key'"></app-button>
           </div>
           <div class="d-flex justify-content-center">
             <p>If you already registered you can login <a href="/login" class="text-info">here</a></p>

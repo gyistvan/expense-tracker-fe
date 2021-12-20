@@ -87,7 +87,8 @@ export class NewSpendingFormComponent implements OnInit {
         comment: this.comment.value,
       };
       this.transactionStateFacade.saveNewTransaction(transactionPayload);
-      this.spendingForm.reset();
+      this.spendingForm = this.createForm();
+
       this.closeForm.emit(false);
     }
   }

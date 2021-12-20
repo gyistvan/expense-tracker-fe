@@ -18,7 +18,7 @@ export class MonthSwitchComponent implements OnInit {
     });
   }
 
-  addOneMonth(): void {
+  public addOneMonth(): void {
     const showDate = moment(this.actualMonth)
       .add(1, 'month')
       .startOf('month')
@@ -27,12 +27,20 @@ export class MonthSwitchComponent implements OnInit {
     this.appStateFacade.changeDateInterval(showDate);
   }
 
-  subtractOneMonth(): void {
+  public subtractOneMonth(): void {
     const showDate = moment(this.actualMonth)
       .subtract(1, 'month')
       .startOf('month')
       .toISOString();
 
     this.appStateFacade.changeDateInterval(showDate);
+  }
+
+  public getPreviousMonth(): string {
+    return moment(this.actualMonth).subtract(1, 'month').format('MMMM');
+  }
+
+  public getNextMonth(): string {
+    return moment(this.actualMonth).add(1, 'month').format('MMMM');
   }
 }

@@ -1,7 +1,7 @@
 <app-header></app-header>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-lg-6">
+<div class="container-md">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
             <form [formGroup]="profileForm" class="form" (ngSubmit)="onSubmit($event)" #profilForm="ngForm">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name:</label>
@@ -27,29 +27,35 @@
                       placeholder="your@email.com" formControlName="groupId" />
                 </div>
                 <div class="d-flex justify-content-center my-5">
-                  <app-button [btnText]="'Update profile'" [iconName]="'key'"></app-button>
+                  <app-button [btnText]="'Update'" tooltipText="'Updates your profile'" [iconName]="'key'" buttonColor="primary"></app-button>
                 </div>
             </form>  
-            <div class="mb-3">
-              <app-button [btnText]="'Change password'" [iconName]="'pen'" (onClick)="changeDisplayPasswordForm($event)"></app-button>
+            <div class="row justify-content-center">
+              <div class="col-lg-8 text-center">
+                <app-button [btnText]="'Change password'" buttonColor="primary" [iconName]="'pen'" (onClick)="changeDisplayPasswordForm($event)"></app-button>
+              </div>
             </div>
           </div>
-          <div class="col-12 col-lg-6">
+          <div class="col-12 col-lg-8">
             <div *ngIf="displayPasswordForm">
               <form [formGroup]="passwordForm" class="form" (ngSubmit)="onPasswordFormSubmit($event)" #pwForm="ngForm">
                 <div class="mb-3">
                   <label for="oldPassword" class="form-label">Old password:</label>
                   <div class="pos-relative">
-                    <input id="oldPassword" class="form-control" formControlName="oldPassword" required  toggleShowPassword #toggleShowPassword="toggleShowPassword"  />
+                    <input id="oldPassword" type="password" class="form-control" formControlName="oldPassword" required  toggleShowPassword #toggleShowPassword="toggleShowPassword"  />
                     <div class="toggleShowPassword">
-                      <app-button [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'" [buttonSize]="'normal'"
+                      <app-button
+                        buttonColor="primary"
+                        [tooltipText]="toggleShowPassword._shown ? 'Hide password' : 'Display password'"
+                        [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'"
+                        [buttonSize]="'normal'"
                         (onClick)='toggleShowPassword.toggle($event)'></app-button>
                     </div>
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="newPassword" class="form-label">New password:</label>
-                  <input id="newPassword" class="form-control" formControlName="newPassword" required  [ngClass]="{ 'is-invalid': (newPassword.touched || pwForm.submitted) && (newPassword.errors?.required || newPassword.errors?.invalidPassword || !arePasswordsTheSame())}" />  
+                  <input id="newPassword" type="password" class="form-control" formControlName="newPassword" required  [ngClass]="{ 'is-invalid': (newPassword.touched || pwForm.submitted) && (newPassword.errors?.required || newPassword.errors?.invalidPassword || !arePasswordsTheSame())}" />  
                   <div class="text-danger" *ngIf="(newPassword.touched || pwForm.submitted) && (newPassword.errors || !arePasswordsTheSame())">
                     <p *ngIf="(newPassword.errors?.required || newPassword.errors?.invalidPassword)">
                       Password must contain min. 8 characters and at least one number and one letter
@@ -72,7 +78,7 @@
                   </div>
                 </div>
                 <div class="d-flex justify-content-center my-5">
-                  <app-button [btnText]="'Update password'" [iconName]="'key'"></app-button>
+                  <app-button tooltipText="Update password" buttonColor="primary" [btnText]="'Update'" [iconName]="'key'"></app-button>
                 </div>
               </form>
             </div>

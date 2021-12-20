@@ -1,5 +1,5 @@
 
-    <div class="d-flex align-items-center pt-3" [ngClass]="{'bg-striped-light' : index % 2 === 0}">
+    <div class="d-flex flex-column flex-md-row align-items-center pt-3" [ngClass]="{'bg-striped-light' : index % 2 === 0}">
         <p class="flex-1 ps-2">
             {{ index + 1 }}
         </p>
@@ -12,13 +12,40 @@
                 -
             </ng-template>
         </p>
-        <p class="flex-2 d-flex justify-content-end" *ngIf="isToday">
-            <app-button [iconName]="'pen'" [buttonSize]="'small'" ></app-button>
-            <app-button [iconName]="'trash'" [buttonSize]="'small'" (onClick)="onDelete(transaction._id)"></app-button>
-            <app-button [iconName]="'list'" [buttonSize]="'small'"></app-button>
-            <ng-template [ngIf]="!transaction.isPaid && transaction.type === 'Monthly'">
-                <app-button [iconName]="'check'" [buttonSize]="'small'" (onClick)="updateTransaction(transaction)"></app-button>
-            </ng-template>
+        <p class="flex-2 d-flex justify-content-between justify-content-lg-end" *ngIf="isToday">
+            <app-button 
+                class="m-3 m-md-0"
+                *ngIf="!transaction.isPaid && transaction.type === 'Monthly'"
+                tooltipText="Mark spending as paid" 
+                [iconName]="'check'"
+                buttonColor="info"
+                [buttonSize]="'small'" 
+                (onClick)="updateTransaction(transaction, true)">
+            </app-button>
+            <app-button 
+                class="m-3 m-md-0"
+                *ngIf="transaction.isPaid && transaction.type === 'Monthly'"
+                tooltipText="Mark spending as unpaid" 
+                [iconName]="'times-circle'"
+                buttonColor="info"
+                [buttonSize]="'small'" 
+                (onClick)="updateTransaction(transaction, false)">
+            </app-button>
+            <app-button
+              class="m-3 m-md-0"
+              [iconName]="'pen'"
+              tooltipText="Edit spending"
+              buttonColor="primary"
+              [buttonSize]="'small'">
+            </app-button>
+            <app-button
+              class="m-3 m-md-0"
+              [iconName]="'trash'"
+              tooltipText="Delete spending"
+              buttonColor="dark"
+              [buttonSize]="'small'"
+              (onClick)="onDelete(transaction._id)">
+            </app-button>
         </p>
     </div>
 

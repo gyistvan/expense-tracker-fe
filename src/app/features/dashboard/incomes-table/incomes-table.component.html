@@ -23,13 +23,13 @@
             <p class="flex-3">{{ record.whose }}</p>
             <p class="flex-6">{{ record.comment }}</p>
             <p class="flex-4 d-flex justify-content-end">
-                <app-button buttonSize="small" iconName="pen"></app-button>
-                <app-button buttonSize="small" iconName="trash" (onClick)="deleteIncome(record._id)"></app-button>
+                <app-button buttonSize="small" iconName="pen" tooltipText="Edit income" buttonColor="primary"></app-button>
+                <app-button buttonSize="small" iconName="trash" tooltipText="Delete income" buttonColor="dark" (onClick)="deleteIncome(record._id)"></app-button>
             </p>
         </div>
     </app-show-hide>
     <div class="d-flex border-top border-bottom pt-2 border-secondary">
-        <h5 class="flex-1">Total</h5>
+        <h5 class="flex-1">Total:&nbsp;</h5>
         <h5 class="flex-4">{{ total | HufPipe }}</h5>
         <p class="flex-6"></p>
         <p class="flex-2"></p>

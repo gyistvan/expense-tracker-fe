@@ -27,6 +27,9 @@ export class DailyViewComponent implements OnInit {
   public daysInInterval = this.appStateFacade.daysInInterval$;
   public monthlySaving = this.appStateFacade.monthlySaving$;
 
+  public dailyResult = 0;
+  public spendablePerDay = 0;
+
   constructor(
     private transactionStateFacade: TransactionStateFacade,
     private appStateFacade: AppStateFacade,
@@ -86,8 +89,23 @@ export class DailyViewComponent implements OnInit {
       if (monthlySaving) {
         spendableMoney *= 1 - monthlySaving / 100;
       }
+      this.spendablePerDay = Math.round(spendableMoney);
       return Math.round(spendableMoney);
     }
     return 0;
+  }
+
+  public isOverTenPercent(): boolean {
+    return this.dailyResult > this.spendablePerDay * 0.1;
+  }
+
+  public isOverZeroAndBelowThanTenPercent(): boolean {
+    return (
+      this.dailyResult > 0 && this.dailyResult < this.spendablePerDay * 0.1
+    );
+  }
+
+  public isBelowZero(): boolean {
+    return this.dailyResult < 0;
   }
 }

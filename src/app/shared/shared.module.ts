@@ -29,6 +29,7 @@ import { TogglePasswordDirective } from './directives/toggle-password/toggle-pas
 import { LatinCharsValidatorDirective } from './directives/latin-chars-validator/latin-chars-validator.directive';
 import { HufPipe } from './pipes/huf.pipe';
 import { DpDatePickerModule } from 'ng2-date-picker';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 const components = [
   HeaderComponent,
@@ -59,6 +60,7 @@ const components = [
     FormsModule,
     ReactiveFormsModule,
     DpDatePickerModule,
+    TooltipModule.forRoot(),
   ],
   providers: [
     EmailValidatorDirective,

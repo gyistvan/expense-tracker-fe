@@ -12,13 +12,16 @@
                 Incomes
             </h2>
             <div class="col-12">
-                <app-button 
-                    [iconName]="!showAddNewIncomeForm ? 'plus' : 'minus'" 
-                    [btnText]="!showAddNewIncomeForm ? 'Add new income' : 'Close Form'" 
-                    (onClick)="changeShowAddNewIncomeForm()"
-                    buttonColor="success"
-                    >
-                </app-button>
+                <div class="d-flex justify-content-center m-2">
+                    <app-button 
+                        [tooltipText]="!showAddNewIncomeForm ? 'Opens new income form' : 'Close new income form'"
+                        [iconName]="!showAddNewIncomeForm ? 'plus' : 'minus'" 
+                        [btnText]="!showAddNewIncomeForm ? 'Add Income' : 'Close Form'" 
+                        (onClick)="changeShowAddNewIncomeForm()"
+                        buttonColor="primary"
+                        >
+                    </app-button>
+                </div>
                 <app-new-income-form (closeForm)="closeAddIncomeForm($event)" *ngIf="showAddNewIncomeForm"></app-new-income-form>
                 <app-incomes-table *ngIf="incomes | async" [incomes]="incomes | async"></app-incomes-table>
             </div>
@@ -26,11 +29,16 @@
                 Monthly Spendings
             </h2>
             <div class="col-12">
-                <app-button 
-                    [iconName]="!showAddNewTransactionForm ? 'plus' : 'minus'" 
-                    [btnText]="!showAddNewTransactionForm ? 'Add new transaction' : 'Close Form'" 
-                    (onClick)="changeShowAddNewTransactionForm()">
-                </app-button>
+                <div class="d-flex justify-content-center m-2">
+                    <app-button 
+                        [tooltipText]="!showAddNewTransactionForm ? 'Opens new spending form' : 'Close new spending form'"
+                        [iconName]="!showAddNewTransactionForm ? 'plus' : 'minus'" 
+                        [btnText]="!showAddNewTransactionForm ? 'Add Spending' : 'Close Form'" 
+                        (onClick)="changeShowAddNewTransactionForm()"
+                        buttonColor="dark"
+                        textColor="white">
+                    </app-button>
+                </div>
                 <app-new-spending-form (closeForm)="closeAddTransactionForm($event)" *ngIf="showAddNewTransactionForm"></app-new-spending-form>
                 <app-monthly-spendings [transactions]="transactions"></app-monthly-spendings>
             </div>
@@ -40,8 +48,8 @@
                 Daily spendings
             </h2>
             <div class="d-flex justify-content-around">
-                <app-button btnText="Show monthly view" iconName="list" (onClick)="displayMonthlyView()"></app-button>
-                <app-button btnText="Show weekly view" iconName="list" (onClick)="displayWeeklyView()" *ngIf="isInDisplayedMonth()"></app-button>
+                <app-button tooltipText="Displays the selected month" btnText="Show month" buttonColor="primary" [isDisabled]="isMonthlyViewDisplayed" iconName="list" (onClick)="displayMonthlyView()"></app-button>
+                <app-button tooltipText="Displays only the actual week" btnText="Show week" buttonColor="primary" [isDisabled]="!isMonthlyViewDisplayed" iconName="list" (onClick)="displayWeeklyView()" *ngIf="isInDisplayedMonth()"></app-button>
             </div>
             <app-actual-week [transactions]="transactions" [actualWeek]="getCurrentWeek()" *ngIf="isInDisplayedMonth() && !isMonthlyViewDisplayed"></app-actual-week>
             <app-monthly-transactions *ngIf="isMonthlyViewDisplayed" [transactions]="transactions"></app-monthly-transactions>

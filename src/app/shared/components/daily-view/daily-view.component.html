@@ -31,15 +31,29 @@
             <p class="p-2 mt-3">Nothing to show</p>
         </div>
     </ng-template>
-    <div class="d-flex border-top border-bottom pt-2 border-secondary">
-        <h5 class="flex-1">Total: </h5>
-        <h5 class="flex-4">{{ getTotalForDay(filteredTransactions) | HufPipe }}</h5>
-        <h5 class="flex-2">Spendable: </h5>
-        <h5 class="flex-6">{{ getSpendableMoneyPerDay(
+    <div class="d-flex flex-column flex-lg-row border-top border-bottom pt-2 border-secondary">
+        <h5 class="flex-1 text-center text-lg-left">Spent:&nbsp;</h5>
+        <h5 class="flex-4 text-center text-lg-left">
+            {{ getTotalForDay(filteredTransactions) | HufPipe }}
+        </h5>
+        <h5 class="flex-2 text-center text-lg-left">Available:&nbsp;</h5>
+        <h5 class="flex-2 text-center text-lg-left">
+          {{ getSpendableMoneyPerDay(
             incomes | async,
             transactions | async,
             daysInInterval | async,
             monthlySaving | async) | HufPipe
-       }}</h5>
+          }}
+        </h5>
+        <h5 class="flex-2 text-center text-lg-left">Remainder:&nbsp;</h5>
+        <h5 class="flex-2 text-center text-lg-left">
+            {{ getSpendableMoneyPerDay(
+                incomes | async,
+                transactions | async,
+                daysInInterval | async,
+                monthlySaving | async) - 
+               getTotalForDay(filteredTransactions) | HufPipe
+            }}
+    </h5>
     </div>
 </div>
