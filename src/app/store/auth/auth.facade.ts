@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { forkJoin } from 'rxjs';
+import { BehaviorSubject, forkJoin } from 'rxjs';
 import {
   LoginPayload,
   RegistrationPayload,
@@ -42,18 +42,18 @@ export class AuthStateFacade {
   public getRegistrationErrorMessage$ = this.store.pipe(
     select(getRegistrationErrorMessage)
   );
-  public userName?: string | null;
-  public userEmail?: string | null;
-  public userGroupId?: string | null;
+  public userName: BehaviorSubject<any> = new BehaviorSubject(null);
+  public userEmail: BehaviorSubject<any> = new BehaviorSubject(null);
+  public userGroupId: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(
     private store: Store<State>,
     private sessionStorageService: SessionStorageService
   ) {
-    this.getUserName$.subscribe((userName) => (this.userName = userName));
-    this.getUserEmail$.subscribe((userEmail) => (this.userEmail = userEmail));
-    this.getUesrGroupId$.subscribe(
-      (userGroupId) => (this.userGroupId = userGroupId)
+    this.getUserName$.subscribe((userName) => this.userName.next(userName));
+    this.getUserEmail$.subscribe((userEmail) => this.userEmail.next(userEmail));
+    this.getUesrGroupId$.subscribe((userGroupId) =>
+      this.userGroupId.next(userGroupId)
     );
     let token = this.sessionStorageService.getToken('bearerToken');
     if (token) {

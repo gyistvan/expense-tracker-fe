@@ -28,9 +28,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.profileForm = this.createProfileForm();
     this.passwordForm = this.createPasswordForm();
-    this.name.patchValue(this.authStateFacade.userName);
-    this.email.patchValue(this.authStateFacade.userEmail);
-    this.groupId.patchValue(this.authStateFacade.userGroupId);
+    this.name.patchValue(this.authStateFacade.userName.value);
+    this.email.patchValue(this.authStateFacade.userEmail.value);
+    this.groupId.patchValue(this.authStateFacade.userGroupId.value);
   }
 
   createProfileForm(): FormGroup {
