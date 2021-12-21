@@ -31,6 +31,15 @@ export class ProfileComponent implements OnInit {
     this.name.patchValue(this.authStateFacade.userName.value);
     this.email.patchValue(this.authStateFacade.userEmail.value);
     this.groupId.patchValue(this.authStateFacade.userGroupId.value);
+    this.authStateFacade.getUserName$.subscribe((userName) =>
+      this.name.patchValue(userName)
+    );
+    this.authStateFacade.getUserEmail$.subscribe((email) =>
+      this.email.patchValue(email)
+    );
+    this.authStateFacade.getUesrGroupId$.subscribe((groupId) =>
+      this.groupId.patchValue(groupId)
+    );
   }
 
   createProfileForm(): FormGroup {
