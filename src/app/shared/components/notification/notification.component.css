@@ -1,0 +1,32 @@
+.notifications {
+  position: fixed;
+  top: 0;
+  right: 2%;
+  z-index: 1000;
+  width: 96%;
+}
+.notifications .notification {
+  margin: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.notification.info {
+  background-color: rgba(189, 189, 189, 0.9);
+}
+
+.notification.success {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+}
+
+.notification.warning {
+  background-color: rgba(217, 95, 2, 0.9);
+}
+
+.notification.error {
+  color: #842029;
+  background-color: #f8afb5;
+  border-color: #f8afb5;
+}

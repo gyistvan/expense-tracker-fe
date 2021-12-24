@@ -1,0 +1,23 @@
+<div class="notifications">
+	<div *ngFor="let notification of notifications" class="notification" [ngClass]="className(notification)">
+		<ng-container *ngTemplateOutlet="notificationTpl;context:{notification:notification}"></ng-container>
+	</div>
+</div>
+
+<ng-template #notificationTpl let-notification="notification">
+	<div class="message d-flex justify-content-between align-content-center">
+    <p class="pt-3 pb-1 ps-2">
+      {{ notification.message }}
+    </p>
+    <app-button
+      class="pt-3 pb-1 pe-2"
+      iconName="times"
+      (onClick)="close(notification)"
+      buttonSize="small"
+      [buttonColor]="notification.type === 2 ? 'danger' : 'success'"
+      tooltipText="Close the notification"
+      tooltipPlacement="left"
+  ></app-button>
+  </div>
+
+</ng-template>

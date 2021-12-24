@@ -18,7 +18,7 @@ export class IncomeEffects {
       ofType(IncomeActionTypes.requestAddIncome),
       mergeMap((incomePayload) => {
         return this.incomeService.addNew(incomePayload).pipe(
-          map((income) => requestAddIncomeSuccess({ income })),
+          map(({ income }) => requestAddIncomeSuccess({ income })),
           catchError(() => of({ type: IncomeActionTypes.requestAddIncomeFail }))
         );
       })
@@ -43,9 +43,12 @@ export class IncomeEffects {
     this.actions$.pipe(
       ofType(IncomeActionTypes.requestDeleteIncome),
       mergeMap(({ id }) => {
-        return this.incomeService
-          .deleteIncome(id)
-          .pipe(map(() => requestDeleteIncomeSuccess({ id })));
+        return this.incomeService.deleteIncome(id).pipe(
+          map(() => requestDeleteIncomeSuccess({ id })),
+          catchError(() =>
+            of({ type: IncomeActionTypes.requestDeleteIncomeFail })
+          )
+        );
       })
     )
   );

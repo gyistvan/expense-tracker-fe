@@ -9,3 +9,4 @@ export * from './daily-view/daily-view.component';
 export * from './new-income-form/new-income-form.component';
 export * from './new-spending-form/new-spending-form.component';
 export * from './show-hide/show-hide.component';
+export * from './notification/notification.component';

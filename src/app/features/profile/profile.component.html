@@ -1,87 +1,48 @@
 <app-header></app-header>
 <div class="container-md">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
-            <form [formGroup]="profileForm" class="form" (ngSubmit)="onSubmit($event)" #profilForm="ngForm">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name:</label>
-                    <input id="name" class="form-control"
-                      [ngClass]="{ 'is-invalid': (name.touched || profilForm.submitted) && (name.errors?.required)}" type="text"
-                      placeholder="Your name" formControlName="name" required />
-                    <div class="text-danger" *ngIf="(name.touched || profilForm.submitted) && (name.errors?.required)">
-                      Name is required
-                    </div>
-                  </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">E-mail:</label>
-                    <input id="email" class="form-control"
-                      [ngClass]="{ 'is-invalid': (email.touched || profilForm.submitted) && (email.errors?.required)}" type="text"
-                      placeholder="your@email.com" formControlName="email" required />
-                    <div class="text-danger" *ngIf="(email.touched || profilForm.submitted) && (email.errors?.required)">
-                      E-mail is required
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="group" class="form-label">Assigned groupId:</label>
-                    <input id="group" class="form-control"
-                      placeholder="your@email.com" formControlName="groupId" />
-                </div>
-                <div class="d-flex justify-content-center my-5">
-                  <app-button [btnText]="'Update'" tooltipText="'Updates your profile'" [iconName]="'key'" buttonColor="primary"></app-button>
-                </div>
-            </form>  
-            <div class="row justify-content-center">
-              <div class="col-lg-8 text-center">
-                <app-button [btnText]="'Change password'" buttonColor="primary" [iconName]="'pen'" (onClick)="changeDisplayPasswordForm($event)"></app-button>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-8">
-            <div *ngIf="displayPasswordForm">
-              <form [formGroup]="passwordForm" class="form" (ngSubmit)="onPasswordFormSubmit($event)" #pwForm="ngForm">
-                <div class="mb-3">
-                  <label for="oldPassword" class="form-label">Old password:</label>
-                  <div class="pos-relative">
-                    <input id="oldPassword" type="password" class="form-control" formControlName="oldPassword" required  toggleShowPassword #toggleShowPassword="toggleShowPassword"  />
-                    <div class="toggleShowPassword">
-                      <app-button
-                        buttonColor="primary"
-                        [tooltipText]="toggleShowPassword._shown ? 'Hide password' : 'Display password'"
-                        [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'"
-                        [buttonSize]="'normal'"
-                        (onClick)='toggleShowPassword.toggle($event)'></app-button>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="newPassword" class="form-label">New password:</label>
-                  <input id="newPassword" type="password" class="form-control" formControlName="newPassword" required  [ngClass]="{ 'is-invalid': (newPassword.touched || pwForm.submitted) && (newPassword.errors?.required || newPassword.errors?.invalidPassword || !arePasswordsTheSame())}" />  
-                  <div class="text-danger" *ngIf="(newPassword.touched || pwForm.submitted) && (newPassword.errors || !arePasswordsTheSame())">
-                    <p *ngIf="(newPassword.errors?.required || newPassword.errors?.invalidPassword)">
-                      Password must contain min. 8 characters and at least one number and one letter
-                    </p>
-                    <p *ngIf="!arePasswordsTheSame()">
-                      Passwords should be the same!
-                    </p>
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="newPassword2" class="form-label">New password again:</label>
-                  <input id="newPassword2" class="form-control" formControlName="newPassword2" required  [ngClass]="{ 'is-invalid': (newPassword2.touched || pwForm.submitted) && (newPassword2.errors?.required || newPassword2.errors?.invalidPassword || !arePasswordsTheSame())}"/>
-                  <div class="text-danger" *ngIf="(newPassword2.touched || pwForm.submitted) && (newPassword2.errors || !arePasswordsTheSame())">
-                    <p *ngIf="(newPassword2.errors?.required || newPassword2.errors?.invalidPassword)">
-                      Password must contain min. 8 characters and at least one number and one letter
-                    </p>
-                    <p *ngIf="!arePasswordsTheSame()">
-                      Passwords should be the same!
-                    </p>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-center my-5">
-                  <app-button tooltipText="Update password" buttonColor="primary" [btnText]="'Update'" [iconName]="'key'"></app-button>
-                </div>
-              </form>
-            </div>
-          </div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <span 
+        class="nav-link cursor-pointer" 
+        [ngClass]="{'active' : displayedTab === 'profile'}" 
+        (click)="changeTab('profile')">
+          Profile
+      </span>
+    </li>
+    <li class="nav-item" *ngIf="!(groupId | async)">
+      <span 
+        class="nav-link cursor-pointer"
+        [ngClass]="{'active' : displayedTab === 'createGroup'}"
+        (click)="changeTab('createGroup')">
+          Create group
+      </span>
+    </li>
+    <li class="nav-item" *ngIf="(groupId | async)">
+      <span 
+        class="nav-link"
+        [ngClass]="{'active' : displayedTab === 'manageGroup'}"
+        (click)="changeTab('manageGroup')">
+          Manage group
+      </span>
+    </li>
+    <li class="nav-item">
+      <span
+        class="nav-link"
+        [ngClass]="{'active' : displayedTab === 'changePassword'}"
+        (click)="changeTab('changePassword')">
+          Change password
+      </span>
+    </li>
+  </ul>
+  <div class="row mt-3">
+    <div class="col-12 col-lg-8">
+      <ng-template [ngIf]="displayedTab === 'profile'">
+        <app-profile-form></app-profile-form>
+        <app-pending-invites [pendingInvites]="pendingInvites" *ngIf="pendingInvites.length > 0"></app-pending-invites>
+      </ng-template>
+      <app-create-group-form *ngIf="displayedTab === 'createGroup'"></app-create-group-form>
+      <app-manage-group *ngIf="displayedTab === 'manageGroup'"></app-manage-group>
+      <app-change-password-form *ngIf="displayedTab === 'changePassword'"></app-change-password-form>  
     </div>
+  </div>
 </div>

@@ -3,7 +3,10 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { AppStateService } from 'src/app/services/app-state-service/app-state-service.service';
-import { Saving } from 'src/app/services/app-state-service/interfaces/saving';
+import {
+  Saving,
+  SavingResponse,
+} from 'src/app/services/app-state-service/interfaces/saving';
 import {
   AppStateActionTypes,
   changeDisplayedIntervalFail,
@@ -48,7 +51,7 @@ export class AppEffects {
       ofType(AppStateActionTypes.requestAddMonthlySaving),
       mergeMap(({ savingPayload }) => {
         return this.appStateService.add(savingPayload).pipe(
-          map((saving: Saving) => requestAddMonthlySavingSuccess({ saving })),
+          map(({ saving }) => requestAddMonthlySavingSuccess({ saving })),
           catchError(() =>
             of({ type: AppStateActionTypes.requestAddMonthlySavingFail })
           )
@@ -62,9 +65,7 @@ export class AppEffects {
       ofType(AppStateActionTypes.requestUpdateMonthlySaving),
       mergeMap(({ savingPayload }) => {
         return this.appStateService.update(savingPayload).pipe(
-          map((saving: Saving) =>
-            requestUpdateMonthlySavingSuccess({ saving })
-          ),
+          map(({ saving }) => requestUpdateMonthlySavingSuccess({ saving })),
           catchError(() =>
             of({ type: AppStateActionTypes.requestUpdateMonthlySavingFail })
           )

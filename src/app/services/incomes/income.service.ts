@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { apiUrls, BASE_URL } from '../../../apiUrls';
-import { Income } from './interfaces/income';
+import { Income, IncomeResponse } from './interfaces/income';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +16,8 @@ export class IncomeService {
     );
   }
 
-  public addNew(addIncomeAction: any): Observable<Income> {
-    return this.http.post<Income>(
+  public addNew(addIncomeAction: any): Observable<IncomeResponse> {
+    return this.http.post<IncomeResponse>(
       BASE_URL + apiUrls.INCOMES.ADD_NEW,
       addIncomeAction.incomePayload
     );

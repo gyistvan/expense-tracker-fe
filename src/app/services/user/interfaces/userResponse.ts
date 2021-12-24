@@ -2,6 +2,7 @@ export interface UserResponse {
   email: string;
   name: string;
   groupId: string;
+  pendingInvites: Record<string, string>;
 }
 
 export interface UserResponseFail {

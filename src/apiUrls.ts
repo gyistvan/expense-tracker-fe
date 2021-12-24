@@ -30,6 +30,12 @@ export const apiUrls = {
     UPDATE_PASSWORD: '/api/updatePassword',
     UPDATE_PROFILE: '/api/me',
   },
+  GROUP: {
+    GET: '/api/group/',
+    CREATE: '/api/group',
+    INVITE_PREFIX: '/api/group/',
+    INVITE_SUFFIX: '/invite',
+  },
 };
 
 export const BASE_URL = environment.production

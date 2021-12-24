@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
+import { TransactionResponse } from 'src/app/services/transaction/interfaces/transaction';
 import { TransactionService } from 'src/app/services/transaction/transaction.service';
 import {
   requestTransactionAddSuccess,
@@ -51,7 +52,11 @@ export class TransactionEffects {
       ofType(TransactionActionTypes.requestTransactionAdd),
       mergeMap((addTransactionAction: AddTransactionAction) => {
         return this.transactionService.addNew(addTransactionAction).pipe(
-          map((transaction) => requestTransactionAddSuccess({ transaction })),
+          map(({ transaction }) =>
+            requestTransactionAddSuccess({
+              transaction,
+            })
+          ),
           catchError(() =>
             of({ type: TransactionActionTypes.requestTransactionAddFail })
           )
@@ -67,8 +72,10 @@ export class TransactionEffects {
         return this.transactionService
           .updateTransaction(updateTransactionAction)
           .pipe(
-            map((transaction) =>
-              requestTransactionUpdateSuccess({ transaction })
+            map(({ transaction }) =>
+              requestTransactionUpdateSuccess({
+                transaction,
+              })
             ),
             catchError(() =>
               of({ type: TransactionActionTypes.requestTransactionUpdateFail })

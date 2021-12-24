@@ -12,8 +12,22 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { ProfileComponent } from './profile.component';
+import { CreateGroupFormComponent } from './create-group-form/create-group-form.component';
+import { ManageGroupComponent } from './manage-group/manage-group.component';
+import { InviteMemberFormComponent } from './manage-group/invite-member-form/invite-member-form.component';
+import { PendingInvitesComponent } from './pending-invites/pending-invites.component';
+import { ProfileFormComponent } from './profile-form/profile-form.component';
+import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
 
-const COMPONENTS = [ProfileComponent];
+const COMPONENTS = [
+  ProfileComponent,
+  CreateGroupFormComponent,
+  ManageGroupComponent,
+  InviteMemberFormComponent,
+  PendingInvitesComponent,
+  ProfileFormComponent,
+  ChangePasswordFormComponent,
+];
 const ROUTES = [{ path: '', component: ProfileComponent }];
 
 @NgModule({

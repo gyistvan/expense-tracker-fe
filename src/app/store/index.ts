@@ -3,6 +3,8 @@ import { AppEffects } from './appStates/effects';
 import { appReducer, AppState } from './appStates/reducers';
 import { AuthEffects } from './auth/auth.effects';
 import { authReducer, AuthState } from './auth/auth.reducer';
+import { GroupEffects } from './group/group.effects';
+import { groupReducer, GroupState } from './group/group.reducer';
 import { IncomeEffects } from './incomes/effects';
 import { incomeReducer, IncomeState } from './incomes/reducers';
 import { TransactionEffects } from './transactions/effects';
@@ -13,6 +15,7 @@ export interface State {
   incomes: IncomeState;
   appState: AppState;
   authState: AuthState;
+  groupState: GroupState;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -20,6 +23,7 @@ export const reducers: ActionReducerMap<State> = {
   incomes: incomeReducer,
   appState: appReducer,
   authState: authReducer,
+  groupState: groupReducer,
 };
 
 export const effects: any[] = [
@@ -27,4 +31,5 @@ export const effects: any[] = [
   IncomeEffects,
   AppEffects,
   AuthEffects,
+  GroupEffects,
 ];

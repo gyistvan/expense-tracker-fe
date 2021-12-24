@@ -1,0 +1,14 @@
+<form [formGroup]="newGroupForm" class="form" (ngSubmit)="onSubmit($event)" #groupForm="ngForm">
+  <div class="mb-3">
+    <label for="name" class="form-label">Group name:</label>
+    <input id="name" class="form-control"
+      [ngClass]="{ 'is-invalid': (name.touched || groupForm.submitted) && (name.errors?.required)}" type="text"
+      placeholder="Group name" formControlName="name" required />
+    <div class="text-danger" *ngIf="(name.touched || groupForm.submitted) && (name.errors?.required)">
+      Group name is required
+    </div>
+  </div>
+  <div class="d-flex justify-content-center my-5">
+    <app-button [btnText]="'Create'" tooltipText="Creates a new group" [iconName]="'key'" buttonColor="primary"></app-button>
+  </div>
+</form>

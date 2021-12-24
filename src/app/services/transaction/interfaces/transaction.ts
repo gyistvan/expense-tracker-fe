@@ -18,3 +18,9 @@ export interface TransactionPayload {
   isPaid: boolean;
   comment?: string;
 }
+
+export interface TransactionResponse {
+  error: boolean;
+  message: string;
+  transaction: Transaction;
+}

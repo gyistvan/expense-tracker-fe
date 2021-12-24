@@ -1,0 +1,28 @@
+<h5>Pending invites</h5>
+<div class="d-flex">
+    <p class="flex-1 ps-2">
+        #
+    </p>
+    <p class="flex-8">
+        Group name
+    </p>
+    <p class="flex-2">
+        Actions
+    </p>
+</div>
+<div
+  class="d-flex pt-3"
+  *ngFor="let pendingInvite of pendingInvites; let i = index"
+  [ngClass]="{'bg-striped-light' : i % 2 === 0}">
+    <p class="flex-1 ps-2">
+        {{ i + 1 }}
+    </p>
+    <p class="flex-8">
+        {{ pendingInvite.groupName }}
+    </p>
+    <p class="flex-2">
+        <app-button iconName="check" buttonSize="small" (onClick)="acceptGroupInvite(pendingInvite.groupId, $event)"></app-button>
+        <app-button iconName="times-circle" buttonSize="small"></app-button>
+    </p>
+         
+</div>

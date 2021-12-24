@@ -30,6 +30,7 @@ import { LatinCharsValidatorDirective } from './directives/latin-chars-validator
 import { HufPipe } from './pipes/huf.pipe';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { NotificationService } from '../services/notification/notification.service';
 
 const components = [
   HeaderComponent,
@@ -66,6 +67,7 @@ const components = [
     EmailValidatorDirective,
     PasswordValidatorDirective,
     LatinCharsValidatorDirective,
+    NotificationService,
   ],
   declarations: components,
   exports: [...components],

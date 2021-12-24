@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
+import { AvailbleBSPositions } from 'ngx-bootstrap/positioning';
 
 @Component({
   selector: 'app-button',
   template: `<button
     [tooltip]="tooltipText"
+    [tooltipPlacement]="tooltipPlacement"
     [disabled]="isDisabled"
     class="btn text-bold"
     (click)="click($event)"
@@ -35,6 +37,7 @@ export class ButtonComponent {
   @Input() public textColor = 'white';
   @Input() public isDisabled = false;
   @Input() public tooltipText = '';
+  @Input() public tooltipPlacement = 'top' as AvailbleBSPositions;
 
   @Output() onClick = new EventEmitter<MouseEvent>();
 

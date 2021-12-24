@@ -9,6 +9,7 @@ import { SessionStorageService } from 'src/app/services/session-storage/session-
 import { PasswordPayload } from 'src/app/services/user/interfaces/passwordPayload';
 import { ProfilePayload } from 'src/app/services/user/interfaces/profilePayload';
 import { State } from 'src/app/store';
+import { GroupStateFacade } from '../group/group.facade';
 import {
   requestLogin,
   requestLoginSuccess,
@@ -26,6 +27,7 @@ import {
   getUserEmail,
   getUserGroupId,
   getUserName,
+  getUserPendingInvites,
   isUserAuthorized,
 } from './auth.selectors';
 
@@ -37,7 +39,10 @@ export class AuthStateFacade {
   public getToken$ = this.store.pipe(select(getToken));
   public getUserName$ = this.store.pipe(select(getUserName));
   public getUserEmail$ = this.store.pipe(select(getUserEmail));
-  public getUesrGroupId$ = this.store.pipe(select(getUserGroupId));
+  public getUserGroupId$ = this.store.pipe(select(getUserGroupId));
+  public getUserPendingInvites$ = this.store.pipe(
+    select(getUserPendingInvites)
+  );
   public getLoginErrorMessage$ = this.store.pipe(select(getLoginErrorMessage));
   public getRegistrationErrorMessage$ = this.store.pipe(
     select(getRegistrationErrorMessage)
@@ -48,13 +53,17 @@ export class AuthStateFacade {
 
   constructor(
     private store: Store<State>,
-    private sessionStorageService: SessionStorageService
+    private sessionStorageService: SessionStorageService,
+    private groupStateFacade: GroupStateFacade
   ) {
     this.getUserName$.subscribe((userName) => this.userName.next(userName));
     this.getUserEmail$.subscribe((userEmail) => this.userEmail.next(userEmail));
-    this.getUesrGroupId$.subscribe((userGroupId) =>
-      this.userGroupId.next(userGroupId)
-    );
+    this.getUserGroupId$.subscribe((userGroupId) => {
+      this.userGroupId.next(userGroupId);
+      if (userGroupId) {
+        this.groupStateFacade.getGroup(userGroupId);
+      }
+    });
     let token = this.sessionStorageService.getToken('bearerToken');
     if (token) {
       this.store.dispatch(requestLoginSuccess({ token }));
@@ -86,7 +95,6 @@ export class AuthStateFacade {
   }
 
   public updateProfile(profilePayload: ProfilePayload): void {
-    console.log('fdsafdsafdsafdsfdsads23122112321');
     this.store.dispatch(requestUpdateProfile({ profilePayload }));
   }
 }

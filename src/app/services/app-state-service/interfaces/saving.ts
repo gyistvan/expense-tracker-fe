@@ -9,3 +9,9 @@ export interface SavingPayload {
   amount: number;
   appliedMonth: string;
 }
+
+export interface SavingResponse {
+  message: string;
+  error: boolean;
+  saving: Saving;
+}

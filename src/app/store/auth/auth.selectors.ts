@@ -38,3 +38,8 @@ export const getUserGroupId = createSelector(
   selectAuthState,
   (state: AuthState) => state.userGroupId
 );
+
+export const getUserPendingInvites = createSelector(
+  selectAuthState,
+  (state: AuthState) => state.userPendingInvites
+);

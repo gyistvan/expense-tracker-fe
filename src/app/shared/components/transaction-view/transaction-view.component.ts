@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 import * as moment from 'moment';
 import { Transaction } from 'src/app/services/transaction/interfaces/transaction';
 import { TransactionStateFacade } from 'src/app/store/transactions/facade';
@@ -33,5 +34,17 @@ export class TransactionViewComponent implements OnInit {
   public updateTransaction(t: Transaction, isPaid: boolean): void {
     let transaction = { ...t, isPaid };
     this.transactionStateFacade.updateTransaction(t._id, transaction);
+  }
+
+  public isDailyTransaction(t: Transaction): boolean {
+    return t.type === 'Daily';
+  }
+
+  public getIconName(t: Transaction): IconName {
+    return t.usedFor === 'Food'
+      ? ('hamburger' as IconName)
+      : t.usedFor === 'Smoke'
+      ? ('smoking' as IconName)
+      : ('pills' as IconName);
   }
 }

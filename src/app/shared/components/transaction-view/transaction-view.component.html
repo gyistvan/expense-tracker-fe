@@ -7,10 +7,8 @@
             {{ transaction.amount | HufPipe}}
         </p>
         <p class="flex-6" [ngClass]="{'text-decoration-line-through': transaction.isPaid && transaction.type === 'Monthly'}">
-            <span *ngIf="transaction.comment else noComment">{{ transaction.comment }}</span>
-            <ng-template #noComment>
-                -
-            </ng-template>
+            <fa-icon *ngIf="isDailyTransaction(transaction)" [icon]="['fas', getIconName(transaction)]"></fa-icon>
+            <span *ngIf="transaction.comment">{{ transaction.comment }}</span>
         </p>
         <p class="flex-2 d-flex justify-content-between justify-content-lg-end" *ngIf="isToday">
             <app-button 

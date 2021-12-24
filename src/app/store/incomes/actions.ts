@@ -13,6 +13,7 @@ export enum IncomeActionTypes {
   requestAllIncomesFail = '[IncomeRequest] requestAllIncomesFail',
   requestDeleteIncome = '[IncomeRequest] requestDeleteIncome',
   requestDeleteIncomeSuccess = '[IncomeRequest] requestDeleteIncomeSuccess',
+  requestDeleteIncomeFail = '[IncomeRequest] requestDeleteIncomeFail',
 }
 
 export const requestAddIncome = createAction(
@@ -50,4 +51,8 @@ export const requestDeleteIncome = createAction(
 export const requestDeleteIncomeSuccess = createAction(
   IncomeActionTypes.requestDeleteIncomeSuccess,
   props<{ id: string }>()
+);
+
+export const requestDeleteIncomeFail = createAction(
+  IncomeActionTypes.requestDeleteIncomeFail
 );

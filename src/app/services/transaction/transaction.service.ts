@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { apiUrls, BASE_URL } from '../../../apiUrls';
-import { Transaction } from './interfaces/transaction';
+import { TransactionResponse, Transaction } from './interfaces/transaction';
 import { map } from 'rxjs/operators';
 import {
   AddTransactionAction,
@@ -22,23 +22,25 @@ export class TransactionService {
     );
   }
 
-  public delete(deleteAction: DeleteTransactionAction): Observable<any> {
+  public delete(deleteAction: DeleteTransactionAction): Observable<string> {
     return this.http
-      .delete<any>(BASE_URL + apiUrls.TRANSACTION.DELETE + deleteAction.id)
+      .delete<string>(BASE_URL + apiUrls.TRANSACTION.DELETE + deleteAction.id)
       .pipe(map(() => deleteAction.id));
   }
 
   public addNew(
     addTransactionAction: AddTransactionAction
-  ): Observable<Transaction> {
-    return this.http.post<Transaction>(
+  ): Observable<TransactionResponse> {
+    return this.http.post<TransactionResponse>(
       BASE_URL + apiUrls.TRANSACTIONS.ADD_NEW,
       addTransactionAction.transactionPayload
     );
   }
 
-  updateTransaction(updateTransactionAction: UpdateTransactionAction) {
-    return this.http.put<Transaction>(
+  updateTransaction(
+    updateTransactionAction: UpdateTransactionAction
+  ): Observable<TransactionResponse> {
+    return this.http.put<TransactionResponse>(
       BASE_URL + apiUrls.TRANSACTION.UPDATE + updateTransactionAction.id,
       updateTransactionAction.transaction
     );

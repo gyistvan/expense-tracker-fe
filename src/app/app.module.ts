@@ -11,14 +11,16 @@ import { CorsInterceptor } from './interceptors/cors.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { effects, reducers } from './store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotificationListComponent } from './shared/components';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotificationListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
+    SharedModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({

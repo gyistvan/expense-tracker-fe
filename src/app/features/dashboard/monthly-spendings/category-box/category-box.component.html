@@ -19,7 +19,7 @@
         </p>
     </div>
     <div class="d-flex">
-        <app-show-hide>
+        <app-show-hide [componentName]="categoryName">
             <app-transaction-view *ngFor="let transaction of transactions; let i = index" [index]="i" [transaction]="transaction"></app-transaction-view>
         </app-show-hide>
     </div>

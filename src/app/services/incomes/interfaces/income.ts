@@ -14,3 +14,9 @@ export interface IncomePayload {
   comment: string;
   spentAt: string;
 }
+
+export interface IncomeResponse {
+  error: boolean;
+  message: string;
+  income: Income;
+}

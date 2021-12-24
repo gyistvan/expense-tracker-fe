@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { apiUrls, BASE_URL } from '../../../apiUrls';
-import { Saving, SavingPayload } from './interfaces/saving';
+import { Saving, SavingPayload, SavingResponse } from './interfaces/saving';
 
 @Injectable({
   providedIn: 'root',
@@ -16,15 +16,15 @@ export class AppStateService {
     );
   }
 
-  public add(savingPayload: SavingPayload): Observable<Saving> {
-    return this.http.post<Saving>(
+  public add(savingPayload: SavingPayload): Observable<SavingResponse> {
+    return this.http.post<SavingResponse>(
       BASE_URL + apiUrls.APP_STATE.ADD,
       savingPayload
     );
   }
 
-  public update(savingPayload: SavingPayload): Observable<Saving> {
-    return this.http.put<Saving>(
+  public update(savingPayload: SavingPayload): Observable<SavingResponse> {
+    return this.http.put<SavingResponse>(
       BASE_URL + apiUrls.APP_STATE.ADD,
       savingPayload
     );

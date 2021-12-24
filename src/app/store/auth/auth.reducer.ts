@@ -19,6 +19,7 @@ export type AuthState = {
   userName: string | null;
   userEmail: string | null;
   userGroupId: string | null;
+  userPendingInvites: Record<string, string>;
 };
 
 const initialState: AuthState = {
@@ -26,6 +27,7 @@ const initialState: AuthState = {
   userName: null,
   userEmail: null,
   userGroupId: null,
+  userPendingInvites: {},
 };
 
 export const authDataReducer = createReducer(
@@ -57,6 +59,7 @@ export const authDataReducer = createReducer(
     userName: userResponse.name,
     userEmail: userResponse.email,
     userGroupId: userResponse.groupId,
+    userPendingInvites: userResponse.pendingInvites,
   }))
 );
 

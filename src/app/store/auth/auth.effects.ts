@@ -97,8 +97,8 @@ export class AuthEffects {
   updatePassword$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActionTypes.requestUpdatePassword),
-      mergeMap((passwordAction: { passwordPayload: PasswordPayload }) =>
-        this.userService.updatePassword(passwordAction.passwordPayload).pipe(
+      mergeMap(({ passwordPayload }) =>
+        this.userService.updatePassword(passwordPayload).pipe(
           map(() => {
             return requestUpdatePasswordSuccess();
           })
@@ -110,8 +110,8 @@ export class AuthEffects {
   updateProfile$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActionTypes.requestUpdateProfile),
-      mergeMap((profileAction: { profilePayload: ProfilePayload }) =>
-        this.userService.updateProfile(profileAction.profilePayload).pipe(
+      mergeMap(({ profilePayload }) =>
+        this.userService.updateProfile(profilePayload).pipe(
           map((userResponse: UserResponse) => {
             return requestUserSuccess({ userResponse });
           }),
