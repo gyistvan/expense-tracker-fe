@@ -17,7 +17,7 @@ export class DailyViewComponent implements OnInit {
   public transactions: Observable<Transaction[]> = of([]);
 
   @Input()
-  public displayedDate?: string;
+  public displayedDate!: string;
 
   public filteredTransactions: Transaction[] = [];
 
@@ -93,6 +93,10 @@ export class DailyViewComponent implements OnInit {
       return Math.round(spendableMoney);
     }
     return 0;
+  }
+
+  public createComponentName(displayedDate: string): string {
+    return `${displayedDate}transactions`;
   }
 
   public isOverTenPercent(): boolean {

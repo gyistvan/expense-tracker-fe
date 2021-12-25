@@ -20,8 +20,12 @@
     </div>
     <ng-template [ngIf]="filteredTransactions.length > 0 && !isLoading">
         <div class="d-flex">
-            <app-show-hide [componentName]="displayedDate + 'transactions'">
-                <app-transaction-view *ngFor="let transaction of filteredTransactions; let i = index" [index]="i" [transaction]="transaction"></app-transaction-view>
+            <app-show-hide [componentName]="createComponentName(displayedDate)">
+                <app-transaction-view 
+                  *ngFor="let transaction of filteredTransactions; let i = index"
+                  [index]="i"
+                  [transaction]="transaction">
+                </app-transaction-view>
             </app-show-hide>
         </div>
     </ng-template>

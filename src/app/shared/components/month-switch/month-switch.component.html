@@ -10,7 +10,7 @@
     </div>
     <div class="col-4 text-center">
         <h3>
-            {{ "SHARED_COMPONENTS.MONTH_SWITCH.MONTHS." + actualMonth | date: "YYYY MMMM" | uppercase }}
+            {{ "SHARED_COMPONENTS.MONTH_SWITCH.MONTHS." + getActualMonthText(actualMonth) | translate }}
         </h3>
     </div>
     <div class="col-4 text-center">

@@ -11,6 +11,7 @@ import {
   TYPE_OPTIONS,
 } from 'src/app/constants';
 import { TransactionPayload } from 'src/app/services/transaction/interfaces/transaction';
+import { AppStateFacade } from 'src/app/store/appStates/facade';
 import { TransactionStateFacade } from 'src/app/store/transactions/facade';
 
 @Component({
@@ -29,11 +30,13 @@ export class NewSpendingFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private transactionStateFacade: TransactionStateFacade
+    private transactionStateFacade: TransactionStateFacade,
+    private appStateFacade: AppStateFacade
   ) {}
 
   ngOnInit(): void {
     this.spendingForm = this.createForm();
+    this.appStateFacade.showDate$.subscribe((date) => {});
   }
 
   createForm(): FormGroup {

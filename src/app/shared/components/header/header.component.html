@@ -18,6 +18,7 @@
       </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{'show': isMenuOpen}">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <app-language-selector></app-language-selector>
           <li class="nav-item text-nowrap d-flex align-items-center">
             <a class="nav-link" href="/new-transaction">{{ 'SHARED_COMPONENTS.HEADER.NAVIGATION.NEW_SPENDING' | translate }}</a>
           </li>
@@ -27,7 +28,6 @@
           <li class="nav-item text-nowrap d-flex align-items-center">
             <a class="nav-link" href="/profile">{{ 'SHARED_COMPONENTS.HEADER.NAVIGATION.PROFILE' | translate }}</a>
           </li>
-          <app-language-selector></app-language-selector>
           <li class="nav-item">
             <app-button 
               btnText="SHARED_COMPONENTS.HEADER.NAVIGATION.LOGIN_BUTTON_TEXT"

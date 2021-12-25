@@ -18,6 +18,10 @@ export class MonthSwitchComponent implements OnInit {
     });
   }
 
+  public getActualMonthText(actualMonth: string): string {
+    return moment(actualMonth).format('MMMM').toUpperCase();
+  }
+
   public addOneMonth(): void {
     const showDate = moment(this.actualMonth)
       .add(1, 'month')
