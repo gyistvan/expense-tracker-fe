@@ -11,6 +11,7 @@
               type="text"
               placeholder="10000"
               formControlName="amount"
+              autocomplete="off"
               required
             />
             <div class="text-danger" *ngIf="(amount.touched || incomeForm.submitted) && (amount.errors?.required)">
@@ -58,7 +59,7 @@
           </div>
           <div class="mb-3" *ngIf="addComment.value">
             <label for="comment" class="form-label">{{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.COMMENT_LABEL' | translate }}</label>
-            <input type="text" id="comment" formControlName="comment" class="form-control">
+            <textarea type="text" id="comment" formControlName="comment" class="form-control"></textarea>
           </div>
           <div class="d-flex justify-content-center my-5">
             <app-button

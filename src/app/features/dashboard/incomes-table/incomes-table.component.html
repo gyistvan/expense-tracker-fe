@@ -25,7 +25,7 @@
                 <p class="flex-1 ps-2">{{ i + 1 }}</p>
                 <p class="flex-3">{{ record.amount | HufPipe }}</p>
                 <p class="flex-3">{{ record.whose }}</p>
-                <p class="flex-6">{{ record.comment }}</p>
+                <p class="flex-6" style="white-space: pre-line;">{{ record.comment }}</p>
                 <p class="flex-4 d-flex justify-content-end">
                     <app-button buttonSize="small" iconName="pen" tooltipText="DASHBOARD.TOOLTIPS.EDIT_INCOME" buttonColor="primary"></app-button>
                     <app-button buttonSize="small" iconName="trash" tooltipText="DASHBOARD.TOOLTIPS.DELETE_INCOME" buttonColor="dark" (onClick)="deleteIncome(record._id)"></app-button>
