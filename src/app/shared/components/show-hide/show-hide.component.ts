@@ -21,7 +21,6 @@ export class ShowHideComponent implements OnInit {
   ngOnInit(): void {
     if (this.componentName) {
       let isDisplayed = this.localStorageService.getToken(this.componentName);
-      console.log(typeof isDisplayed, this.componentName);
       this.isDisplayed = isDisplayed === 'true' ? true : false;
     }
   }

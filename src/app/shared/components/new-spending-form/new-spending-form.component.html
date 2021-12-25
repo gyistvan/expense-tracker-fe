@@ -13,6 +13,7 @@
               type="text"
               placeholder="10000"
               formControlName="amount"
+              autocomplete="off"
               required
             />
             <div class="text-danger" *ngIf="(amount.touched || spendForm.submitted) && (amount.errors?.required)">
@@ -27,6 +28,7 @@
               id="type"
               class="form-control"
               formControlName="type"
+              (change)="setDefault()"
               [ngClass]="{ 'is-invalid': (type.touched || spendForm.submitted) && (type.errors?.required)}">
                 <option *ngFor="let option of typeOptions" [value]="option">
                   {{ 'SHARED_COMPONENTS.NEW_SPENDING_FORM.OPTIONS.' + option | uppercase | translate }}
@@ -78,7 +80,7 @@
             <label for="comment" class="form-label">
               {{ 'SHARED_COMPONENTS.NEW_SPENDING_FORM.COMMENT_LABEL' | translate }}
             </label>
-            <input type="text" id="comment" formControlName="comment" class="form-control">
+            <input type="text" autocomplete="off" id="comment" formControlName="comment" class="form-control">
           </div>
           <div class="d-flex justify-content-center my-5">
             <app-button

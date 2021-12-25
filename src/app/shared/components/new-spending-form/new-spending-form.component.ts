@@ -39,7 +39,7 @@ export class NewSpendingFormComponent implements OnInit {
     this.appStateFacade.showDate$.subscribe((date) => {});
   }
 
-  createForm(): FormGroup {
+  public createForm(): FormGroup {
     return this.formBuilder.group({
       amount: ['', [Validators.required, Validators.min(0)]],
       type: [this.typeOptions[0], [Validators.required]],
@@ -79,7 +79,11 @@ export class NewSpendingFormComponent implements OnInit {
     return this.spendingForm.get('comment') as AbstractControl;
   }
 
-  onSubmit(): void {
+  public setDefault(): void {
+    this.usedFor.patchValue(this.type.value === 'Monthly' ? 'Bill' : 'Food');
+  }
+
+  public onSubmit(): void {
     if (this.spendingForm.valid) {
       let transactionPayload: TransactionPayload = {
         amount: parseInt(this.amount.value),

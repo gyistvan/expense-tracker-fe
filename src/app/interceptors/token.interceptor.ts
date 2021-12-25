@@ -44,7 +44,6 @@ export class TokenInterceptor implements HttpInterceptor {
         if (response.status === 200 && response.body.message) {
           this.notificationService.success('Success', response.body.message);
         }
-        console.log(response);
       }),
       catchError((err) => {
         if (err.status === 401) {
