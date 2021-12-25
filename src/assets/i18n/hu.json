@@ -41,6 +41,8 @@
             "SAVING_FOR_THIS_MONTH" : "Tartalék ehhez a hónaphoz",
             "SAVING_LABEL" : "Tartalék",
             "REQUIRED_ERROR" : "Tartalék megadása kötelező",
+            "MIN_ERROR" : "Negatív érték megadása nem megengedett",
+            "MAX_ERROR" : "99 feletti érték megadása nem megengedett",
             "UPDATE" : "Frissítés",
             "ADD" : "Hozzáadás",
             "CANCEL" : "Mégse",
@@ -186,7 +188,8 @@
         "NEW_INCOME_FORM" : {
             "AMOUNT_LABEL" : "Összeg",
             "ERRORS" : {
-                "AMOUNT_REQUIRED" : "Összeg megadása kötelező",
+                "AMOUNT_REQUIRED" : "Az összeg megadása kötelező",
+                "MIN_AMOUNT" : "Az összegnek nagyobbnak kell lennie, mint 0",
                 "WHOSE_REQUIRED" : "Kié megadása kötelező"
             },
             "WHOSE_LABEL" : "Kié",
@@ -203,7 +206,8 @@
         "NEW_SPENDING_FORM" : {
             "AMOUNT_LABEL" : "Összeg",
             "ERRORS" : {
-                "AMOUNT_REQUIRED" : "Összeg megadása kötelező",
+                "AMOUNT_REQUIRED" : "Az összeg megadása kötelező",
+                "MIN_AMOUNT" : "Az összegnek nagyobbnak kell lennie, mint 0",
                 "TYPE_REQUIRED" : "Típus nem maradhat öres",
                 "USED_FOR_REQUIRED" : "Felhasználás módja nem maradhat üres"
             },
@@ -245,7 +249,24 @@
             "SPENDING_UPDATE_SUCCESS" : "Költés sikeresen frissítve",
             "EMAIL_ALREADY_IN_USE" : "Ez az e-mail cím már használatban van, kérlek válassz másikat",
             "REGISTRATION_SUCCESS" : "Sikeres regisztráció, most már bejelentkezhetsz",
-            "LOGIN_FAILED" : "Bejelentkezés sikertelen! Rossz felhasználónév vagy jelszó"
+            "LOGIN_FAILED" : "Bejelentkezés sikertelen! Rossz felhasználónév vagy jelszó",
+            "SAVING_UPDATE_SUCCESS" : "A tartalék frissítve: {{year}} {{month}}",
+            "SAVING_ADD_SUCCESS" : "A tartalék elmentésre került: {{year}} {{month}}",
+            "OLD_PASSWORD_INVALID" : "Hiba! A régi jelszó nem megfelelő",
+            "MONTHS" : {
+                "JANUARY" : "Januárhoz",
+                "FEBRUARY" : "Februárhoz",
+                "MARCH" : "Márciushoz",
+                "APRIL" : "Áprilishoz",
+                "MAY" : "Májushoz",
+                "JUNE" : "Júniushoz",
+                "JULY" : "Júliushoz",
+                "AUGUST" : "Augusztushoz",
+                "SEPTEMBER" : "Szeptemberhez",
+                "OCTOBER" : "Októberhez",
+                "NOVEMBER" : "Novemberhez",
+                "DECEMBER" : "Decemberhez"
+            }
         },
         "SHOW_HIDE" : {
             "SHOW_BUTTON_TEXT" : "Tartalom mutatása",

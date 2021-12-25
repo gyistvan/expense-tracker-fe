@@ -9,15 +9,25 @@
             <input
               id="amount"
               class="form-control"
-              [ngClass]="{ 'is-invalid': (amount.touched || spendForm.submitted) && (amount.errors?.required)}"
-              type="text"
+              [ngClass]="{ 'is-invalid': 
+                            (amount.touched || spendForm.submitted) && (amount.errors?.required || amount.errors?.min)
+                          }"
+              type="number"
               placeholder="10000"
               formControlName="amount"
               autocomplete="off"
               required
             />
-            <div class="text-danger" *ngIf="(amount.touched || spendForm.submitted) && (amount.errors?.required)">
-              {{ 'SHARED_COMPONENTS.NEW_SPENDING_FORM.ERRORS.AMOUNT_REQUIRED' | translate }}
+            <div
+              class="text-danger"
+              *ngIf="(amount.touched || spendForm.submitted) && (amount.errors?.required || amount.errors?.min)
+            ">
+              <p *ngIf="amount.errors?.required">
+                {{ 'SHARED_COMPONENTS.NEW_SPENDING_FORM.ERRORS.AMOUNT_REQUIRED' | translate }}
+              </p>
+              <p *ngIf="amount.errors?.min">
+                {{ 'SHARED_COMPONENTS.NEW_SPENDING_FORM.ERRORS.MIN_AMOUNT' | translate }}
+              </p>
             </div>
           </div>
           <div class="mb-3">

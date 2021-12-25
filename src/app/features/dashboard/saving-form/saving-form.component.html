@@ -21,13 +21,28 @@
               <input 
                 id="amount"
                 class="form-control"
-                [ngClass]="{ 'is-invalid': (amount.touched || saveForm.submitted) && (amount.errors?.required)}"
+                [ngClass]="{
+                  'is-invalid': (amount.touched || saveForm.submitted) &&
+                                (amount.errors?.required || amount.errors?.max || amount.errors?.min)
+                }"
                 type="text"
                 placeholder="5"
                 formControlName="amount"
                 required />
-                <div class="text-danger" *ngIf="(amount.touched || saveForm.submitted) && (amount.errors?.required)">
-                  {{ 'DASHBOARD.SAVING_FORM.REQUIRED_ERROR' | translate}}
+                <div
+                  class="text-danger"
+                  *ngIf="(amount.touched || saveForm.submitted) &&
+                         (amount.errors?.required || amount.errors?.max || amount.errors?.min)
+                ">
+                  <p *ngIf="amount.errors?.required">
+                    {{ 'DASHBOARD.SAVING_FORM.REQUIRED_ERROR' | translate}}
+                  </p>
+                  <p *ngIf="amount.errors?.min">
+                    {{ 'DASHBOARD.SAVING_FORM.MIN_ERROR' | translate}}
+                  </p>
+                  <p *ngIf="amount.errors?.max">
+                    {{ 'DASHBOARD.SAVING_FORM.MAX_ERROR' | translate}}
+                  </p>
                 </div>
             </div>
             <div class="col-12 col-lg-2 m-2">

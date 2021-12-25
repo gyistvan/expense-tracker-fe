@@ -57,6 +57,7 @@ export class SavingFormComponent implements OnInit {
   }
 
   public onSubmit() {
+    console.log(this.savingForm);
     if (this.savingForm.valid) {
       let savingPayload: SavingPayload = {
         amount: parseInt(this.amount.value),

@@ -41,6 +41,8 @@
             "SAVING_FOR_THIS_MONTH" : "Saving for this month",
             "SAVING_LABEL" : "SAVING",
             "REQUIRED_ERROR" : "Saving is required",
+            "MIN_ERROR" : "Negative values not allowed",
+            "MAX_ERROR" : "Values over 99 isn't allowed",
             "UPDATE" : "Update",
             "ADD" : "Add",
             "CANCEL" : "Cancel",
@@ -187,6 +189,7 @@
             "AMOUNT_LABEL" : "Amount",
             "ERRORS" : {
                 "AMOUNT_REQUIRED" : "Amount is required",
+                "MIN_AMOUNT" : "Amount must be higher than 0",
                 "WHOSE_REQUIRED" : "Whose is required"
             },
             "WHOSE_LABEL" : "Whose",
@@ -204,6 +207,7 @@
             "AMOUNT_LABEL" : "Amount",
             "ERRORS" : {
                 "AMOUNT_REQUIRED" : "Amount is required",
+                "MIN_AMOUNT" : "Amount must be higher than 0",
                 "TYPE_REQUIRED" : "Type can't be empty",
                 "USED_FOR_REQUIRED" : "Used for can't be empty"
             },
@@ -245,7 +249,24 @@
             "SPENDING_UPDATE_SUCCESS" : "Spending has been updated",
             "EMAIL_ALREADY_IN_USE" : "Email already in use, please choose another",
             "REGISTRATION_SUCCESS" : "Successful registration, you can login now",
-            "LOGIN_FAILED" : "Authentication failed. Invalid user or password."
+            "LOGIN_FAILED" : "Authentication failed. Invalid user or password.",
+            "SAVING_UPDATE_SUCCESS" : "Saving has been updated for {{year}} {{month}}",
+            "SAVING_ADD_SUCCESS" : "Saving has been added to {{year}} {{month}}",
+            "OLD_PASSWORD_INVALID" : "Bad request, old password is invalid",
+            "MONTHS" : {
+                "JANUARY" : "January",
+                "FEBRUARY" : "February",
+                "MARCH" : "March",
+                "APRIL" : "April",
+                "MAY" : "May",
+                "JUNE" : "June",
+                "JULY" : "July",
+                "AUGUST" : "August",
+                "SEPTEMBER" : "September",
+                "OCTOBER" : "October",
+                "NOVEMBER" : "November",
+                "DECEMBER" : "December"
+            }
         },
         "SHOW_HIDE" : {
             "SHOW_BUTTON_TEXT" : "Show content",

@@ -11,21 +11,52 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpResponse,
 } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { BehaviorSubject, forkJoin, Observable, of } from 'rxjs';
+import { catchError, mergeMap, take, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '../services/session-storage/session-storage.service';
 import { NotificationService } from '../services/notification/notification.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+  private translation: BehaviorSubject<string> = new BehaviorSubject('');
+
   constructor(
     private sessionStorageService: SessionStorageService,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService
   ) {}
+
+  private createMessage(
+    translationKey: string,
+    params?: Record<string, any>
+  ): void {
+    let result;
+    if (params) {
+      let forkJoinParams: Record<string, any> = {};
+      Object.keys(params).forEach((param) => {
+        forkJoinParams[param] = this.translateService.get(params[param]);
+      });
+      forkJoin(forkJoinParams)
+        .pipe(
+          mergeMap((params) => {
+            return this.translateService.get(translationKey, params);
+          })
+        )
+        .subscribe((translatedString: string) =>
+          this.translation.next(translatedString)
+        );
+    } else {
+      this.translateService
+        .get(translationKey)
+        .subscribe((translatedString: string) =>
+          this.translation.next(translatedString)
+        );
+    }
+  }
 
   intercept(
     request: HttpRequest<any>,
@@ -42,7 +73,16 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap((response: any) => {
         if (response.status === 200 && response.body.message) {
-          this.notificationService.success('Success', response.body.message);
+          this.createMessage(
+            response.body.message,
+            response.body.translationParams
+          );
+          this.translation
+            .pipe(take(1))
+            .subscribe((translatedString: string) => {
+              console.log(translatedString);
+              this.notificationService.success('Success', translatedString);
+            });
         }
       }),
       catchError((err) => {
