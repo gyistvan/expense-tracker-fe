@@ -1,0 +1,255 @@
+{
+    "DASHBOARD" : {
+        "ADD_INCOME_BUTTON" : "Új bevétel hozzáadása",
+        "CLOSE_INCOME_FORM_BUTTON" : "Űrlap bezárása",
+        "ADD_SPENDING_BUTTON" : "Új kiadás hozzáadása",
+        "CLOSE_SPENDING_FORM_BUTTON" : "Űrlap bezárása",
+        "SHOW_MONTH_BUTTON" : "Hónap mutatása",
+        "SHOW_WEEK_BUTTON" : "Hét mutatása",
+        "CATEGORY_BOX" : {
+            "AMOUNT" : "Mennyiség",
+            "COMMENT" : "Komment",
+            "ACTIONS" : "Opciók",
+            "TOTAL" : "Összesen"
+        },
+        "DAILY_SPENDINGS" : "Napi költések",
+        "INCOMES" : "Bevételek",
+        "INCOMES_TABLE" : {
+            "AMOUNT" : "Mennyiség",
+            "WHOSE" : "Kié",
+            "COMMENT" : "Komment",
+            "ACTIONS" : "Opciók",
+            "TOTAL" : "Összesen"
+        },
+        "TOOLTIPS" : {
+            "OPEN_INCOME_FORM" : "Megnyit egy új bevételi űrlapot",
+            "CLOSE_INCOME_FORM" : "Bezárja a bevételi űrlapot",
+            "OPEN_SPENDING_FORM" : "Megnyit egy új költési űrlapot",
+            "CLOSE_SPENDING_FORM" : "Bezárja a költési űrlapot",
+            "SHOW_MONTH" : "A kiválasztott hónap mutatása",
+            "SHOW_WEEK" : "Az aktuális hét mutatása",
+            "EDIT_INCOME" : "Bevétel szerkesztése",
+            "DELETE_INCOME" : "Bevétel törlése",
+            "EDIT_TOOLTIP" : "Tartalék szerkesztése a kiválasztott hónaphoz",
+            "EDIT_SAVING" : "Tartalék frissítése a kiválasztott hónaphoz",
+            "ADD_SAVING" : "Tartalék hozzáadása a kiválasztott hónaphoz",
+            "CANCEL_SAVING" : "Mégse"
+        },
+        "MONTHLY_SPENDINGS" : "Havi kiadások",
+        "NEW_TRANSACTION" : "Új költés",
+        "SAVING_FORM" : {
+            "SAVING_FOR_THIS_MONTH" : "Tartalék ehhez a hónaphoz",
+            "SAVING_LABEL" : "Tartalék",
+            "REQUIRED_ERROR" : "Tartalék megadása kötelező",
+            "UPDATE" : "Frissítés",
+            "ADD" : "Hozzáadás",
+            "CANCEL" : "Mégse",
+            "EDIT_BUTTON" : "Szerkesztés"
+        }
+    },
+    "LOGIN" : {
+        "EMAIL_LABEL" : "E-mail",
+        "EMAIL_PLACEHOLDER" : "email-cimed@pelda.hu",
+        "ERRORS" : {
+            "INVALID_EMAIL" : "Valós e-mail cím szükséges",
+            "INVALID_PASSWORD" : "A jelszó minimum 8 karakter hosszú kell legyen, és tartalmaznia kell 1 betűt és 1 számot" 
+        },
+        "TOOLTIPS" : {
+            "SHOW_PASSWORD" : "Jelszó mutatása",
+            "HIDE_PASSWORD" : "Jelszó elrejtése"
+        },
+        "PASSWORD_LABEL" : "Jelszó",
+        "REGISTRATION_LINK_PRETEXT" : "Ha még nincs fiókod, regisztrálj",
+        "REGISTRATION_LINK_TEXT" : "Itt",
+        "LOGIN_BUTTON_TEXT" : "Bejelentkezés"
+    },
+    "REGISTRATION" : {
+        "NAME_LABEL" : "Név",
+        "NAME_PLACEHOLDER" : "Kiss János",
+        "EMAIL_LABEL" : "E-mail",
+        "EMAIL_PLACEHOLDER" : "email-cimed@pelda.hu",
+        "ERRORS" : {
+            "INVALID_EMAIL" : "Valós e-mail cím szükséges",
+            "INVALID_PASSWORD" : "A jelszó minimum 8 karakter hosszú kell legyen, és tartalmaznia kell 1 betűt és 1 számot",
+            "NAME_REQUIRED" : "Név megadása kötelező"
+        },
+        "TOOLTIPS" : {
+            "SHOW_PASSWORD" : "Jelszó mutatása",
+            "HIDE_PASSWORD" : "Jelszó elrejtése"
+        },
+        "PASSWORD_LABEL" : "Jelszó",
+        "LOGIN_LINK_PRETEXT" : "Ha már van fiókod, bejelentkezhetsz",
+        "LOGIN_LINK_TEXT" : "itt",
+        "REGISTRATION_BUTTON_TEXT" : "Regisztráció"
+    },
+    "PROFILE" : {
+        "TABS" : {
+            "PROFILE" : "Profil",
+            "CREATE_GROUP" : "Csoport létrehozása",
+            "MANAGE_GROUP" : "Csoport kezelése",
+            "CHANGE_PASSWORD" : "Jelszó csere"
+        },
+        "CHANGE_PASSWORD_FORM" : {
+            "OLD_PASSWORD_LABEL" : "Régi jelszó",
+            "NEW_PASSWORD_LABEL"  : "Új jelszó",
+            "NEW_PASSWORD2_LABEL"  : "Új jelszó újra",
+            "UPDATE_PASSWORD_BUTTON" : "Frissítés"
+        },
+        "CREATE_GROUP_FORM" : {
+            "GROUP_NAME_LABEL" : "Csoport neve",
+            "CREATE_BUTTON" : "Létrehozás",
+            "GROUP_NAME_PLACEHOLDER" : "Példa csoport"
+        },
+        "TOOLTIPS" : {
+            "UPDATE_PASSWORD_BUTTON" : "Jelszó frissítése",
+            "SHOW_PASSWORD" : "Jelszó mutatása",
+            "HIDE_PASSWORD" : "Jelszó elrejtése",
+            "CREATE_BUTTON" : "Létrehoz egy új csoportot",
+            "INVITE_BUTTON" : "Meghívja az új tagot a csoportba",
+            "UPDATE_BUTTON" : "Frissíti a profilodat"
+        },
+        "ERRORS" : {
+            "GROUP_NAME_REQUIRED" : "Csoport neve kötelező",
+            "INVALID_PASSWORD" : "A jelszó minimum 8 karakter hosszú kell legyen, és tartalmaznia kell 1 betűt és 1 számot",
+            "PASSWORDS_ARE_DIFFERENT" : "A jelszavaknak meg kell egyezniük!",
+            "EMAIL_REQUIRED" : "E-mail cím megadása kötelező",
+            "NAME_REQUIRED" : "Név megadása kötelező"
+        },
+        "MANAGE_GROUP" : {
+            "MEMBERS" : "Tagok",
+            "NAME" : "Név",
+            "EMAIL" : "E-mail",
+            "ACTIONS" : "Opciók",
+            "INVITED_MEMBERS" : "Meghívott tagok",
+            "INVITE_MEMBER_FORM" : {
+                "TITLE" : "Tag meghívása",
+                "EMAIL_LABEL" : "Meghívott e-mail címe",
+                "EMAIL_PLACEHOLDER" : "email-cimed@pelda.hu",
+                "INVITE_BUTTON" : "Meghívás"
+            }
+        },
+        "PENDING_INVITES" : {
+            "TITLE" : "Elküldött meghívók", 
+            "GROUP_NAME" : "Csoport neve",
+            "ACTIONS" : "Opciók"
+        },
+        "PROFILE_FORM" : {
+            "NAME_LABEL" : "Név",
+            "NAME_PLACEHOLDER" : "Kiss János",
+            "EMAIL_LABEL" : "E-mail",
+            "EMAIL_PLACEHOLDER" : "email-cimed@pelda.hu",
+            "UPDATE_BUTTON" : "Frissítés"
+        }
+    },
+    "SHARED_COMPONENTS" : {
+        "HEADER" : {
+            "NAVIGATION" : {
+                "NEW_SPENDING" : "Új költés",
+                "DASHBOARD" : "Irányítópult",
+                "PROFILE" : "Profil",
+                "LOGIN_BUTTON_TEXT" : "Bejelentkezés",
+                "LOGOUT_BUTTON_TEXT" : "Kijelentkezés"
+            }
+        },
+        "DAILY_VIEW" : {
+            "AMOUNT" : "Összeg",
+            "COMMENT" : "Komment",
+            "ACTIONS" : "Opciók",
+            "NO_DATA" : "Nincs elérhető adat",
+            "SPENT" : "Elköltve:",
+            "AVAILABLE" : "Elérhető:",
+            "REMAINDER" : "Maradék:"
+        },
+        "LANGUAGE_SELECTOR" : {
+            "SELECTED_LANGUAGE" : "Kiválasztott nyelv",
+            "LANGUAGES" : {
+                "ENGLISH_TITLE" : "Angol",
+                "HUNGARIAN_TITLE" : "Magyar"
+            }
+        },
+        "MONTH_SWITCH" : {
+            "MONTHS" : {
+                "JANUARY" : "Január",
+                "FEBRUARY" : "Február",
+                "MARCH" : "Március",
+                "APRIL" : "Április",
+                "MAY" : "Május",
+                "JUNE" : "Június",
+                "JULY" : "Július",
+                "AUGUST" : "Augusztus",
+                "SEPTEMBER" : "Szeptember",
+                "OCTOBER" : "Október",
+                "NOVEMBER" : "November",
+                "DECEMBER" : "December"
+            }
+        },
+        "NEW_INCOME_FORM" : {
+            "AMOUNT_LABEL" : "Összeg",
+            "ERRORS" : {
+                "AMOUNT_REQUIRED" : "Összeg megadása kötelező",
+                "WHOSE_REQUIRED" : "Kié megadása kötelező"
+            },
+            "WHOSE_LABEL" : "Kié",
+            "WHOSE_PLACEHOLDER" : "Kiss János",
+            "SPENT_ANOTHER_DAY_LABEL" : "Más napon költve",
+            "SPENT_AT_LABEL" : "Elköltve ekkor",
+            "ADD_COMMENT_LABEL" : "Komment hozzáadása",
+            "COMMENT_LABEL" : "Komment",
+            "TOOLTIPS" : {
+                "ADD_INCOME_BUTTON" : "Új bevétel hozzáadása"
+            },
+            "ADD_INCOME_BUTTON_TEXT" : "Hozzáadás"
+        },
+        "NEW_SPENDING_FORM" : {
+            "AMOUNT_LABEL" : "Összeg",
+            "ERRORS" : {
+                "AMOUNT_REQUIRED" : "Összeg megadása kötelező",
+                "TYPE_REQUIRED" : "Típus nem maradhat öres",
+                "USED_FOR_REQUIRED" : "Felhasználás módja nem maradhat üres"
+            },
+            "WHOSE_LABEL" : "Kié",
+            "WHOSE_PLACEHOLDER" : "Kiss János",
+            "SPENT_ANOTHER_DAY_LABEL" : "Más napon költve",
+            "SPENT_AT_LABEL" : "Elköltve ekkor",
+            "ADD_COMMENT_LABEL" : "Komment hozzáadása",
+            "COMMENT_LABEL" : "Komment",
+            "TOOLTIPS" : {
+                "ADD_SPENDING_BUTTON" : "Új költés hozzáadása"
+            },
+            "ADD_SPENDING_BUTTON_TEXT" : "Hozzáadás",
+            "TYPE_LABEL" : "Típus",
+            "USED_FOR_LABEL" : "Felhasználás módja",
+            "OPTIONS" : {
+                "DAILY" : "Napi",
+                "MONTHLY" : "Havi",
+                "FOOD" : "Étel",
+                "SMOKE" : "Cigi",
+                "MEDICINE" : "Gyógyszer",
+                "BILL" : "Számla",
+                "CHILDREN'S STUFF" : "Gyerek cuccok",
+                "NURSERY" : "Óvoda / Bölcsöde",
+                "OTHER" : "Egyéb"
+            }
+        },
+        "NOTIFICATIONS" : {
+            "TOOLTIPS" : {
+                "CLOSE_BUTTON" : "Értesítés bezárása"
+            },
+            "USER_NOT_FOUND" : "Felhasználó nem található",
+            "GROUP_NOT_FOUND" : "Csoport nem található",
+            "DECLINE_INVITATION_SUCCESS" : "Csoport meghívás sikeresen elutasítva",
+            "INCOME_ADD_SUCCESS" : "Bevétel sikeresen hozzáadva",
+            "INCOME_DELETE_SUCCESS" : "Bevétel sikeresen törölve",
+            "SPENDING_ADD_SUCCESS" : "Költés sikeresen hozzáadva",
+            "SPENDING_DELETE_SUCCESS" : "Költés sikeresen törölve",
+            "SPENDING_UPDATE_SUCCESS" : "Költés sikeresen frissítve",
+            "EMAIL_ALREADY_IN_USE" : "Ez az e-mail cím már használatban van, kérlek válassz másikat",
+            "REGISTRATION_SUCCESS" : "Sikeres regisztráció, most már bejelentkezhetsz",
+            "LOGIN_FAILED" : "Bejelentkezés sikertelen! Rossz felhasználónév vagy jelszó"
+        },
+        "SHOW_HIDE" : {
+            "SHOW_BUTTON_TEXT" : "Tartalom mutatása",
+            "HIDE_BUTTON_TEXT" : "Tartalom elrejtése"
+        }
+    }
+}

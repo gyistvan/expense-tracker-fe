@@ -1,0 +1,15 @@
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle"
+    role="button"
+    (click)="changeIsSelectorOpen()"
+  >
+    {{ 'SHARED_COMPONENTS.LANGUAGE_SELECTOR.SELECTED_LANGUAGE' | translate }} {{ selectedLanguage.title | translate }}
+  </a>
+  <ul  class="dropdown-menu" [ngStyle]="{display: isLanguageSelectorOpen ? 'block' : 'none'}">
+    <li *ngFor="let lang of filterLanguages()">
+      <a class="dropdown-item" (click)="changeLanguage(lang)">
+        {{ lang.title | translate }}
+      </a>
+    </li>
+  </ul>
+</li>

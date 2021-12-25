@@ -9,14 +9,21 @@
         </div>
         <div class="col-12 col-lg-6">
             <h2 class="text-center">
-                Incomes
+                
+                {{ 'DASHBOARD.INCOMES' | translate }}
             </h2>
             <div class="col-12">
                 <div class="d-flex justify-content-center m-2">
                     <app-button 
-                        [tooltipText]="!showAddNewIncomeForm ? 'Opens new income form' : 'Close new income form'"
+                        [tooltipText]="
+                          !showAddNewIncomeForm ?
+                          'DASHBOARD.TOOLTIPS.OPEN_INCOME_FORM' :
+                          'DASHBOARD.TOOLTIPS.CLOSE_INCOME_FORM'"
                         [iconName]="!showAddNewIncomeForm ? 'plus' : 'minus'" 
-                        [btnText]="!showAddNewIncomeForm ? 'Add Income' : 'Close Form'" 
+                        [btnText]="
+                          !showAddNewIncomeForm ?
+                          'DASHBOARD.ADD_INCOME_BUTTON' :
+                          'DASHBOARD.CLOSE_INCOME_FORM_BUTTON'" 
                         (onClick)="changeShowAddNewIncomeForm()"
                         buttonColor="primary"
                         >
@@ -26,14 +33,20 @@
                 <app-incomes-table *ngIf="incomes | async" [incomes]="incomes | async"></app-incomes-table>
             </div>
             <h2 class="text-center mt-5">
-                Monthly Spendings
+                {{ 'DASHBOARD.MONTHLY_SPENDINGS' | translate}}
             </h2>
             <div class="col-12">
                 <div class="d-flex justify-content-center m-2">
                     <app-button 
-                        [tooltipText]="!showAddNewTransactionForm ? 'Opens new spending form' : 'Close new spending form'"
+                        [tooltipText]="
+                          !showAddNewTransactionForm ?
+                          'DASHBOARD.TOOLTIPS.OPEN_SPENDING_FORM' :
+                          'DASHBOARD.TOOLTIPS.CLOSE_SPENDING_FORM'"
                         [iconName]="!showAddNewTransactionForm ? 'plus' : 'minus'" 
-                        [btnText]="!showAddNewTransactionForm ? 'Add Spending' : 'Close Form'" 
+                        [btnText]="
+                          !showAddNewTransactionForm ?
+                          'DASHBOARD.ADD_SPENDING_BUTTON' :
+                          'DASHBOARD.CLOSE_SPENDING_FORM_BUTTON'" 
                         (onClick)="changeShowAddNewTransactionForm()"
                         buttonColor="dark"
                         textColor="white">
@@ -45,11 +58,26 @@
         </div>
         <div class="col-12 col-lg-6">
             <h2 class="text-center">
-                Daily spendings
+                {{ 'DASHBOARD.DAILY_SPENDINGS' | translate }}
             </h2>
             <div class="d-flex justify-content-around">
-                <app-button tooltipText="Displays the selected month" btnText="Show month" buttonColor="primary" [isDisabled]="isMonthlyViewDisplayed" iconName="list" (onClick)="displayMonthlyView()"></app-button>
-                <app-button tooltipText="Displays only the actual week" btnText="Show week" buttonColor="primary" [isDisabled]="!isMonthlyViewDisplayed" iconName="list" (onClick)="displayWeeklyView()" *ngIf="isInDisplayedMonth()"></app-button>
+                <app-button
+                  tooltipText="DASHBOARD.TOOLTIPS.SHOW_MONTH"
+                  btnText="DASHBOARD.SHOW_MONTH_BUTTON"
+                  buttonColor="primary"
+                  [isDisabled]="isMonthlyViewDisplayed"
+                  iconName="list"
+                  (onClick)="displayMonthlyView()">
+                </app-button>
+                <app-button
+                  tooltipText="DASHBOARD.TOOLTIPS.SHOW_WEEK"
+                  btnText="Show week"
+                  buttonColor="primary"
+                  [isDisabled]="!isMonthlyViewDisplayed"
+                  iconName="list"
+                  (onClick)="displayWeeklyView()"
+                  *ngIf="isInDisplayedMonth()">
+                </app-button>
             </div>
             <app-actual-week [transactions]="transactions" [actualWeek]="getCurrentWeek()" *ngIf="isInDisplayedMonth() && !isMonthlyViewDisplayed"></app-actual-week>
             <app-monthly-transactions *ngIf="isMonthlyViewDisplayed" [transactions]="transactions"></app-monthly-transactions>

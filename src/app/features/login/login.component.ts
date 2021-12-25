@@ -11,8 +11,6 @@ import { LoginData } from '../../models/login';
 export class LoginComponent implements OnInit {
   public loginForm: LoginData = new LoginData();
 
-  public successfulRegistration: boolean = false;
-
   constructor(private authStateFacade: AuthStateFacade) {}
 
   ngOnInit(): void {}

@@ -37,10 +37,16 @@ export class MonthSwitchComponent implements OnInit {
   }
 
   public getPreviousMonth(): string {
-    return moment(this.actualMonth).subtract(1, 'month').format('MMMM');
+    return `SHARED_COMPONENTS.MONTH_SWITCH.MONTHS.${moment(this.actualMonth)
+      .subtract(1, 'month')
+      .format('MMMM')
+      .toUpperCase()}`;
   }
 
   public getNextMonth(): string {
-    return moment(this.actualMonth).add(1, 'month').format('MMMM');
+    return `SHARED_COMPONENTS.MONTH_SWITCH.MONTHS.${moment(this.actualMonth)
+      .add(1, 'month')
+      .format('MMMM')
+      .toUpperCase()}`;
   }
 }

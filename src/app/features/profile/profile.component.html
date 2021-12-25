@@ -6,7 +6,7 @@
         class="nav-link cursor-pointer" 
         [ngClass]="{'active' : displayedTab === 'profile'}" 
         (click)="changeTab('profile')">
-          Profile
+          {{ 'PROFILE.TABS.PROFILE' | translate}}
       </span>
     </li>
     <li class="nav-item" *ngIf="!(groupId | async)">
@@ -14,7 +14,7 @@
         class="nav-link cursor-pointer"
         [ngClass]="{'active' : displayedTab === 'createGroup'}"
         (click)="changeTab('createGroup')">
-          Create group
+        {{ 'PROFILE.TABS.CREATE_GROUP' | translate}}
       </span>
     </li>
     <li class="nav-item" *ngIf="(groupId | async)">
@@ -22,7 +22,7 @@
         class="nav-link"
         [ngClass]="{'active' : displayedTab === 'manageGroup'}"
         (click)="changeTab('manageGroup')">
-          Manage group
+        {{ 'PROFILE.TABS.MANAGE_GROUP' | translate}}
       </span>
     </li>
     <li class="nav-item">
@@ -30,7 +30,7 @@
         class="nav-link"
         [ngClass]="{'active' : displayedTab === 'changePassword'}"
         (click)="changeTab('changePassword')">
-          Change password
+        {{ 'PROFILE.TABS.CHANGE_PASSWORD' | translate}}
       </span>
     </li>
   </ul>

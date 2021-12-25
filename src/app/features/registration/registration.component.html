@@ -7,33 +7,49 @@
     <div class="col-sm-12 col-md-6">
       <form class="form" [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm)" #regForm="ngForm">
         <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
+          <label for="name" class="form-label">{{ 'REGISTRATION.NAME_LABEL' | translate}}</label>
           <input id="name" class="form-control"
             [ngClass]="{ 'is-invalid': (name.touched || regForm.submitted) && (name.errors?.required)}" type="text"
-            placeholder="John Doe" formControlName="name" required />
+            placeholder="{{ 'REGISTRATION.NAME_PLACEHOLDER' | translate }}" formControlName="name" required />
           <div class="text-danger" *ngIf="(name.touched || regForm.submitted) && (name.errors?.required)">
-            Name is required
+            {{ 'REGISTRATION.ERRORS.NAME_REQUIRED' | translate}}
           </div>
         </div>
         <div class="mb-3">
-          <label for="email" class="form-label">E-mail</label>
-          <input id="email" class="form-control" type="text"
-            [ngClass]="{ 'is-invalid': (email.touched || regForm.submitted) && (email.errors?.required || email.errors?.invalidPassword)}"
-            placeholder="johndoe@test.com" formControlName="email" />
+          <label for="email" class="form-label">{{ 'REGISTRATION.EMAIL_LABEL' | translate}}</label>
+          <input 
+            id="email"
+            class="form-control"
+            type="text"
+            [ngClass]="{
+              'is-invalid': (email.touched || regForm.submitted) && 
+                            (email.errors?.required || email.errors?.invalidPassword)}"
+            placeholder="{{ 'REGISTRATION.EMAIL_PLACEHOLDER' | translate }}"
+            formControlName="email" />
           <div class="text-danger"
-            *ngIf="(email.touched || regForm.submitted) && (email.errors?.required || email.errors?.invalidPassword)">
-            Valid e-mail is required
+            *ngIf="(email.touched || regForm.submitted) && 
+                   (email.errors?.required || email.errors?.invalidPassword)">
+            {{ 'REGISTRATION.ERRORS.INVALID_EMAIL' | translate }}
           </div>
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
+          <label for="password" class="form-label">{{ 'REGISTRATION.PASSWORD_LABEL' | translate }}</label>
           <div class="pos-relative">
-            <input id="password" class="form-control" type="password" toggleShowPassword #toggleShowPassword="toggleShowPassword"
-              [ngClass]="{ 'is-invalid': (password.touched || regForm.submitted) && (password.errors?.required || password.errors?.invalidPassword)}"
+            <input 
+              id="password"
+              class="form-control"
+              type="password"
+              toggleShowPassword
+              #toggleShowPassword="toggleShowPassword"
+              [ngClass]="{ 
+                'is-invalid': (password.touched || regForm.submitted) && 
+                              (password.errors?.required || password.errors?.invalidPassword)}"
               formControlName="password" />
             <div class="toggleShowPassword">
               <app-button 
-                [tooltipText]="toggleShowPassword._shown ? 'Hide password' : 'Display password'"
+                [tooltipText]="!toggleShowPassword._shown ?
+                  'REGISTRATION.TOOLTIPS.SHOW_PASSWORD' : 
+                  'REGISTRATION.TOOLTIPS.HIDE_PASSWORD'"
                 [iconName]="toggleShowPassword._shown ? 'eye-slash' : 'eye'"
                 [buttonSize]="'normal'"
                 buttonColor="primary"
@@ -42,14 +58,18 @@
           </div>
           <div class="text-danger"
             *ngIf="(password.touched || regForm.submitted) && (password.errors?.required || password.errors?.invalidPassword)">
-            Password must contain min. 8 characters and at least one number and one letter
+            {{ 'REGISTRATION.ERRORS.INVALID_PASSWORD' | translate }}
           </div>
           </div>
           <div class="d-flex justify-content-center my-5">
-            <app-button buttonColor="primary" [btnText]="'Registration'" [iconName]="'key'"></app-button>
+            <app-button buttonColor="primary" [btnText]="'REGISTRATION.REGISTRATION_BUTTON_TEXT'" [iconName]="'key'"></app-button>
           </div>
           <div class="d-flex justify-content-center">
-            <p>If you already registered you can login <a href="/login" class="text-info">here</a></p>
+            <p>{{ 'REGISTRATION.LOGIN_LINK_PRETEXT' | translate }}&nbsp;
+              <a href="/login" class="text-info">
+                {{ 'REGISTRATION.LOGIN_LINK_TEXT' | translate }}
+              </a>
+            </p>
         </div>
       </form>
     </div>

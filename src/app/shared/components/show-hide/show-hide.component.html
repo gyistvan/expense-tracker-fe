@@ -1,9 +1,13 @@
+<ng-content *ngIf="isDisplayed"></ng-content>
 <div class="d-flex justify-content-center m-2">
   <app-button 
-    [btnText]="isDisplayed ? hideText : showText"
+    [btnText]="
+      isDisplayed ? 
+      hideText : 
+      showText
+    "
     [iconName]="isDisplayed ? 'arrow-up' : 'arrow-down'"
     buttonColor="info"
     (onClick)="changeDisplayed()"
   ></app-button>
 </div>
-<ng-content *ngIf="isDisplayed"></ng-content>

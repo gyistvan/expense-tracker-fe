@@ -8,9 +8,9 @@ import { LocalStorageService } from 'src/app/services/local-storage/local-storag
 })
 export class ShowHideComponent implements OnInit {
   @Input()
-  public showText: string = 'Show content';
+  public showText: string = 'SHARED_COMPONENTS.SHOW_HIDE.SHOW_BUTTON_TEXT';
   @Input()
-  public hideText: string = 'Hide content';
+  public hideText: string = 'SHARED_COMPONENTS.SHOW_HIDE.HIDE_BUTTON_TEXT';
   @Input()
   public componentName?: string;
 

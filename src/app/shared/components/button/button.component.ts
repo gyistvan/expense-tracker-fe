@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
+import { TranslateService } from '@ngx-translate/core';
 import { AvailbleBSPositions } from 'ngx-bootstrap/positioning';
 
 @Component({
   selector: 'app-button',
   template: `<button
-    [tooltip]="tooltipText"
+    [tooltip]="tooltipText | translate"
     [tooltipPlacement]="tooltipPlacement"
     [disabled]="isDisabled"
     class="btn text-bold"
@@ -26,7 +27,7 @@ import { AvailbleBSPositions } from 'ngx-bootstrap/positioning';
     }"
   >
     <fa-icon *ngIf="iconName" [icon]="['fas', iconName]"></fa-icon>
-    {{ btnText }}
+    {{ btnText | translate }}
   </button>`,
 })
 export class ButtonComponent {
@@ -40,6 +41,8 @@ export class ButtonComponent {
   @Input() public tooltipPlacement = 'top' as AvailbleBSPositions;
 
   @Output() onClick = new EventEmitter<MouseEvent>();
+
+  constructor() {}
 
   public click(event: MouseEvent): void {
     this.onClick.emit(event);

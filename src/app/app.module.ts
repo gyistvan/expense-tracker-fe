@@ -1,4 +1,8 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
@@ -13,6 +17,12 @@ import { effects, reducers } from './store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationListComponent } from './shared/components';
 import { SharedModule } from './shared/shared.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [AppComponent, NotificationListComponent],
@@ -23,6 +33,13 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       autoPause: true,

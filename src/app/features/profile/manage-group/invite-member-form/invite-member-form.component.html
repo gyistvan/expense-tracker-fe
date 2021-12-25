@@ -1,15 +1,26 @@
-<h3 class="mt-3">Invite new member</h3>
+<h3 class="mt-3">{{ "PROFILE.MANAGE_GROUP.INVITE_MEMBER_FORM.TITLE" | translate }}</h3>
 <form [formGroup]="inviteMemberForm" class="form" (ngSubmit)="onSubmit($event)" #inviteForm="ngForm">
   <div class="mb-3">
-    <label for="email" class="form-label">Invited member's e-mail address:</label>
-    <input id="email" class="form-control"
-      [ngClass]="{ 'is-invalid': (email.touched || inviteForm.submitted) && (email.errors?.required)}" type="text"
-      placeholder="john.doe@example.coms" formControlName="email" required />
+    <label for="email" class="form-label">
+      {{ "PROFILE.MANAGE_GROUP.INVITE_MEMBER_FORM.EMAIL_LABEL" | translate }}
+    </label>
+    <input
+      id="email"
+      class="form-control"
+      [ngClass]="{'is-invalid': (email.touched || inviteForm.submitted) && (email.errors?.required)}"
+      type="text"
+      placeholder="{{ 'PROFILE.MANAGE_GROUP.INVITE_MEMBER_FORM.EMAIL_PLACEHOLDER' | translate }}"
+      formControlName="email" required />
     <div class="text-danger" *ngIf="(email.touched || inviteForm.submitted) && (email.errors?.required)">
-      Email is required
+      {{ "PROFILE.ERRORS.EMAIL_REQUIRED" | translate }}
     </div>
   </div>
   <div class="d-flex justify-content-center my-5">
-    <app-button [btnText]="'Invite'" [iconName]="'key'" buttonColor="primary"></app-button>
+    <app-button
+      btnText="PROFILE.MANAGE_GROUP.INVITE_MEMBER_FORM.INVITE_BUTTON"
+      tooltipText="PROFILE.TOOLTIPS.INVITE_BUTTON"
+      [iconName]="'key'"
+      buttonColor="primary">
+    </app-button>
   </div>
 </form>  

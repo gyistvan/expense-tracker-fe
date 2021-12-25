@@ -3,41 +3,64 @@
       <div class="col-12">
         <form [formGroup]="incomesForm" class="form" (ngSubmit)="onSubmit()" #incomeForm="ngForm">
           <div class="mb-3">
-            <label for="amount" class="form-label">Income:</label>
-            <input id="amount" class="form-control"
-              [ngClass]="{ 'is-invalid': (amount.touched || incomeForm.submitted) && (amount.errors?.required)}" type="text"
-              placeholder="10000" formControlName="amount" required />
+            <label for="amount" class="form-label">{{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.AMOUNT_LABEL' | translate }}</label>
+            <input 
+              id="amount"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': (amount.touched || incomeForm.submitted) && (amount.errors?.required)}"
+              type="text"
+              placeholder="10000"
+              formControlName="amount"
+              required
+            />
             <div class="text-danger" *ngIf="(amount.touched || incomeForm.submitted) && (amount.errors?.required)">
-              Income is required
+              {{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.ERRORS.AMOUNT_REQUIRED' | translate }}
             </div>
           </div>
           <div class="mb-3">
-            <label for="amount" class="form-label">Whose:</label>
-            <input id="amount" class="form-control"
-              [ngClass]="{ 'is-invalid': (whose.touched || incomeForm.submitted) && (whose.errors?.required)}" type="text"
-              placeholder="Name..." formControlName="whose" required />
+            <label for="whose" class="form-label">{{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.WHOSE_LABEL' | translate }}</label>
+            <input
+              id="whose"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': (whose.touched || incomeForm.submitted) && (whose.errors?.required)}"
+              type="text"
+              placeholder="{{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.WHOSE_PLACEHOLDER' | translate }}"
+              formControlName="whose"
+              required
+            />
             <div class="text-danger" *ngIf="(whose.touched || incomeForm.submitted) && (whose.errors?.required)">
-              Whose is required
+              {{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.ERRORS.WHOSE_REQUIRED' | translate }}
             </div>
           </div>
           <div class="mb-3">
             <input type="checkbox" id="isSpentAnotherDay" formControlName="isSpentAnotherDay">
-            <label for="isSpentAnotherDay" class="form-label">&nbsp;&nbsp;spent another day</label>
+            <label for="isSpentAnotherDay" class="form-label">
+              &nbsp;&nbsp;{{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.SPENT_ANOTHER_DAY_LABEL' | translate }}
+            </label>
           </div>
           <div class="mb-3" *ngIf="isSpentAnotherDay.value">
-            <label for="spentAt" class="form-label">Spent At:</label>
+            <label for="spentAt" class="form-label">
+              {{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.SPENT_AT_LABEL' | translate }}
+            </label>
             <input type="date" id="spentAt" formControlName="spentAt" class="form-control">
           </div>
           <div class="mb-3">
               <input type="checkbox" id="addComment" formControlName="addComment">
-              <label for="addComment" class="form-label">&nbsp;&nbsp;add comment</label>
+              <label for="addComment" class="form-label">
+                &nbsp;&nbsp;{{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.ADD_COMMENT_LABEL' | translate }}
+              </label>
           </div>
           <div class="mb-3" *ngIf="addComment.value">
-            <label for="comment" class="form-label">Comment:</label>
+            <label for="comment" class="form-label">{{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.COMMENT_LABEL' | translate }}</label>
             <input type="text" id="comment" formControlName="comment" class="form-control">
           </div>
           <div class="d-flex justify-content-center my-5">
-            <app-button tooltipText="Add new income" buttonColor="primary" [btnText]="'Add'" [iconName]="'check'"></app-button>
+            <app-button
+              tooltipText="SHARED_COMPONENTS.NEW_INCOME_FORM.TOOLTIPS.ADD_INCOME_BUTTON"
+              buttonColor="primary"
+              btnText="SHARED_COMPONENTS.NEW_INCOME_FORM.ADD_INCOME_BUTTON_TEXT"
+              iconName="check">
+            </app-button>
           </div>
         </form>
       </div>

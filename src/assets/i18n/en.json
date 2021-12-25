@@ -1,0 +1,255 @@
+{
+    "DASHBOARD" : {
+        "ADD_INCOME_BUTTON" : "Add new income",
+        "CLOSE_INCOME_FORM_BUTTON" : "Close form",
+        "ADD_SPENDING_BUTTON" : "Add new spending",
+        "CLOSE_SPENDING_FORM_BUTTON" : "Close form",
+        "SHOW_MONTH_BUTTON" : "Show month",
+        "SHOW_WEEK_BUTTON" : "Show week",
+        "CATEGORY_BOX" : {
+            "AMOUNT" : "Amount",
+            "COMMENT" : "Comment",
+            "ACTIONS" : "Actions",
+            "TOTAL" : "Total"
+        },
+        "DAILY_SPENDINGS" : "Daily spendings",
+        "INCOMES" : "Incomes",
+        "INCOMES_TABLE" : {
+            "AMOUNT" : "Amount",
+            "WHOSE" : "Whose",
+            "COMMENT" : "Comment",
+            "ACTIONS" : "Actions",
+            "TOTAL" : "Total"
+        },
+        "TOOLTIPS" : {
+            "OPEN_INCOME_FORM" : "Opens new income form",
+            "CLOSE_INCOME_FORM" : "Closes new income form",
+            "OPEN_SPENDING_FORM" : "Opens new spending form",
+            "CLOSE_SPENDING_FORM" : "Closes new spending form",
+            "SHOW_MONTH" : "Displays the selected month",
+            "SHOW_WEEK" : "Displays only the actual week",
+            "EDIT_INCOME" : "Edit income",
+            "DELETE_INCOME" : "Delete income",
+            "EDIT_TOOLTIP" : "Edit saving for the selected month",
+            "EDIT_SAVING" : "Updates the saving for the selected month",
+            "ADD_SAVING" : "Adds saving for the selected month",
+            "CANCEL_SAVING" : "Cancel saving"
+        },
+        "MONTHLY_SPENDINGS" : "Monthly spendings",
+        "NEW_TRANSACTION" : "New transaction",
+        "SAVING_FORM" : {
+            "SAVING_FOR_THIS_MONTH" : "Saving for this month",
+            "SAVING_LABEL" : "SAVING",
+            "REQUIRED_ERROR" : "Saving is required",
+            "UPDATE" : "Update",
+            "ADD" : "Add",
+            "CANCEL" : "Cancel",
+            "EDIT_BUTTON" : "Edit"
+        }
+    },
+    "LOGIN" : {
+        "EMAIL_LABEL" : "E-mail",
+        "EMAIL_PLACEHOLDER" : "your-email@test.com",
+        "ERRORS" : {
+            "INVALID_EMAIL" : "Valid e-mail required",
+            "INVALID_PASSWORD" : "Password must contain min. 8 characters and at least one number and one letter" 
+        },
+        "TOOLTIPS" : {
+            "SHOW_PASSWORD" : "Show password",
+            "HIDE_PASSWORD" : "Hide password"
+        },
+        "PASSWORD_LABEL" : "Password",
+        "REGISTRATION_LINK_PRETEXT" : "If you don't have an account, you can register",
+        "REGISTRATION_LINK_TEXT" : "here",
+        "LOGIN_BUTTON_TEXT" : "Login"
+    },
+    "REGISTRATION" : {
+        "NAME_LABEL" : "Name",
+        "NAME_PLACEHOLDER" : "John Doe",
+        "EMAIL_LABEL" : "E-mail",
+        "EMAIL_PLACEHOLDER" : "your-email@test.com",
+        "ERRORS" : {
+            "INVALID_EMAIL" : "Valid e-mail required",
+            "INVALID_PASSWORD" : "Password must contain min. 8 characters and at least one number and one letter",
+            "NAME_REQUIRED" : "Name is required"
+        },
+        "TOOLTIPS" : {
+            "SHOW_PASSWORD" : "Show password",
+            "HIDE_PASSWORD" : "Hide password"
+        },
+        "PASSWORD_LABEL" : "Password",
+        "LOGIN_LINK_PRETEXT" : "If you already registered you can login",
+        "LOGIN_LINK_TEXT" : "here",
+        "REGISTRATION_BUTTON_TEXT" : "Registration"
+    },
+    "PROFILE" : {
+        "TABS" : {
+            "PROFILE" : "Profile",
+            "CREATE_GROUP" : "Create group",
+            "MANAGE_GROUP" : "Manage group",
+            "CHANGE_PASSWORD" : "Change password"
+        },
+        "CHANGE_PASSWORD_FORM" : {
+            "OLD_PASSWORD_LABEL" : "Old password",
+            "NEW_PASSWORD_LABEL"  : "New password",
+            "NEW_PASSWORD2_LABEL"  : "New password again",
+            "UPDATE_PASSWORD_BUTTON" : "Update"
+        },
+        "CREATE_GROUP_FORM" : {
+            "GROUP_NAME_LABEL" : "Group name",
+            "CREATE_BUTTON" : "Create",
+            "GROUP_NAME_PLACEHOLDER" : "Example group"
+        },
+        "TOOLTIPS" : {
+            "UPDATE_PASSWORD_BUTTON" : "Update password",
+            "SHOW_PASSWORD" : "Show password",
+            "HIDE_PASSWORD" : "Hide password",
+            "CREATE_BUTTON" : "Creates a new group",
+            "INVITE_BUTTON" : "Invites a new member to your group",
+            "UPDATE_BUTTON" : "Updates your profile"
+        },
+        "ERRORS" : {
+            "GROUP_NAME_REQUIRED" : "Group name is required",
+            "INVALID_PASSWORD" : "Password must contain min. 8 characters and at least one number and one letter",
+            "PASSWORDS_ARE_DIFFERENT" : "Passwords should be the same!",
+            "EMAIL_REQUIRED" : "Email is required",
+            "NAME_REQUIRED" : "Name is required"
+        },
+        "MANAGE_GROUP" : {
+            "MEMBERS" : "Members",
+            "NAME" : "Name",
+            "EMAIL" : "E-mail",
+            "ACTIONS" : "Actions",
+            "INVITED_MEMBERS" : "Invited members",
+            "INVITE_MEMBER_FORM" : {
+                "TITLE" : "Invite new member",
+                "EMAIL_LABEL" : "Invited member's e-mail address",
+                "EMAIL_PLACEHOLDER" : "john.doe@example.com",
+                "INVITE_BUTTON" : "Invite"
+            }
+        },
+        "PENDING_INVITES" : {
+            "TITLE" : "Pending invites", 
+            "GROUP_NAME" : "Group name",
+            "ACTIONS" : "Actions"
+        },
+        "PROFILE_FORM" : {
+            "NAME_LABEL" : "Name",
+            "NAME_PLACEHOLDER" : "John Doe",
+            "EMAIL_LABEL" : "E-mail",
+            "EMAIL_PLACEHOLDER" : "john.doe@example.com",
+            "UPDATE_BUTTON" : "Update"
+        }
+    },
+    "SHARED_COMPONENTS" : {
+        "HEADER" : {
+            "NAVIGATION" : {
+                "NEW_SPENDING" : "New spending",
+                "DASHBOARD" : "Dashboard",
+                "PROFILE" : "Profile",
+                "LOGIN_BUTTON_TEXT" : "Login",
+                "LOGOUT_BUTTON_TEXT" : "Logout"
+            }
+        },
+        "DAILY_VIEW" : {
+            "AMOUNT" : "Amount",
+            "COMMENT" : "Comment",
+            "ACTIONS" : "Actions",
+            "NO_DATA" : "No data available",
+            "SPENT" : "Spent:",
+            "AVAILABLE" : "Available:",
+            "REMAINDER" : "Remainder:"
+        },
+        "LANGUAGE_SELECTOR" : {
+            "SELECTED_LANGUAGE" : "Selected language",
+            "LANGUAGES" : {
+                "ENGLISH_TITLE" : "English",
+                "HUNGARIAN_TITLE" : "Hungarian"
+            }
+        },
+        "MONTH_SWITCH" : {
+            "MONTHS" : {
+                "JANUARY" : "January",
+                "FEBRUARY" : "February",
+                "MARCH" : "March",
+                "APRIL" : "April",
+                "MAY" : "May",
+                "JUNE" : "June",
+                "JULY" : "July",
+                "AUGUST" : "August",
+                "SEPTEMBER" : "September",
+                "OCTOBER" : "October",
+                "NOVEMBER" : "November",
+                "DECEMBER" : "December"
+            }
+        },
+        "NEW_INCOME_FORM" : {
+            "AMOUNT_LABEL" : "Amount",
+            "ERRORS" : {
+                "AMOUNT_REQUIRED" : "Amount is required",
+                "WHOSE_REQUIRED" : "Whose is required"
+            },
+            "WHOSE_LABEL" : "Whose",
+            "WHOSE_PLACEHOLDER" : "John Doe",
+            "SPENT_ANOTHER_DAY_LABEL" : "Spent on another day",
+            "SPENT_AT_LABEL" : "Spent at",
+            "ADD_COMMENT_LABEL" : "Add comment",
+            "COMMENT_LABEL" : "Comment",
+            "TOOLTIPS" : {
+                "ADD_INCOME_BUTTON" : "Add new income"
+            },
+            "ADD_INCOME_BUTTON_TEXT" : "Add"
+        },
+        "NEW_SPENDING_FORM" : {
+            "AMOUNT_LABEL" : "Amount",
+            "ERRORS" : {
+                "AMOUNT_REQUIRED" : "Amount is required",
+                "TYPE_REQUIRED" : "Type can't be empty",
+                "USED_FOR_REQUIRED" : "Used for can't be empty"
+            },
+            "WHOSE_LABEL" : "Whose",
+            "WHOSE_PLACEHOLDER" : "John Doe",
+            "SPENT_ANOTHER_DAY_LABEL" : "Spent on another day",
+            "SPENT_AT_LABEL" : "Spent at",
+            "ADD_COMMENT_LABEL" : "Add comment",
+            "COMMENT_LABEL" : "Comment",
+            "TOOLTIPS" : {
+                "ADD_SPENDING_BUTTON" : "Add new spending"
+            },
+            "ADD_SPENDING_BUTTON_TEXT" : "Add",
+            "TYPE_LABEL" : "Type",
+            "USED_FOR_LABEL" : "Used for",
+            "OPTIONS" : {
+                "DAILY" : "Daily",
+                "MONTHLY" : "Monthly",
+                "FOOD" : "Food",
+                "SMOKE" : "Smoke",
+                "MEDICINE" : "Medicine",
+                "BILL" : "Bill",
+                "CHILDREN'S STUFF" : "Children's stuff",
+                "NURSERY" : "Nursery",
+                "OTHER" : "Other"
+            }
+        },
+        "NOTIFICATIONS" : {
+            "TOOLTIPS" : {
+                "CLOSE_BUTTON" : "Close the notification"
+            },
+            "USER_NOT_FOUND" : "User not found",
+            "GROUP_NOT_FOUND" : "Group not found",
+            "DECLINE_INVITATION_SUCCESS" : "Successfully declined invitation",
+            "INCOME_ADD_SUCCESS" : "Successfully added income",
+            "INCOME_DELETE_SUCCESS" : "Successfully deleted income",
+            "SPENDING_ADD_SUCCESS" : "Spending successfully added",
+            "SPENDING_DELETE_SUCCESS" : "Spending successfully deleted",
+            "SPENDING_UPDATE_SUCCESS" : "Spending has been updated",
+            "EMAIL_ALREADY_IN_USE" : "Email already in use, please choose another",
+            "REGISTRATION_SUCCESS" : "Successful registration, you can login now",
+            "LOGIN_FAILED" : "Authentication failed. Invalid user or password."
+        },
+        "SHOW_HIDE" : {
+            "SHOW_BUTTON_TEXT" : "Show content",
+            "HIDE_BUTTON_TEXT" : "Hide content"
+        }
+    }
+}

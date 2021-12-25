@@ -19,24 +19,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{'show': isMenuOpen}">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item text-nowrap d-flex align-items-center">
-            <a class="nav-link" href="/new-transaction">New transaction</a>
+            <a class="nav-link" href="/new-transaction">{{ 'SHARED_COMPONENTS.HEADER.NAVIGATION.NEW_SPENDING' | translate }}</a>
           </li>
           <li class="nav-item text-nowrap d-flex align-items-center">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
+            <a class="nav-link" href="/dashboard">{{ 'SHARED_COMPONENTS.HEADER.NAVIGATION.DASHBOARD' | translate }}</a>
           </li>
           <li class="nav-item text-nowrap d-flex align-items-center">
-            <a class="nav-link" href="/profile">Profile</a>
+            <a class="nav-link" href="/profile">{{ 'SHARED_COMPONENTS.HEADER.NAVIGATION.PROFILE' | translate }}</a>
           </li>
+          <app-language-selector></app-language-selector>
           <li class="nav-item">
             <app-button 
-              [btnText]="'Login'"
+              btnText="SHARED_COMPONENTS.HEADER.NAVIGATION.LOGIN_BUTTON_TEXT"
               buttonSize="normal"
               (onClick)="navigateToLoginPage()"
               *ngIf="!(isUserAuthorized | async)"
               buttonColor="primary"
               ></app-button>
             <app-button 
-              [btnText]="'Logout'"
+              btnText="SHARED_COMPONENTS.HEADER.NAVIGATION.LOGOUT_BUTTON_TEXT"
               buttonSize="normal"
               (onClick)="logoutAndRedirect()"
               *ngIf="isUserAuthorized | async"

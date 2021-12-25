@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { AuthStateFacade } from 'src/app/store/auth/auth.facade';
 
 @Component({

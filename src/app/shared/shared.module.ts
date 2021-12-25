@@ -5,7 +5,6 @@ import {
   HeaderComponent,
   PageComponent,
   ButtonComponent,
-  InfoComponent,
   SpinnerComponent,
   TransactionViewComponent,
   MonthSwitchComponent,
@@ -13,6 +12,7 @@ import {
   NewIncomeFormComponent,
   NewSpendingFormComponent,
   ShowHideComponent,
+  LanguageSelectorComponent,
 } from './components/index';
 import {
   FontAwesomeModule,
@@ -31,12 +31,12 @@ import { HufPipe } from './pipes/huf.pipe';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NotificationService } from '../services/notification/notification.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 const components = [
   HeaderComponent,
   PageComponent,
   ButtonComponent,
-  InfoComponent,
   SpinnerComponent,
   TransactionViewComponent,
   timePipe,
@@ -51,6 +51,7 @@ const components = [
   NewIncomeFormComponent,
   NewSpendingFormComponent,
   ShowHideComponent,
+  LanguageSelectorComponent,
 ];
 
 @NgModule({
@@ -62,15 +63,17 @@ const components = [
     ReactiveFormsModule,
     DpDatePickerModule,
     TooltipModule.forRoot(),
+    TranslateModule,
   ],
   providers: [
     EmailValidatorDirective,
     PasswordValidatorDirective,
     LatinCharsValidatorDirective,
     NotificationService,
+    TranslateModule,
   ],
   declarations: components,
-  exports: [...components],
+  exports: [...components, TranslateModule],
 })
 export class SharedModule {
   constructor(library: FaIconLibrary) {

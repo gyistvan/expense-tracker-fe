@@ -9,13 +9,13 @@
             #
         </p>
         <p class="flex-4">
-            Amount
+            {{ 'DASHBOARD.CATEGORY_BOX.AMOUNT' | translate}}
         </p>
         <p class="flex-6">
-            Comment
+            {{ 'DASHBOARD.CATEGORY_BOX.COMMENT' | translate}}
         </p>
         <p class="flex-2 d-flex justify-content-end">
-            Actions
+            {{ 'DASHBOARD.CATEGORY_BOX.ACTIONS' | translate}}
         </p>
     </div>
     <div class="d-flex">
@@ -24,7 +24,7 @@
         </app-show-hide>
     </div>
     <div class="d-flex border-top border-bottom pt-2 border-secondary">
-        <h5 class="flex-1">Total:&nbsp;</h5>
+        <h5 class="flex-1">{{ 'DASHBOARD.CATEGORY_BOX.TOTAL' | translate}}:&nbsp;</h5>
         <h5 class="flex-4">{{ total | HufPipe }}</h5>
         <p class="flex-6"></p>
         <p class="flex-2"></p>

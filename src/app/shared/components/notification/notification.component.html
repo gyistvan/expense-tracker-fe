@@ -7,7 +7,7 @@
 <ng-template #notificationTpl let-notification="notification">
 	<div class="message d-flex justify-content-between align-content-center">
     <p class="pt-3 pb-1 ps-2">
-      {{ notification.message }}
+      {{ notification.message | translate }}
     </p>
     <app-button
       class="pt-3 pb-1 pe-2"
@@ -15,7 +15,7 @@
       (onClick)="close(notification)"
       buttonSize="small"
       [buttonColor]="notification.type === 2 ? 'danger' : 'success'"
-      tooltipText="Close the notification"
+      tooltipText="SHARED_COMPONENTS.NOTIFICATIONS.CLOSE_BUTTON"
       tooltipPlacement="left"
   ></app-button>
   </div>

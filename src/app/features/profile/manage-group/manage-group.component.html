@@ -1,18 +1,18 @@
 <div class="d-flex flex-column">
     <h3>{{ groupName | async }}</h3>
-    <h5>Members</h5>
+    <h5>{{ 'PROFILE.MANAGE_GROUP.MEMBERS' | translate }}</h5>
     <div class="d-flex">
         <p class="flex-1 ps-2">
             #
         </p>
         <p class="flex-4">
-            Name
+            {{ 'PROFILE.MANAGE_GROUP.NAME' | translate }}
         </p>
         <p class="flex-4">
-            Email
+            {{ 'PROFILE.MANAGE_GROUP.EMAIL' | translate }}
         </p>
         <p class="flex-2">
-            Actions
+            {{ 'PROFILE.MANAGE_GROUP.ACTIONS' | translate }}
         </p>
     </div>
     <div 
@@ -32,16 +32,16 @@
             <app-button buttonSize="small" iconName="trash"></app-button>
         </p>
     </div>
-    <h5 class="mt-3">Invited members</h5>
+    <h5 class="mt-3">{{ 'PROFILE.MANAGE_GROUP.INVITED_MEMBERS' | translate }}</h5>
     <div class="d-flex">
         <p class="flex-1 ps-2">
             #
         </p>
         <p class="flex-8">
-            Email
+            {{ 'PROFILE.MANAGE_GROUP.EMAIL' | translate }}
         </p>
         <p class="flex-2">
-            Actions
+            {{ 'PROFILE.MANAGE_GROUP.ACTIONS' | translate }}
         </p>
     </div>
     <div 
