@@ -42,7 +42,13 @@
             <label for="spentAt" class="form-label">
               {{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.SPENT_AT_LABEL' | translate }}
             </label>
-            <input type="date" id="spentAt" formControlName="spentAt" class="form-control">
+            <input 
+              type="date"
+              [value]="showDate"
+              id="spentAt"
+              formControlName="spentAt"
+              class="form-control"
+            >
           </div>
           <div class="mb-3">
               <input type="checkbox" id="addComment" formControlName="addComment">

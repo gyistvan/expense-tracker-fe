@@ -5,12 +5,14 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import * as moment from 'moment';
 import {
   DAILY_USED_FOR_OPTIONS,
   MONTHLY_USED_FOR_OPTIONS,
   TYPE_OPTIONS,
 } from 'src/app/constants';
 import { IncomePayload } from 'src/app/services/incomes/interfaces/income';
+import { AppStateFacade } from 'src/app/store/appStates/facade';
 import { IncomeStateFacade } from 'src/app/store/incomes/facade';
 
 @Component({
@@ -26,14 +28,20 @@ export class NewIncomeFormComponent implements OnInit {
   public dailyUsedForOptions: string[] = DAILY_USED_FOR_OPTIONS;
   public monthlyUsedForOptions: string[] = MONTHLY_USED_FOR_OPTIONS;
   public typeOptions: string[] = TYPE_OPTIONS;
+  public showDate?: string;
 
   constructor(
     private formBuilder: FormBuilder,
-    private incomeStateFacade: IncomeStateFacade
+    private incomeStateFacade: IncomeStateFacade,
+    private appStateFacade: AppStateFacade
   ) {}
 
   ngOnInit(): void {
     this.incomesForm = this.createForm();
+    this.showDate = this.appStateFacade.showDate;
+    this.appStateFacade.showDate$.subscribe((showDate) => {
+      this.spentAt.patchValue(moment(showDate).format('YYYY-MM-DD'));
+    });
   }
 
   createForm(): FormGroup {

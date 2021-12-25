@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import * as moment from 'moment';
 import { SavingPayload } from 'src/app/services/app-state-service/interfaces/saving';
 import { State } from 'src/app/store';
 import {
@@ -14,11 +15,16 @@ import { getDaysInInterval, getMonthlySaving, getShowDate } from './selectors';
   providedIn: 'root',
 })
 export class AppStateFacade {
+  public showDate = moment().format('YYYY-MM-DD');
   public showDate$ = this.store.pipe(select(getShowDate));
   public daysInInterval$ = this.store.pipe(select(getDaysInInterval));
   public monthlySaving$ = this.store.pipe(select(getMonthlySaving));
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>) {
+    this.showDate$.subscribe((showDate) => {
+      this.showDate = showDate;
+    });
+  }
 
   public changeDateInterval(showDate: string) {
     this.store.dispatch(changeDisplayedInterval({ showDate }));

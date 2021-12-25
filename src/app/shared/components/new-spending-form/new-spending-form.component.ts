@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import * as moment from 'moment';
 import {
   DAILY_USED_FOR_OPTIONS,
   MONTHLY_USED_FOR_OPTIONS,
@@ -27,6 +28,7 @@ export class NewSpendingFormComponent implements OnInit {
   public dailyUsedForOptions: string[] = DAILY_USED_FOR_OPTIONS;
   public monthlyUsedForOptions: string[] = MONTHLY_USED_FOR_OPTIONS;
   public typeOptions: string[] = TYPE_OPTIONS;
+  public showDate?: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +38,10 @@ export class NewSpendingFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.spendingForm = this.createForm();
-    this.appStateFacade.showDate$.subscribe((date) => {});
+    this.showDate = this.appStateFacade.showDate;
+    this.appStateFacade.showDate$.subscribe((showDate) => {
+      this.spentAt.patchValue(moment(showDate).format('YYYY-MM-DD'));
+    });
   }
 
   public createForm(): FormGroup {
@@ -81,6 +86,12 @@ export class NewSpendingFormComponent implements OnInit {
 
   public setDefault(): void {
     this.usedFor.patchValue(this.type.value === 'Monthly' ? 'Bill' : 'Food');
+  }
+
+  public getDate(date: string | null): string | void {
+    if (date) {
+      return moment(date).format('YYYY-MM-DD');
+    }
   }
 
   public onSubmit(): void {
