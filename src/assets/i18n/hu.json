@@ -7,6 +7,12 @@
         "SHOW_MONTH_BUTTON" : "Hónap mutatása",
         "SHOW_WEEK_BUTTON" : "Hét mutatása",
         "CATEGORY_BOX" : {
+            "CATEGORY_NAMES" : {
+                "BILL" : "Számlák",
+                "CHILDREN'S STUFF" : "Gyerek cuccok",
+                "NURSERY" : "Óvoda / Bölcsöde",
+                "OTHER" : "Egyéb"
+            },
             "AMOUNT" : "Mennyiség",
             "COMMENT" : "Komment",
             "ACTIONS" : "Opciók",

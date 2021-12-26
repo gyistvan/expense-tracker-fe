@@ -7,6 +7,12 @@
         "SHOW_MONTH_BUTTON" : "Show month",
         "SHOW_WEEK_BUTTON" : "Show week",
         "CATEGORY_BOX" : {
+            "CATEGORY_NAMES" : {
+                "BILL" : "Bills",
+                "CHILDREN'S STUFF" : "Children's stuff",
+                "NURSERY" : "Nursery",
+                "OTHER" : "Other"
+            },
             "AMOUNT" : "Amount",
             "COMMENT" : "Comment",
             "ACTIONS" : "Actions",
