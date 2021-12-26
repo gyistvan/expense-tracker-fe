@@ -10,7 +10,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DpDatePickerModule } from 'ng2-date-picker';
 import { ProfileComponent } from './profile.component';
 import { CreateGroupFormComponent } from './create-group-form/create-group-form.component';
 import { ManageGroupComponent } from './manage-group/manage-group.component';
@@ -37,7 +36,6 @@ const ROUTES = [{ path: '', component: ProfileComponent }];
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DpDatePickerModule,
   ],
   declarations: COMPONENTS,
   exports: [...COMPONENTS, RouterModule],

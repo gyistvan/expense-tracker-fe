@@ -28,7 +28,6 @@ import { PasswordValidatorDirective } from './directives/password-validator/pass
 import { TogglePasswordDirective } from './directives/toggle-password/toggle-password.directive';
 import { LatinCharsValidatorDirective } from './directives/latin-chars-validator/latin-chars-validator.directive';
 import { HufPipe } from './pipes/huf.pipe';
-import { DpDatePickerModule } from 'ng2-date-picker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NotificationService } from '../services/notification/notification.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -61,7 +60,6 @@ const components = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DpDatePickerModule,
     TooltipModule.forRoot(),
     TranslateModule,
   ],
