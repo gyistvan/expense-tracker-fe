@@ -143,6 +143,24 @@
             "UPDATE_BUTTON" : "Frissítés"
         }
     },
+    "EDIT_INCOME_FORM" : {
+        "AMOUNT_LABEL" : "Összeg",
+        "ERRORS" : {
+            "AMOUNT_REQUIRED" : "Az összeg megadása kötelező",
+            "MIN_AMOUNT" : "Az összegnek nagyobbnak kell lennie, mint 0",
+            "WHOSE_REQUIRED" : "Kié megadása kötelező"
+        },
+        "WHOSE_LABEL" : "Kié",
+        "WHOSE_PLACEHOLDER" : "Kiss János",
+        "RECIEVED_ANOTHER_DAY_LABEL" : "Más napon megszerezve",
+        "RECIEVED_AT_LABEL" : "Megszerezve ekkor",
+        "ADD_COMMENT_LABEL" : "Komment hozzáadása",
+        "COMMENT_LABEL" : "Komment",
+        "TOOLTIPS" : {
+            "ADD_INCOME_BUTTON" : "Új bevétel hozzáadása"
+        },
+        "ADD_INCOME_BUTTON_TEXT" : "Hozzáadás"
+    },
     "SHARED_COMPONENTS" : {
         "HEADER" : {
             "NAVIGATION" : {
@@ -194,8 +212,8 @@
             },
             "WHOSE_LABEL" : "Kié",
             "WHOSE_PLACEHOLDER" : "Kiss János",
-            "SPENT_ANOTHER_DAY_LABEL" : "Más napon költve",
-            "SPENT_AT_LABEL" : "Elköltve ekkor",
+            "RECIEVED_ANOTHER_DAY_LABEL" : "Más napon megszerezve",
+            "RECIEVED_AT_LABEL" : "Megszerezve ekkor",
             "ADD_COMMENT_LABEL" : "Komment hozzáadása",
             "COMMENT_LABEL" : "Komment",
             "TOOLTIPS" : {
@@ -244,6 +262,7 @@
             "DECLINE_INVITATION_SUCCESS" : "Csoport meghívás sikeresen elutasítva",
             "INCOME_ADD_SUCCESS" : "Bevétel sikeresen hozzáadva",
             "INCOME_DELETE_SUCCESS" : "Bevétel sikeresen törölve",
+            "INCOME_UPDATE_SUCCESS" : "Bevétel sikeresen frissítve",
             "SPENDING_ADD_SUCCESS" : "Költés sikeresen hozzáadva",
             "SPENDING_DELETE_SUCCESS" : "Költés sikeresen törölve",
             "SPENDING_UPDATE_SUCCESS" : "Költés sikeresen frissítve",

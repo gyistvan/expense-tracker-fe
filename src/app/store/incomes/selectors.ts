@@ -23,3 +23,8 @@ export const getTotal = createSelector(
   selectIncomeState,
   (state: IncomeState) => state.total
 );
+
+export const getIncome = createSelector(
+  selectIncomeState,
+  (state: IncomeState) => state.income
+);

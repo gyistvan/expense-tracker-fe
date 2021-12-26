@@ -10,10 +10,17 @@ import {
   requestDeleteIncome,
   requestDeleteIncomeFail,
   requestDeleteIncomeSuccess,
+  requestIncome,
+  requestIncomeFail,
+  requestIncomeSuccess,
+  requestUpdateIncome,
+  requestUpdateIncomeFail,
+  requestUpdateIncomeSuccess,
 } from './actions';
 
 export type IncomeState = {
   incomes: Income[];
+  income?: Income;
   isIncomesLoading: boolean;
   total: number;
   errorMessage?: string;
@@ -52,6 +59,27 @@ const incomeDataReducer = createReducer(
       state.total - state.incomes.find((income) => income._id === id)!.amount,
   })),
   on(requestDeleteIncomeFail, (state) => ({
+    ...state,
+    isIncomesLoading: false,
+  })),
+  on(requestIncome, (state) => ({ ...state, isIncomesLoading: true })),
+  on(requestIncomeSuccess, (state, { income }) => ({
+    ...state,
+    income,
+    isIncomesLoading: false,
+  })),
+  on(requestIncomeFail, (state) => ({
+    ...state,
+    income: undefined,
+    isIncomesLoading: false,
+  })),
+  on(requestUpdateIncome, (state) => ({ ...state, isIncomesLoading: true })),
+  on(requestUpdateIncomeSuccess, (state, { income }) => ({
+    ...state,
+    income,
+    isIncomesLoading: false,
+  })),
+  on(requestUpdateIncomeFail, (state) => ({
     ...state,
     isIncomesLoading: false,
   }))

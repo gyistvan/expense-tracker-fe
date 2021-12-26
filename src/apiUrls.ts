@@ -15,6 +15,8 @@ export const apiUrls = {
   },
   INCOME: {
     DELETE: '/api/incomeById/',
+    GET: '/api/incomeById/',
+    UPDATE: '/api/incomeById/',
   },
   APP_STATE: {
     GET: '/api/saving',

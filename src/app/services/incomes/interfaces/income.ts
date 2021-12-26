@@ -4,7 +4,7 @@ export interface Income {
   _id: string;
   createdAt: string;
   comment?: string;
-  spentAt?: string;
+  recievedAt?: string;
   __v: number;
 }
 
@@ -12,7 +12,7 @@ export interface IncomePayload {
   amount: number;
   whose: string;
   comment: string;
-  spentAt: string;
+  recievedAt: string;
 }
 
 export interface IncomeResponse {

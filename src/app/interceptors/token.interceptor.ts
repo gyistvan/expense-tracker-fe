@@ -34,7 +34,6 @@ export class TokenInterceptor implements HttpInterceptor {
     translationKey: string,
     params?: Record<string, any>
   ): void {
-    let result;
     if (params) {
       let forkJoinParams: Record<string, any> = {};
       Object.keys(params).forEach((param) => {
@@ -80,7 +79,6 @@ export class TokenInterceptor implements HttpInterceptor {
           this.translation
             .pipe(take(1))
             .subscribe((translatedString: string) => {
-              console.log(translatedString);
               this.notificationService.success('Success', translatedString);
             });
         }
@@ -89,7 +87,13 @@ export class TokenInterceptor implements HttpInterceptor {
         if (err.status === 401) {
           this.router.navigate(['/login']);
         } else if (err.status !== 200) {
-          this.notificationService.error(`Error`, err.error.message, 3000);
+          console.log(err);
+          this.createMessage(err.error.message, err.error.translationParams);
+          this.translation
+            .pipe(take(1))
+            .subscribe((translatedString: string) => {
+              this.notificationService.error('Error', translatedString);
+            });
         }
         return of(err);
       })

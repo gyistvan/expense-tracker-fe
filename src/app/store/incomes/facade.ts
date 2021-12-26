@@ -6,14 +6,17 @@ import {
   requestAddIncome,
   requestAllIncomes,
   requestDeleteIncome,
+  requestIncome,
+  requestUpdateIncome,
 } from './actions';
-import { getTotal, incomes, isIncomesLoading } from './selectors';
+import { getIncome, getTotal, incomes, isIncomesLoading } from './selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IncomeStateFacade {
   incomes$ = this.store.pipe(select(incomes));
+  income$ = this.store.pipe(select(getIncome));
   total$ = this.store.pipe(select(getTotal));
   isIncomesLoading$ = this.store.pipe(select(isIncomesLoading));
 
@@ -31,7 +34,15 @@ export class IncomeStateFacade {
     this.store.dispatch(requestAllIncomes({ requestUrl }));
   }
 
-  deleteIncome(id: string) {
+  public deleteIncome(id: string) {
     this.store.dispatch(requestDeleteIncome({ id }));
+  }
+
+  public getIncomeById(id: string) {
+    this.store.dispatch(requestIncome({ id }));
+  }
+
+  public updateIncomeById(id: string, incomePayload: IncomePayload) {
+    this.store.dispatch(requestUpdateIncome({ id, incomePayload }));
   }
 }

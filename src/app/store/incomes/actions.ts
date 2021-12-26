@@ -14,6 +14,12 @@ export enum IncomeActionTypes {
   requestDeleteIncome = '[IncomeRequest] requestDeleteIncome',
   requestDeleteIncomeSuccess = '[IncomeRequest] requestDeleteIncomeSuccess',
   requestDeleteIncomeFail = '[IncomeRequest] requestDeleteIncomeFail',
+  requestIncome = '[IncomeRequest] requestIncome',
+  requestIncomeSuccess = '[IncomeRequest] requestIncomeSuccess',
+  requestIncomeFail = '[IncomeRequest] requestIncomeFail',
+  requestUpdateIncome = '[IncomeRequest] requestUpdateIncome',
+  requestUpdateIncomeSuccess = '[IncomeRequest] requestUpdateIncomeSuccess',
+  requestUpdateIncomeFail = '[IncomeRequest] requestUpdateIncomeFail',
 }
 
 export const requestAddIncome = createAction(
@@ -48,6 +54,7 @@ export const requestDeleteIncome = createAction(
   IncomeActionTypes.requestDeleteIncome,
   props<{ id: string }>()
 );
+
 export const requestDeleteIncomeSuccess = createAction(
   IncomeActionTypes.requestDeleteIncomeSuccess,
   props<{ id: string }>()
@@ -55,4 +62,32 @@ export const requestDeleteIncomeSuccess = createAction(
 
 export const requestDeleteIncomeFail = createAction(
   IncomeActionTypes.requestDeleteIncomeFail
+);
+
+export const requestIncome = createAction(
+  IncomeActionTypes.requestIncome,
+  props<{ id: string }>()
+);
+
+export const requestIncomeSuccess = createAction(
+  IncomeActionTypes.requestIncomeSuccess,
+  props<{ income: Income }>()
+);
+
+export const requestIncomeFail = createAction(
+  IncomeActionTypes.requestIncomeFail
+);
+
+export const requestUpdateIncome = createAction(
+  IncomeActionTypes.requestUpdateIncome,
+  props<{ id: string; incomePayload: IncomePayload }>()
+);
+
+export const requestUpdateIncomeSuccess = createAction(
+  IncomeActionTypes.requestUpdateIncomeSuccess,
+  props<{ income: Income }>()
+);
+
+export const requestUpdateIncomeFail = createAction(
+  IncomeActionTypes.requestUpdateIncomeFail
 );

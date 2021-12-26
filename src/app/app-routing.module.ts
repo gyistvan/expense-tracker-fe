@@ -32,12 +32,19 @@ export const routes: Routes = [
       import('./features/profile/profile.module').then((m) => m.ProfileModule),
     canLoad: [AuthorizedGuard],
   },
-
   {
     path: 'new-transaction',
     loadChildren: (): Promise<any> =>
       import('./features/new-transaction/new-transaction.module').then(
         (m) => m.NewTransactionModule
+      ),
+    canLoad: [AuthorizedGuard],
+  },
+  {
+    path: 'edit-income',
+    loadChildren: (): Promise<any> =>
+      import('./features/edit-income/edit-income.module').then(
+        (m) => m.EditIncomeModule
       ),
     canLoad: [AuthorizedGuard],
   },

@@ -143,6 +143,24 @@
             "UPDATE_BUTTON" : "Update"
         }
     },
+    "EDIT_INCOME_FORM" : {
+        "AMOUNT_LABEL" : "Amount",
+        "ERRORS" : {
+            "AMOUNT_REQUIRED" : "Amount is required",
+            "MIN_AMOUNT" : "Amount must be higher than 0",
+            "WHOSE_REQUIRED" : "Whose is required"
+        },
+        "WHOSE_LABEL" : "Whose",
+        "WHOSE_PLACEHOLDER" : "John Doe",
+        "RECIEVED_ANOTHER_DAY_LABEL" : "Recieved on another day",
+        "RECIEVED_AT_LABEL" : "Recieved at",
+        "ADD_COMMENT_LABEL" : "Add comment",
+        "COMMENT_LABEL" : "Comment",
+        "TOOLTIPS" : {
+            "ADD_INCOME_BUTTON" : "Add new income"
+        },
+        "ADD_INCOME_BUTTON_TEXT" : "Add"
+    },
     "SHARED_COMPONENTS" : {
         "HEADER" : {
             "NAVIGATION" : {
@@ -194,8 +212,8 @@
             },
             "WHOSE_LABEL" : "Whose",
             "WHOSE_PLACEHOLDER" : "John Doe",
-            "SPENT_ANOTHER_DAY_LABEL" : "Spent on another day",
-            "SPENT_AT_LABEL" : "Spent at",
+            "RECIEVED_ANOTHER_DAY_LABEL" : "Recieved on another day",
+            "RECIEVED_AT_LABEL" : "Recieved at",
             "ADD_COMMENT_LABEL" : "Add comment",
             "COMMENT_LABEL" : "Comment",
             "TOOLTIPS" : {
@@ -244,6 +262,7 @@
             "DECLINE_INVITATION_SUCCESS" : "Successfully declined invitation",
             "INCOME_ADD_SUCCESS" : "Successfully added income",
             "INCOME_DELETE_SUCCESS" : "Successfully deleted income",
+            "INCOME_UPDATE_SUCCESS" : "Successfully edited income",
             "SPENDING_ADD_SUCCESS" : "Spending successfully added",
             "SPENDING_DELETE_SUCCESS" : "Spending successfully deleted",
             "SPENDING_UPDATE_SUCCESS" : "Spending has been updated",

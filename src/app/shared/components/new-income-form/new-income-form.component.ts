@@ -40,7 +40,7 @@ export class NewIncomeFormComponent implements OnInit {
     this.incomesForm = this.createForm();
     this.showDate = this.appStateFacade.showDate;
     this.appStateFacade.showDate$.subscribe((showDate) => {
-      this.spentAt.patchValue(moment(showDate).format('YYYY-MM-DD'));
+      this.recievedAt.patchValue(moment(showDate).format('YYYY-MM-DD'));
     });
   }
 
@@ -48,8 +48,8 @@ export class NewIncomeFormComponent implements OnInit {
     return this.formBuilder.group({
       amount: ['', [Validators.required, Validators.min(0)]],
       whose: ['', [Validators.required]],
-      spentAt: [''],
-      isSpentAnotherDay: [false],
+      recievedAt: [''],
+      isRecievedAnotherDay: [false],
       addComment: [false],
       comment: [],
     });
@@ -63,12 +63,12 @@ export class NewIncomeFormComponent implements OnInit {
     return this.incomesForm.get('whose') as AbstractControl;
   }
 
-  get isSpentAnotherDay(): AbstractControl {
-    return this.incomesForm.get('isSpentAnotherDay') as AbstractControl;
+  get isRecievedAnotherDay(): AbstractControl {
+    return this.incomesForm.get('isRecievedAnotherDay') as AbstractControl;
   }
 
-  get spentAt(): AbstractControl {
-    return this.incomesForm.get('spentAt') as AbstractControl;
+  get recievedAt(): AbstractControl {
+    return this.incomesForm.get('recievedAt') as AbstractControl;
   }
 
   get addComment(): AbstractControl {
@@ -84,7 +84,9 @@ export class NewIncomeFormComponent implements OnInit {
       let incomePayload: IncomePayload = {
         amount: parseInt(this.amount.value),
         whose: this.whose.value,
-        spentAt: this.spentAt.value ? this.spentAt.value : Date.now(),
+        recievedAt: this.isRecievedAnotherDay.value
+          ? this.recievedAt.value
+          : Date.now(),
         comment: this.comment.value,
       };
       this.incomeStateFacade.saveNewIncome(incomePayload);

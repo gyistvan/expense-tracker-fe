@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ActualWeekComponent } from './actual-week/actual-week.component';
 import { DashboardComponent } from './dashboard.component';
-import { DpDatePickerModule } from 'ng2-date-picker';
 import { IncomesTableComponent } from './incomes-table/incomes-table.component';
 import { MonthlyTransactionsComponent } from './monthly-transactions/monthly-transactions.component';
 import { CategoryBoxComponent } from './monthly-spendings/category-box/category-box.component';
@@ -31,7 +30,6 @@ const ROUTES = [{ path: '', component: DashboardComponent }];
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DpDatePickerModule,
   ],
   declarations: COMPONENTS,
   exports: [...COMPONENTS, RouterModule],

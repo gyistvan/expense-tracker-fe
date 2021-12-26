@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError, tap } from 'rxjs/operators';
@@ -9,6 +10,8 @@ import {
   requestAddIncomeSuccess,
   requestAllIncomesSuccess,
   requestDeleteIncomeSuccess,
+  requestIncomeSuccess,
+  requestUpdateIncomeSuccess,
 } from './actions';
 
 @Injectable()
@@ -25,7 +28,7 @@ export class IncomeEffects {
     )
   );
 
-  getIncomes$ = createEffect(() =>
+  getAllIncomes$ = createEffect(() =>
     this.actions$.pipe(
       ofType(IncomeActionTypes.requestAllIncomes),
       mergeMap(({ requestUrl }) => {
@@ -33,6 +36,35 @@ export class IncomeEffects {
           map((incomes: Income[]) => requestAllIncomesSuccess({ incomes })),
           catchError(() =>
             of({ type: IncomeActionTypes.requestAllIncomesFail })
+          )
+        );
+      })
+    )
+  );
+
+  getIncome$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(IncomeActionTypes.requestIncome),
+      mergeMap(({ id }) => {
+        return this.incomeService.getIncomeById(id).pipe(
+          map((income: Income) => requestIncomeSuccess({ income })),
+          catchError(() => of({ type: IncomeActionTypes.requestIncomeFail }))
+        );
+      })
+    )
+  );
+
+  updateIncome$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(IncomeActionTypes.requestUpdateIncome),
+      mergeMap(({ id, incomePayload }) => {
+        return this.incomeService.updateIncomeById(id, incomePayload).pipe(
+          map(({ income }) => {
+            this.router.navigate(['/dashboard']);
+            return requestUpdateIncomeSuccess({ income });
+          }),
+          catchError(() =>
+            of({ type: IncomeActionTypes.requestUpdateIncomeFail })
           )
         );
       })
@@ -55,6 +87,7 @@ export class IncomeEffects {
 
   constructor(
     private actions$: Actions,
-    private incomeService: IncomeService
+    private incomeService: IncomeService,
+    private router: Router
   ) {}
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Income } from 'src/app/services/incomes/interfaces/income';
 import { IncomeStateFacade } from 'src/app/store/incomes/facade';
 
@@ -13,7 +14,10 @@ export class IncomesTableComponent implements OnInit {
   public total = 0;
   public isLoading = true;
 
-  constructor(private incomeStateFacade: IncomeStateFacade) {}
+  constructor(
+    private incomeStateFacade: IncomeStateFacade,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.incomeStateFacade.total$.subscribe((total) => (this.total = total));
@@ -31,6 +35,10 @@ export class IncomesTableComponent implements OnInit {
       )
     )
       this.incomeStateFacade.deleteIncome(id);
+  }
+
+  public redirectToEditPage(id: string): void {
+    this.router.navigate([`edit-income/${id}`]);
   }
 
   private getIncome(id: string): Income {

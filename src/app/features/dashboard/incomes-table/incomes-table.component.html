@@ -27,8 +27,20 @@
                 <p class="flex-3">{{ record.whose }}</p>
                 <p class="flex-6" style="white-space: pre-line;">{{ record.comment }}</p>
                 <p class="flex-4 d-flex justify-content-end">
-                    <app-button buttonSize="small" iconName="pen" tooltipText="DASHBOARD.TOOLTIPS.EDIT_INCOME" buttonColor="primary"></app-button>
-                    <app-button buttonSize="small" iconName="trash" tooltipText="DASHBOARD.TOOLTIPS.DELETE_INCOME" buttonColor="dark" (onClick)="deleteIncome(record._id)"></app-button>
+                    <app-button 
+                      buttonSize="small"
+                      iconName="pen"
+                      tooltipText="DASHBOARD.TOOLTIPS.EDIT_INCOME"
+                      buttonColor="primary"
+                      (onClick)="redirectToEditPage(record._id)">
+                    </app-button>
+                    <app-button
+                      buttonSize="small"
+                      iconName="trash"
+                      tooltipText="DASHBOARD.TOOLTIPS.DELETE_INCOME"
+                      buttonColor="dark"
+                      (onClick)="deleteIncome(record._id)">
+                    </app-button>
                 </p>
             </div>
         </app-show-hide>
