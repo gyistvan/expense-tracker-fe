@@ -17,6 +17,9 @@ export enum TransactionActionTypes {
   requestTransactionUpdate = '[TransactionRequest] requestTransactionUpdate',
   requestTransactionUpdateSuccess = '[TransactionRequest] requestTransactionUpdateSuccess',
   requestTransactionUpdateFail = '[TransactionRequest] requestTransactionUpdateFail',
+  requestSingleTransaction = '[TransactionRequest] requestSingleTransaction',
+  requestSingleTransactionSuccess = '[TransactionRequest] requestSingleTransactionSuccess',
+  requestSingleTransactionFail = '[TransactionRequest] requestSingleTransactionFail',
 }
 
 export const requestTransactions = createAction(
@@ -76,5 +79,20 @@ export const requestTransactionUpdateSuccess = createAction(
 
 export const requestTransactionUpdateFail = createAction(
   TransactionActionTypes.requestTransactionUpdateFail,
+  props<{ error: string }>()
+);
+
+export const requestSingleTransaction = createAction(
+  TransactionActionTypes.requestSingleTransaction,
+  props<{ id: string }>()
+);
+
+export const requestSingleTransactionSuccess = createAction(
+  TransactionActionTypes.requestSingleTransactionSuccess,
+  props<{ transaction: Transaction }>()
+);
+
+export const requestSingleTransactionFail = createAction(
+  TransactionActionTypes.requestSingleTransactionFail,
   props<{ error: string }>()
 );

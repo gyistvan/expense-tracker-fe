@@ -1,8 +1,10 @@
-import { state } from '@angular/animations';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as moment from 'moment';
 import { Transaction } from 'src/app/services/transaction/interfaces/transaction';
 import {
+  requestSingleTransaction,
+  requestSingleTransactionFail,
+  requestSingleTransactionSuccess,
   requestTransactionAdd,
   requestTransactionAddFail,
   requestTransactionAddSuccess,
@@ -19,6 +21,7 @@ import {
 
 export type TransactionState = {
   transactions: Transaction[];
+  transaction?: Transaction;
   isTransactionsLoading: boolean;
   errorMessage?: string;
   startDate: string;
@@ -93,6 +96,20 @@ const transactionsDataReducer = createReducer(
     ...state,
     isTransactionsLoading: true,
     errorMessage: error,
+  })),
+  on(requestSingleTransaction, (state) => ({
+    ...state,
+    isTransactionsLoading: true,
+  })),
+  on(requestSingleTransactionSuccess, (state, { transaction }) => ({
+    ...state,
+    transaction,
+    isTransactionsLoading: false,
+  })),
+  on(requestSingleTransactionFail, (state) => ({
+    ...state,
+    transaction: undefined,
+    isTransactionsLoading: false,
   }))
 );
 

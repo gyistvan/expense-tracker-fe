@@ -9,7 +9,8 @@ import { IncomesTableComponent } from './incomes-table/incomes-table.component';
 import { MonthlyTransactionsComponent } from './monthly-transactions/monthly-transactions.component';
 import { CategoryBoxComponent } from './monthly-spendings/category-box/category-box.component';
 import { MontlySpendingsComponent } from './monthly-spendings/montly-spendings.component';
-import { SavingFormComponent } from './saving-form/saving-form.component';
+import { SavingFormComponent } from './summary/saving-form/saving-form.component';
+import { SummaryComponent } from './summary/summary.component';
 
 const COMPONENTS = [
   DashboardComponent,
@@ -20,6 +21,7 @@ const COMPONENTS = [
   CategoryBoxComponent,
   MontlySpendingsComponent,
   SavingFormComponent,
+  SummaryComponent,
 ];
 const ROUTES = [{ path: '', component: DashboardComponent }];
 

@@ -1,22 +1,22 @@
 
     <div class="d-flex flex-column flex-md-row align-items-center pt-3" [ngClass]="{'bg-striped-light' : index % 2 === 0}">
-        <p class="flex-1 ps-2">
+        <p class="flex-1 ps-3">
             {{ index + 1 }}
         </p>
         <p class="flex-4" [ngClass]="{'text-decoration-line-through': transaction.isPaid && transaction.type === 'Monthly'}">
             {{ transaction.amount | HufPipe}}
         </p>
         <p
-          class="flex-6"
+          class="flex-6 ps-4"
           [ngClass]="{'text-decoration-line-through': transaction.isPaid && transaction.type === 'Monthly'}">
             <span style="white-space: pre-line;" *ngIf="transaction.comment">{{ transaction.comment }} &nbsp;</span>
             <fa-icon *ngIf="isDailyTransaction(transaction)" [icon]="['fas', getIconName(transaction)]"></fa-icon>
         </p>
-        <p class="flex-2 d-flex justify-content-between justify-content-lg-end" *ngIf="isToday">
+        <p class="flex-2 d-flex justify-content-between justify-content-lg-end pe-3" *ngIf="isToday">
             <app-button 
                 class="m-3 m-md-0"
                 *ngIf="!transaction.isPaid && transaction.type === 'Monthly'"
-                tooltipText="Mark spending as paid" 
+                tooltipText="DASHBOARD.TOOLTIPS.MARK_PAID" 
                 [iconName]="'check'"
                 buttonColor="info"
                 [buttonSize]="'small'" 
@@ -25,7 +25,7 @@
             <app-button 
                 class="m-3 m-md-0"
                 *ngIf="transaction.isPaid && transaction.type === 'Monthly'"
-                tooltipText="Mark spending as unpaid" 
+                tooltipText="DASHBOARD.TOOLTIPS.MARK_UNPAID" 
                 [iconName]="'times-circle'"
                 buttonColor="info"
                 [buttonSize]="'small'" 
@@ -34,14 +34,15 @@
             <app-button
               class="m-3 m-md-0"
               [iconName]="'pen'"
-              tooltipText="Edit spending"
+              tooltipText="DASHBOARD.TOOLTIPS.EDIT_SPENDING"
               buttonColor="primary"
-              [buttonSize]="'small'">
+              [buttonSize]="'small'"
+              (onClick)="redirectToEditPage(transaction._id)">
             </app-button>
             <app-button
               class="m-3 m-md-0"
               [iconName]="'trash'"
-              tooltipText="Delete spending"
+              tooltipText="DASHBOARD.TOOLTIPS.DELETE_SPENDING"
               buttonColor="dark"
               [buttonSize]="'small'"
               (onClick)="onDelete(transaction._id)">

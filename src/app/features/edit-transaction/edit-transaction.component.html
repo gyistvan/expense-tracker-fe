@@ -1,0 +1,114 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form class="form" [formGroup]="transactionForm" (ngSubmit)="onSubmit()" #trForm="ngForm">
+          <div class="mb-3">
+            <label for="amount" class="form-label">
+              {{ 'EDIT_SPENDING_FORM.AMOUNT_LABEL' | translate }}
+            </label>
+            <input
+              [focus-me]="true"
+              id="amount"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': 
+                (amount.touched || trForm.submitted) && (amount.errors?.required || amount.errors?.min)
+              }"
+              type="number"
+              placeholder="10000"
+              formControlName="amount"
+              autocomplete="off"
+              required
+            />
+            <div
+              class="text-danger"
+              *ngIf="(amount.touched || trForm.submitted) && (amount.errors?.required || amount.errors?.min)
+            ">
+              <p *ngIf="amount.errors?.required">
+                {{ 'EDIT_SPENDING_FORM.ERRORS.AMOUNT_REQUIRED' | translate }}
+              </p>
+              <p *ngIf="amount.errors?.min">
+                {{ 'EDIT_SPENDING_FORM.ERRORS.MIN_AMOUNT' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="type" class="form-label">
+              {{ 'EDIT_SPENDING_FORM.TYPE_LABEL' | translate }}
+            </label>
+            <select 
+              id="type"
+              class="form-control"
+              formControlName="type"
+              (change)="setDefault()"
+              [ngClass]="{ 'is-invalid': (type.touched || trForm.submitted) && (type.errors?.required)}">
+                <option *ngFor="let option of typeOptions" [value]="option">
+                  {{ 'EDIT_SPENDING_FORM.OPTIONS.' + option | uppercase | translate }}
+                </option>
+            </select>
+            <div class="text-danger" *ngIf="(type.touched || trForm.submitted) && (type.errors?.required)">
+              {{ 'EDIT_SPENDING_FORM.ERRORS.TYPE_REQUIRED' | translate }}
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="usedFor" class="form-label">
+              {{ 'EDIT_SPENDING_FORM.USED_FOR_LABEL' | translate }}
+            </label>
+            <select id="usedFor" class="form-control" formControlName="usedFor" [ngClass]="{ 'is-invalid': (usedFor.touched || trForm.submitted) && (usedFor.errors?.required)}">
+                <ng-template [ngIf]="type.value === 'Daily'">
+                    <option *ngFor="let option of dailyUsedForOptions" [value]="option">
+                      {{ 'EDIT_SPENDING_FORM.OPTIONS.' + option | uppercase | translate }}
+                    </option>
+                </ng-template>
+                <ng-template [ngIf]="type.value === 'Monthly'">
+                    <option *ngFor="let option of monthlyUsedForOptions" [value]="option">
+                      {{ 'EDIT_SPENDING_FORM.OPTIONS.' + option | uppercase | translate }}
+                    </option>
+                </ng-template>
+            </select>
+            <div class="text-danger" *ngIf="(usedFor.touched || trForm.submitted) && (usedFor.errors?.required)">
+              {{ 'EDIT_SPENDING_FORM.ERRORS.USED_FOR_REQUIRED' | translate }}
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="spentAt" class="form-label">
+              {{ 'EDIT_SPENDING_FORM.SPENT_AT_LABEL' | translate }}
+            </label>
+            <input
+              type="date"
+              [focus-me]="true" 
+              id="spentAt"
+              formControlName="spentAt"
+              class="form-control"
+            >
+          </div>
+          <div class="mb-3">
+            <input id="isPaid" type="checkbox" formControlName="isPaid" />
+            <label for="isPaid" class="form-label">
+              &nbsp;&nbsp;{{ 'EDIT_SPENDING_FORM.IS_PAID_LABEL' | translate }}
+            </label>
+          </div>
+          <div class="mb-3">
+            <label for="comment" class="form-label">
+              {{ 'EDIT_SPENDING_FORM.COMMENT_LABEL' | translate }}
+            </label>
+            <textarea
+              [focus-me]="true" 
+              autocomplete="off"
+              id="comment"
+              formControlName="comment"
+              class="form-control">
+            </textarea>
+          </div>
+          <div class="d-flex justify-content-center my-5">
+            <app-button
+              tooltipText="EDIT_SPENDING_FORM.TOOLTIPS.ADD_SPENDING_BUTTON"
+              buttonColor="primary"
+              btnText="EDIT_SPENDING_FORM.ADD_SPENDING_BUTTON_TEXT"
+              iconName="check"></app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

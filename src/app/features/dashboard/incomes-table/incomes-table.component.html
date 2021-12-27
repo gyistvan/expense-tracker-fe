@@ -1,6 +1,6 @@
-<div class="d-flex flex-column">
-    <div class="d-flex">
-        <p class="flex-1 ps-2">
+<div class="d-flex flex-column border border-secondary mt-5">
+    <div class="d-flex p-3">
+        <p class="flex-1">
             #
         </p>
         <p class="flex-3">
@@ -19,10 +19,10 @@
     <div *ngIf="!isLoading else spinner">
         <app-show-hide componentName="incomes-list">
             <div 
-              class="d-flex pt-3"
+              class="d-flex p-3"
               *ngFor="let record of incomes, let i = index"
               [ngClass]="{'bg-striped-light' : i % 2 === 0}">
-                <p class="flex-1 ps-2">{{ i + 1 }}</p>
+                <p class="flex-1">{{ i + 1 }}</p>
                 <p class="flex-3">{{ record.amount | HufPipe }}</p>
                 <p class="flex-3">{{ record.whose }}</p>
                 <p class="flex-6" style="white-space: pre-line;">{{ record.comment }}</p>
@@ -44,7 +44,7 @@
                 </p>
             </div>
         </app-show-hide>
-        <div class="d-flex border-top border-bottom pt-2 border-secondary">
+        <div class="d-flex border-top border-bottom p-3 border-secondary bg-striped-light">
             <h5 class="flex-1">{{ 'DASHBOARD.INCOMES_TABLE.TOTAL' | translate }}:&nbsp;</h5>
             <h5 class="flex-4">{{ total | HufPipe }}</h5>
             <p class="flex-6"></p>

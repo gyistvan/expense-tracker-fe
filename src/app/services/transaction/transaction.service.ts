@@ -37,12 +37,18 @@ export class TransactionService {
     );
   }
 
-  updateTransaction(
+  public updateTransaction(
     updateTransactionAction: UpdateTransactionAction
   ): Observable<TransactionResponse> {
     return this.http.put<TransactionResponse>(
       BASE_URL + apiUrls.TRANSACTION.UPDATE + updateTransactionAction.id,
       updateTransactionAction.transaction
+    );
+  }
+
+  public getTransactionById(id: string): Observable<TransactionResponse> {
+    return this.http.get<TransactionResponse>(
+      BASE_URL + apiUrls.TRANSACTION.GET + id
     );
   }
 }

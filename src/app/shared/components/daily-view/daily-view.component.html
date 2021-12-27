@@ -1,17 +1,17 @@
-<div class="d-flex flex-column mt-5">
+<div class="d-flex flex-column mt-5 border border-secondary">
     <div>
-        <h5>
+        <h5 class="bg-striped-light p-3">
             {{ displayedDate | date: 'yyyy-MM-dd'  }}
         </h5>
     <div>
-    <div class="d-flex border-bottom border-secondary">
-        <p class="flex-1 ps-2">
+    <div class="d-flex border-bottom border-secondary p-3">
+        <p class="flex-1">
             #
         </p>
         <p class="flex-4">
             {{ 'SHARED_COMPONENTS.DAILY_VIEW.AMOUNT' | translate }}
         </p>
-        <p class="flex-6">
+        <p class="flex-6 ps-4">
             {{ 'SHARED_COMPONENTS.DAILY_VIEW.COMMENT' | translate }}
         </p>
         <p class="flex-2 d-flex justify-content-end">
@@ -35,13 +35,9 @@
             <p class="p-2 mt-3">{{ 'SHARED_COMPONENTS.DAILY_VIEW.NO_DATA' | translate }}</p>
         </div>
     </ng-template>
-    <div class="d-flex flex-column flex-lg-row border-top border-bottom pt-2 border-secondary">
-        <h5 class="flex-1 text-center text-lg-left">{{ 'SHARED_COMPONENTS.DAILY_VIEW.SPENT' | translate }}&nbsp;</h5>
-        <h5 class="flex-4 text-center text-lg-left">
-            {{ getTotalForDay(filteredTransactions) | HufPipe }}
-        </h5>
-        <h5 class="flex-2 text-center text-lg-left">{{ 'SHARED_COMPONENTS.DAILY_VIEW.AVAILABLE' | translate }}&nbsp;</h5>
-        <h5 class="flex-2 text-center text-lg-left">
+    <div class="d-flex flex-column flex-lg-row border-top border-bottom p-3 bg-striped-light border-secondary">
+        <h5 class="flex-1 text-center text-lg-start">{{ 'SHARED_COMPONENTS.DAILY_VIEW.AVAILABLE' | translate }}&nbsp;</h5>
+        <h5 class="flex-4 text-center text-lg-start">
           {{ getSpendableMoneyPerDay(
             incomes | async,
             transactions | async,
@@ -49,8 +45,12 @@
             monthlySaving | async) | HufPipe
           }}
         </h5>
-        <h5 class="flex-2 text-center text-lg-left">{{ 'SHARED_COMPONENTS.DAILY_VIEW.REMAINDER' | translate }}&nbsp;</h5>
-        <h5 class="flex-2 text-center text-lg-left">
+        <h5 class="flex-2 text-center text-lg-start">{{ 'SHARED_COMPONENTS.DAILY_VIEW.SPENT' | translate }}&nbsp;</h5>
+        <h5 class="flex-2 text-center text-lg-start">
+            {{ getTotalForDay(filteredTransactions) | HufPipe }}
+        </h5>
+        <h5 class="flex-2 text-center text-lg-end">{{ 'SHARED_COMPONENTS.DAILY_VIEW.REMAINDER' | translate }}&nbsp;</h5>
+        <h5 class="flex-2 text-center text-lg-end">
             {{ getSpendableMoneyPerDay(
                 incomes | async,
                 transactions | async,

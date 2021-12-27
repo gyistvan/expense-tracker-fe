@@ -13,7 +13,7 @@
                 "NURSERY" : "Óvoda / Bölcsöde",
                 "OTHER" : "Egyéb"
             },
-            "AMOUNT" : "Mennyiség",
+            "AMOUNT" : "Összeg",
             "COMMENT" : "Komment",
             "ACTIONS" : "Opciók",
             "TOTAL" : "Összesen"
@@ -21,7 +21,7 @@
         "DAILY_SPENDINGS" : "Napi költések",
         "INCOMES" : "Bevételek",
         "INCOMES_TABLE" : {
-            "AMOUNT" : "Mennyiség",
+            "AMOUNT" : "Összeg",
             "WHOSE" : "Kié",
             "COMMENT" : "Komment",
             "ACTIONS" : "Opciók",
@@ -39,12 +39,16 @@
             "EDIT_TOOLTIP" : "Tartalék szerkesztése a kiválasztott hónaphoz",
             "EDIT_SAVING" : "Tartalék frissítése a kiválasztott hónaphoz",
             "ADD_SAVING" : "Tartalék hozzáadása a kiválasztott hónaphoz",
-            "CANCEL_SAVING" : "Mégse"
+            "CANCEL_SAVING" : "Mégse",
+            "MARK_UNPAID" : "Költés megjelölése kifizetetlennek",
+            "MARK_PAID" : "Költés megjelölése kifizetettnek",
+            "EDIT_SPENDING" : "Költés szerkesztése",
+            "DELETE_SPENDING" : "Költés törlése"
         },
         "MONTHLY_SPENDINGS" : "Havi kiadások",
         "NEW_TRANSACTION" : "Új költés",
         "SAVING_FORM" : {
-            "SAVING_FOR_THIS_MONTH" : "Tartalék ehhez a hónaphoz",
+            "SAVING_FOR_THIS_MONTH" : "Tartalék a hónaphoz",
             "SAVING_LABEL" : "Tartalék",
             "REQUIRED_ERROR" : "Tartalék megadása kötelező",
             "MIN_ERROR" : "Negatív érték megadása nem megengedett",
@@ -167,6 +171,39 @@
         },
         "ADD_INCOME_BUTTON_TEXT" : "Hozzáadás"
     },
+    "EDIT_SPENDING_FORM" : {
+        "AMOUNT_LABEL" : "Összeg",
+        "ERRORS" : {
+            "AMOUNT_REQUIRED" : "Az összeg megadása kötelező",
+            "MIN_AMOUNT" : "Az összegnek nagyobbnak kell lennie, mint 0",
+            "TYPE_REQUIRED" : "Típus nem maradhat üres",
+            "USED_FOR_REQUIRED" : "Felhasználás módja nem maradhat üres"
+        },
+        "WHOSE_LABEL" : "Kié",
+        "WHOSE_PLACEHOLDER" : "Kiss János",
+        "IS_PAID_LABEL" : "Már kifizetve",
+        "SPENT_ANOTHER_DAY_LABEL" : "Más napon költve",
+        "SPENT_AT_LABEL" : "Elköltve ekkor",
+        "ADD_COMMENT_LABEL" : "Komment hozzáadása",
+        "COMMENT_LABEL" : "Komment",
+        "TOOLTIPS" : {
+            "ADD_SPENDING_BUTTON" : "Új költés hozzáadása"
+        },
+        "ADD_SPENDING_BUTTON_TEXT" : "Hozzáadás",
+        "TYPE_LABEL" : "Típus",
+        "USED_FOR_LABEL" : "Felhasználás módja",
+        "OPTIONS" : {
+            "DAILY" : "Napi",
+            "MONTHLY" : "Havi",
+            "FOOD" : "Étel",
+            "SMOKE" : "Cigi",
+            "MEDICINE" : "Gyógyszer",
+            "BILL" : "Számla",
+            "CHILDREN'S STUFF" : "Gyerek cuccok",
+            "NURSERY" : "Óvoda / Bölcsöde",
+            "OTHER" : "Egyéb"
+        }
+    },
     "SHARED_COMPONENTS" : {
         "HEADER" : {
             "NAVIGATION" : {
@@ -184,7 +221,7 @@
             "NO_DATA" : "Nincs elérhető adat",
             "SPENT" : "Elköltve:",
             "AVAILABLE" : "Elérhető:",
-            "REMAINDER" : "Maradék:"
+            "REMAINDER" : "Különbözet:"
         },
         "LANGUAGE_SELECTOR" : {
             "SELECTED_LANGUAGE" : "Kiválasztott nyelv",
@@ -232,12 +269,13 @@
             "ERRORS" : {
                 "AMOUNT_REQUIRED" : "Az összeg megadása kötelező",
                 "MIN_AMOUNT" : "Az összegnek nagyobbnak kell lennie, mint 0",
-                "TYPE_REQUIRED" : "Típus nem maradhat öres",
+                "TYPE_REQUIRED" : "Típus nem maradhat üres",
                 "USED_FOR_REQUIRED" : "Felhasználás módja nem maradhat üres"
             },
             "WHOSE_LABEL" : "Kié",
             "WHOSE_PLACEHOLDER" : "Kiss János",
             "SPENT_ANOTHER_DAY_LABEL" : "Más napon költve",
+            "SPENT_TODAY_DAY_LABEL" : "Mai napon költve",
             "SPENT_AT_LABEL" : "Elköltve ekkor",
             "ADD_COMMENT_LABEL" : "Komment hozzáadása",
             "COMMENT_LABEL" : "Komment",

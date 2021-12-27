@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { TransactionResponse } from 'src/app/services/transaction/interfaces/transaction';
 import { TransactionService } from 'src/app/services/transaction/transaction.service';
 import {
+  requestSingleTransactionSuccess,
   requestTransactionAddSuccess,
   requestTransactionDeleteSuccess,
   requestTransactionsSuccess,
@@ -27,6 +28,22 @@ export class TransactionEffects {
           map((transactions) => requestTransactionsSuccess({ transactions })),
           catchError(() =>
             of({ type: TransactionActionTypes.requestTransactionsFail })
+          )
+        );
+      })
+    )
+  );
+
+  getSingleTransactions$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TransactionActionTypes.requestSingleTransaction),
+      mergeMap(({ id }) => {
+        return this.transactionService.getTransactionById(id).pipe(
+          map(({ transaction }) => {
+            return requestSingleTransactionSuccess({ transaction });
+          }),
+          catchError(() =>
+            of({ type: TransactionActionTypes.requestSingleTransactionFail })
           )
         );
       })
@@ -72,11 +89,12 @@ export class TransactionEffects {
         return this.transactionService
           .updateTransaction(updateTransactionAction)
           .pipe(
-            map(({ transaction }) =>
-              requestTransactionUpdateSuccess({
+            map(({ transaction }) => {
+              this.router.navigate(['dashboard']);
+              return requestTransactionUpdateSuccess({
                 transaction,
-              })
-            ),
+              });
+            }),
             catchError(() =>
               of({ type: TransactionActionTypes.requestTransactionUpdateFail })
             )
@@ -87,6 +105,7 @@ export class TransactionEffects {
 
   constructor(
     private actions$: Actions,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private router: Router
   ) {}
 }

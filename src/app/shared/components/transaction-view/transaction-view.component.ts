@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 import * as moment from 'moment';
 import { Transaction } from 'src/app/services/transaction/interfaces/transaction';
@@ -17,7 +18,11 @@ export class TransactionViewComponent implements OnInit {
   public isToday =
     moment().startOf('day').format() ===
     moment(this.transaction?.createdAt).startOf('day').format();
-  constructor(private transactionStateFacade: TransactionStateFacade) {}
+
+  constructor(
+    private transactionStateFacade: TransactionStateFacade,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -46,5 +51,9 @@ export class TransactionViewComponent implements OnInit {
       : t.usedFor === 'Smoke'
       ? ('smoking' as IconName)
       : ('pills' as IconName);
+  }
+
+  public redirectToEditPage(id: string): void {
+    this.router.navigate([`edit-transaction/${id}`]);
   }
 }

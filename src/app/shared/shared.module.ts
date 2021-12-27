@@ -31,6 +31,7 @@ import { HufPipe } from './pipes/huf.pipe';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NotificationService } from '../services/notification/notification.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { FocusDirective } from './directives/focus-directive/focus-directive.directive';
 
 const components = [
   HeaderComponent,
@@ -45,6 +46,7 @@ const components = [
   EmailValidatorDirective,
   PasswordValidatorDirective,
   TogglePasswordDirective,
+  FocusDirective,
   MonthSwitchComponent,
   DailyViewComponent,
   NewIncomeFormComponent,
@@ -67,6 +69,7 @@ const components = [
     EmailValidatorDirective,
     PasswordValidatorDirective,
     LatinCharsValidatorDirective,
+    FocusDirective,
     NotificationService,
     TranslateModule,
   ],

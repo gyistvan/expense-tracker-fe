@@ -1,17 +1,17 @@
-<div class="d-flex flex-column pt-5">
+<div class="d-flex flex-column border border-secondary mb-5">
     <div>
-        <h3>
+        <h3 class="p-3">
             {{ 'DASHBOARD.CATEGORY_BOX.CATEGORY_NAMES.' + categoryName | uppercase | translate }}
         </h3>
     <div>
-    <div class="d-flex">
+    <div class="d-flex p-3">
         <p class="flex-1">
             #
         </p>
         <p class="flex-4">
             {{ 'DASHBOARD.CATEGORY_BOX.AMOUNT' | translate}}
         </p>
-        <p class="flex-6">
+        <p class="flex-6 ps-4">
             {{ 'DASHBOARD.CATEGORY_BOX.COMMENT' | translate}}
         </p>
         <p class="flex-2 d-flex justify-content-end">
@@ -23,7 +23,7 @@
             <app-transaction-view *ngFor="let transaction of transactions; let i = index" [index]="i" [transaction]="transaction"></app-transaction-view>
         </app-show-hide>
     </div>
-    <div class="d-flex border-top border-bottom pt-2 border-secondary">
+    <div class="d-flex border-top border-secondary p-3 bg-striped-light">
         <h5 class="flex-1">{{ 'DASHBOARD.CATEGORY_BOX.TOTAL' | translate}}:&nbsp;</h5>
         <h5 class="flex-4">{{ total | HufPipe }}</h5>
         <p class="flex-6"></p>

@@ -48,6 +48,14 @@ export const routes: Routes = [
       ),
     canLoad: [AuthorizedGuard],
   },
+  {
+    path: 'edit-transaction',
+    loadChildren: (): Promise<any> =>
+      import('./features/edit-transaction/edit-transaction.module').then(
+        (m) => m.EditTransactionModule
+      ),
+    canLoad: [AuthorizedGuard],
+  },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

@@ -6,6 +6,7 @@ export const apiUrls = {
     ADD_NEW: '/api/transactions',
   },
   TRANSACTION: {
+    GET: '/api/transactionById/',
     DELETE: '/api/transactionById/',
     UPDATE: '/api/transactionById/',
   },

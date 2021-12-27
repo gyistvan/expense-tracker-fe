@@ -1,0 +1,79 @@
+  <div *ngIf="!showSavingForm && monthlySaving" class="h-100">
+    <h5 class="m-0 h-50 bg-striped-light pt-2">
+      {{ 'DASHBOARD.SAVING_FORM.SAVING_FOR_THIS_MONTH' | translate}}:
+    </h5>   
+    <p class="pt-2">
+      <span class="me-3">{{ monthlySaving }} %</span>
+      <app-button
+        buttonColor="primary"
+        tooltipText="DASHBOARD.TOOLTIPS.EDIT_TOOLTIP"
+        [iconName]="'pen'"
+        buttonSize="small"
+        btnText="DASHBOARD.SAVING_FORM.EDIT_BUTTON"
+        (onClick)="switchShowSavingForm($event)">
+      </app-button>
+    </p>
+  </div>
+  <div *ngIf="!monthlySaving || showSavingForm">
+      <form [formGroup]="savingForm" class="form" (ngSubmit)="onSubmit()" #saveForm="ngForm">
+          <div class="row">
+            <div class="col-12">
+              <label for="amount" class="form-label text-right mt-3">
+                <h5>
+                  {{ 'DASHBOARD.SAVING_FORM.SAVING_LABEL' | translate}}
+                </h5>
+              </label>
+            </div>
+            <div class="col-12">
+              <input 
+                id="amount"
+                [focus-me]="true" 
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': (amount.touched || saveForm.submitted) &&
+                                (amount.errors?.required || amount.errors?.max || amount.errors?.min)
+                }"
+                type="text"
+                placeholder="5"
+                formControlName="amount"
+                required />
+                <div
+                  class="text-danger"
+                  *ngIf="(amount.touched || saveForm.submitted) &&
+                         (amount.errors?.required || amount.errors?.max || amount.errors?.min)
+                ">
+                  <p *ngIf="amount.errors?.required">
+                    {{ 'DASHBOARD.SAVING_FORM.REQUIRED_ERROR' | translate}}
+                  </p>
+                  <p *ngIf="amount.errors?.min">
+                    {{ 'DASHBOARD.SAVING_FORM.MIN_ERROR' | translate}}
+                  </p>
+                  <p *ngIf="amount.errors?.max">
+                    {{ 'DASHBOARD.SAVING_FORM.MAX_ERROR' | translate}}
+                  </p>
+                </div>
+            </div>
+            <div class="col-12 d-flex flex-column">
+              <app-button 
+                class="mt-2 mb-2"
+                [tooltipText]="monthlySaving && showSavingForm ?
+                  'DASHBOARD.TOOLTIPS.EDIT_SAVING' : 
+                  'DASHBOARD.TOOLTIPS.ADD_SAVING'"
+                [btnText]="monthlySaving && showSavingForm ?
+                  'DASHBOARD.SAVING_FORM.UPDATE' : 
+                  'DASHBOARD.SAVING_FORM.ADD'"
+                [iconName]="'check'"
+                buttonColor="primary">
+              </app-button>
+            </div>
+          </div>
+        </form>
+        <app-button
+          tooltipText="DASHBOARD.TOOLTIPS.CANCEL_SAVING"
+          btnText="DASHBOARD.SAVING_FORM.CANCEL"
+          [iconName]="'check'"
+          (onClick)="switchShowSavingForm($event)"
+          buttonColor="dark"
+        >
+        </app-button> 
+  </div>

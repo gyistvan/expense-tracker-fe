@@ -7,6 +7,7 @@
               {{ 'SHARED_COMPONENTS.NEW_SPENDING_FORM.AMOUNT_LABEL' | translate }}
             </label>
             <input
+              [focus-me]="true"
               id="amount"
               class="form-control"
               [ngClass]="{ 'is-invalid': 
@@ -69,10 +70,18 @@
             </div>
           </div>
           <div class="mb-3">
-              <input type="checkbox" id="isSpentAnotherDay" formControlName="isSpentAnotherDay">
-              <label for="isSpentAnotherDay" class="form-label">
+            <div>
+              <input type="radio" name="isSpentAnotherDay" [value]="false" id="isSpentAnotherDayFalse" formControlName="isSpentAnotherDay">
+              <label for="isSpentAnotherDayFalse" class="form-label">
+                &nbsp;&nbsp;{{ 'SHARED_COMPONENTS.NEW_SPENDING_FORM.SPENT_TODAY_DAY_LABEL' | translate }}
+              </label>
+            </div>
+            <div>
+              <input type="radio" name="isSpentAnotherDay" [value]="true" id="isSpentAnotherDayTrue" formControlName="isSpentAnotherDay">
+              <label for="isSpentAnotherDayTrue" class="form-label">
                 &nbsp;&nbsp;{{ 'SHARED_COMPONENTS.NEW_SPENDING_FORM.SPENT_ANOTHER_DAY_LABEL' | translate }}
               </label>
+            </div>
           </div>
           <div class="mb-3" *ngIf="isSpentAnotherDay.value">
             <label for="spentAt" class="form-label">
@@ -81,6 +90,7 @@
             <input
               type="date"
               [value]="showDate"
+              [focus-me]="true" 
               id="spentAt"
               formControlName="spentAt"
               class="form-control"
@@ -96,7 +106,7 @@
             <label for="comment" class="form-label">
               {{ 'SHARED_COMPONENTS.NEW_SPENDING_FORM.COMMENT_LABEL' | translate }}
             </label>
-            <textarea autocomplete="off" id="comment" formControlName="comment" class="form-control"></textarea>
+            <textarea [focus-me]="true" autocomplete="off" id="comment" formControlName="comment" class="form-control"></textarea>
           </div>
           <div class="d-flex justify-content-center my-5">
             <app-button

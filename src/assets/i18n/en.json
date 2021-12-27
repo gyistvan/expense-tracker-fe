@@ -39,12 +39,16 @@
             "EDIT_TOOLTIP" : "Edit saving for the selected month",
             "EDIT_SAVING" : "Updates the saving for the selected month",
             "ADD_SAVING" : "Adds saving for the selected month",
-            "CANCEL_SAVING" : "Cancel saving"
+            "CANCEL_SAVING" : "Cancel saving",
+            "MARK_UNPAID" : "Mark spending as unpaid",
+            "MARK_PAID" : "Mark spending as paid",
+            "EDIT_SPENDING" : "Edit spending",
+            "DELETE_SPENDING" : "Delete spending"
         },
         "MONTHLY_SPENDINGS" : "Monthly spendings",
         "NEW_TRANSACTION" : "New transaction",
         "SAVING_FORM" : {
-            "SAVING_FOR_THIS_MONTH" : "Saving for this month",
+            "SAVING_FOR_THIS_MONTH" : "Saving for month",
             "SAVING_LABEL" : "SAVING",
             "REQUIRED_ERROR" : "Saving is required",
             "MIN_ERROR" : "Negative values not allowed",
@@ -167,6 +171,39 @@
         },
         "ADD_INCOME_BUTTON_TEXT" : "Add"
     },
+    "EDIT_SPENDING_FORM" : {
+        "AMOUNT_LABEL" : "Amount",
+        "ERRORS" : {
+            "AMOUNT_REQUIRED" : "Amount is required",
+            "MIN_AMOUNT" : "Amount must be higher than 0",
+            "TYPE_REQUIRED" : "Type can't be empty",
+            "USED_FOR_REQUIRED" : "Used for can't be empty"
+        },
+        "WHOSE_LABEL" : "Whose",
+        "WHOSE_PLACEHOLDER" : "John Doe",
+        "IS_PAID_LABEL" : "Already paid",
+        "SPENT_ANOTHER_DAY_LABEL" : "Spent on another day",
+        "SPENT_AT_LABEL" : "Spent at",
+        "ADD_COMMENT_LABEL" : "Add comment",
+        "COMMENT_LABEL" : "Comment",
+        "TOOLTIPS" : {
+            "ADD_SPENDING_BUTTON" : "Add new spending"
+        },
+        "ADD_SPENDING_BUTTON_TEXT" : "Add",
+        "TYPE_LABEL" : "Type",
+        "USED_FOR_LABEL" : "Used for",
+        "OPTIONS" : {
+            "DAILY" : "Daily",
+            "MONTHLY" : "Monthly",
+            "FOOD" : "Food",
+            "SMOKE" : "Smoke",
+            "MEDICINE" : "Medicine",
+            "BILL" : "Bill",
+            "CHILDREN'S STUFF" : "Children's stuff",
+            "NURSERY" : "Nursery",
+            "OTHER" : "Other"
+        }
+    },
     "SHARED_COMPONENTS" : {
         "HEADER" : {
             "NAVIGATION" : {
@@ -238,6 +275,7 @@
             "WHOSE_LABEL" : "Whose",
             "WHOSE_PLACEHOLDER" : "John Doe",
             "SPENT_ANOTHER_DAY_LABEL" : "Spent on another day",
+            "SPENT_TODAY_DAY_LABEL" : "Spent today",
             "SPENT_AT_LABEL" : "Spent at",
             "ADD_COMMENT_LABEL" : "Add comment",
             "COMMENT_LABEL" : "Comment",

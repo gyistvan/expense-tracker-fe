@@ -5,6 +5,7 @@
           <div class="mb-3">
             <label for="amount" class="form-label">{{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.AMOUNT_LABEL' | translate }}</label>
             <input 
+              [focus-me]="true" 
               id="amount"
               class="form-control"
               [ngClass]="{ 'is-invalid': (amount.touched || incomeForm.submitted) && (amount.errors?.required)}"
@@ -54,6 +55,7 @@
             <input 
               type="date"
               [value]="showDate"
+              [focus-me]="true" 
               id="recievedAt"
               formControlName="recievedAt"
               class="form-control"
@@ -67,7 +69,13 @@
           </div>
           <div class="mb-3" *ngIf="addComment.value">
             <label for="comment" class="form-label">{{ 'SHARED_COMPONENTS.NEW_INCOME_FORM.COMMENT_LABEL' | translate }}</label>
-            <textarea type="text" id="comment" formControlName="comment" class="form-control"></textarea>
+            <textarea 
+              [focus-me]="true"
+              type="text"
+              id="comment"
+              formControlName="comment"
+              class="form-control">
+            </textarea>
           </div>
           <div class="d-flex justify-content-center my-5">
             <app-button
