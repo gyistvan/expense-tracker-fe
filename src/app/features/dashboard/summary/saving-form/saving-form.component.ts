@@ -19,6 +19,7 @@ export class SavingFormComponent implements OnInit {
   public showDate: string | null = null;
   public showSavingForm: boolean = false;
   public savingForm!: FormGroup;
+  public isMonthlySavingLoading = this.appStateFacade.isMonthlySavingLoading$;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +30,7 @@ export class SavingFormComponent implements OnInit {
     this.savingForm = this.createForm();
     this.appStateFacade.showDate$.subscribe((showDate) => {
       this.showDate = showDate;
+      this.savingForm.markAsUntouched();
     });
     this.appStateFacade.monthlySaving$.subscribe((monthlySaving) => {
       this.amount.patchValue(monthlySaving);

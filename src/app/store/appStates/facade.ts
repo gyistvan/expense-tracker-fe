@@ -9,7 +9,12 @@ import {
   requestMonthlySaving,
   requestUpdateMonthlySaving,
 } from './actions';
-import { getDaysInInterval, getMonthlySaving, getShowDate } from './selectors';
+import {
+  getDaysInInterval,
+  getIsMonthlySavingLoading,
+  getMonthlySaving,
+  getShowDate,
+} from './selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +24,9 @@ export class AppStateFacade {
   public showDate$ = this.store.pipe(select(getShowDate));
   public daysInInterval$ = this.store.pipe(select(getDaysInInterval));
   public monthlySaving$ = this.store.pipe(select(getMonthlySaving));
+  public isMonthlySavingLoading$ = this.store.pipe(
+    select(getIsMonthlySavingLoading)
+  );
 
   constructor(private store: Store<State>) {
     this.showDate$.subscribe((showDate) => {

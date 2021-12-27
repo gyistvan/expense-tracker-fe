@@ -12,7 +12,7 @@ export class IncomesTableComponent implements OnInit {
   @Input()
   public incomes: Income[] | null = [];
   public total = 0;
-  public isLoading = true;
+  public isLoading = this.incomeStateFacade.isIncomesLoading$;
 
   constructor(
     private incomeStateFacade: IncomeStateFacade,
@@ -21,9 +21,6 @@ export class IncomesTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.incomeStateFacade.total$.subscribe((total) => (this.total = total));
-    this.incomeStateFacade.isIncomesLoading$.subscribe(
-      (isIncomesLoading) => (this.isLoading = isIncomesLoading)
-    );
   }
 
   public deleteIncome(id: string) {

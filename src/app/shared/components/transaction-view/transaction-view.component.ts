@@ -18,6 +18,7 @@ export class TransactionViewComponent implements OnInit {
   public isToday =
     moment().startOf('day').format() ===
     moment(this.transaction?.createdAt).startOf('day').format();
+  public isTransactionsLoading = false;
 
   constructor(
     private transactionStateFacade: TransactionStateFacade,
@@ -27,18 +28,22 @@ export class TransactionViewComponent implements OnInit {
   ngOnInit(): void {}
 
   public onDelete(id: string): void {
+    this.isTransactionsLoading = true;
     if (
       confirm(
         `Ąre you sure to delete: ${this.transaction.usedFor} - ${this.transaction.amount}`
       )
     ) {
       this.transactionStateFacade.deleteTransaction(id);
+    } else {
+      this.isTransactionsLoading = false;
     }
   }
 
   public updateTransaction(t: Transaction, isPaid: boolean): void {
     let transaction = { ...t, isPaid };
     this.transactionStateFacade.updateTransaction(t._id, transaction);
+    this.isTransactionsLoading = true;
   }
 
   public isDailyTransaction(t: Transaction): boolean {
@@ -54,6 +59,7 @@ export class TransactionViewComponent implements OnInit {
   }
 
   public redirectToEditPage(id: string): void {
+    this.isTransactionsLoading = true;
     this.router.navigate([`edit-transaction/${id}`]);
   }
 }

@@ -1,9 +1,4 @@
-i {
-  color: #39c2d7;
-}
-
 .spinner-container {
-  margin-bottom: 15px;
-  padding: 0px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }

@@ -8,7 +8,7 @@ import { AvailbleBSPositions } from 'ngx-bootstrap/positioning';
   template: `<button
     [tooltip]="tooltipText | translate"
     [tooltipPlacement]="tooltipPlacement"
-    [disabled]="isDisabled"
+    [disabled]="isDisabled || isLoading"
     class="btn text-bold"
     (click)="click($event)"
     [ngClass]="{
@@ -26,7 +26,16 @@ import { AvailbleBSPositions } from 'ngx-bootstrap/positioning';
       'text-dark': textColor === 'dark'
     }"
   >
-    <fa-icon *ngIf="iconName" [icon]="['fas', iconName]"></fa-icon>
+    <fa-icon
+      *ngIf="iconName && !isLoading"
+      [icon]="['fas', iconName]"
+    ></fa-icon>
+    <fa-icon
+      [icon]="['fas', 'cog']"
+      size="1x"
+      [spin]="true"
+      *ngIf="isLoading"
+    ></fa-icon>
     {{ btnText | translate }}
   </button>`,
 })
@@ -39,6 +48,7 @@ export class ButtonComponent {
   @Input() public isDisabled = false;
   @Input() public tooltipText = '';
   @Input() public tooltipPlacement = 'top' as AvailbleBSPositions;
+  @Input() public isLoading = false;
 
   @Output() onClick = new EventEmitter<MouseEvent>();
 

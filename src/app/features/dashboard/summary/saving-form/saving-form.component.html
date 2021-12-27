@@ -2,7 +2,7 @@
     <h5 class="m-0 h-50 bg-striped-light pt-2">
       {{ 'DASHBOARD.SAVING_FORM.SAVING_FOR_THIS_MONTH' | translate}}:
     </h5>   
-    <p class="pt-2">
+    <p class="pt-2" *ngIf="!(isMonthlySavingLoading | async) else savingSpinner1">
       <span class="me-3">{{ monthlySaving }} %</span>
       <app-button
         buttonColor="primary"
@@ -13,6 +13,9 @@
         (onClick)="switchShowSavingForm($event)">
       </app-button>
     </p>
+    <ng-template #savingSpinner1>
+      <spinner></spinner>
+    </ng-template>
   </div>
   <div *ngIf="!monthlySaving || showSavingForm">
       <form [formGroup]="savingForm" class="form" (ngSubmit)="onSubmit()" #saveForm="ngForm">
@@ -27,7 +30,8 @@
             <div class="col-12">
               <input 
                 id="amount"
-                [focus-me]="true" 
+                [focus-me]="true"
+                autocomplete="off"
                 class="form-control"
                 [ngClass]="{
                   'is-invalid': (amount.touched || saveForm.submitted) &&

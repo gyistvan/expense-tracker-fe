@@ -18,3 +18,8 @@ export const getMonthlySaving = createSelector(
   selectAppState,
   (state: AppState) => state.monthlySaving
 );
+
+export const getIsMonthlySavingLoading = createSelector(
+  selectAppState,
+  (state: AppState) => state.isMonthlySavingLoading
+);

@@ -14,6 +14,10 @@ export class SummaryComponent implements OnInit {
   public saving: null | number = 0;
   public savingTotal = 0;
   public remainder = 0;
+  public isTransactionsLoading =
+    this.transactionStateFacade.isTransactionsLoading$;
+  public isIncomesLoading = this.incomeStateFacade.isIncomesLoading$;
+  public isMonthlySavingLoading = this.appStateFacade.isMonthlySavingLoading$;
 
   constructor(
     private appStateFacade: AppStateFacade,

@@ -14,22 +14,24 @@
         </p>
         <p class="flex-2 d-flex justify-content-between justify-content-lg-end pe-3" *ngIf="isToday">
             <app-button 
-                class="m-3 m-md-0"
-                *ngIf="!transaction.isPaid && transaction.type === 'Monthly'"
-                tooltipText="DASHBOARD.TOOLTIPS.MARK_PAID" 
-                [iconName]="'check'"
-                buttonColor="info"
-                [buttonSize]="'small'" 
-                (onClick)="updateTransaction(transaction, true)">
+              class="m-3 m-md-0"
+              *ngIf="!transaction.isPaid && transaction.type === 'Monthly'"
+              tooltipText="DASHBOARD.TOOLTIPS.MARK_PAID" 
+              [iconName]="'check'"
+              buttonColor="info"
+              [buttonSize]="'small'" 
+              [isLoading]="isTransactionsLoading"
+              (onClick)="updateTransaction(transaction, true)">
             </app-button>
             <app-button 
-                class="m-3 m-md-0"
-                *ngIf="transaction.isPaid && transaction.type === 'Monthly'"
-                tooltipText="DASHBOARD.TOOLTIPS.MARK_UNPAID" 
-                [iconName]="'times-circle'"
-                buttonColor="info"
-                [buttonSize]="'small'" 
-                (onClick)="updateTransaction(transaction, false)">
+              class="m-3 m-md-0"
+              *ngIf="transaction.isPaid && transaction.type === 'Monthly'"
+              tooltipText="DASHBOARD.TOOLTIPS.MARK_UNPAID" 
+              [iconName]="'times-circle'"
+              buttonColor="info"
+              [buttonSize]="'small'" 
+              [isLoading]="isTransactionsLoading"
+              (onClick)="updateTransaction(transaction, false)">
             </app-button>
             <app-button
               class="m-3 m-md-0"
@@ -37,6 +39,7 @@
               tooltipText="DASHBOARD.TOOLTIPS.EDIT_SPENDING"
               buttonColor="primary"
               [buttonSize]="'small'"
+              [isLoading]="isTransactionsLoading"
               (onClick)="redirectToEditPage(transaction._id)">
             </app-button>
             <app-button
@@ -45,6 +48,7 @@
               tooltipText="DASHBOARD.TOOLTIPS.DELETE_SPENDING"
               buttonColor="dark"
               [buttonSize]="'small'"
+              [isLoading]="isTransactionsLoading"
               (onClick)="onDelete(transaction._id)">
             </app-button>
         </p>

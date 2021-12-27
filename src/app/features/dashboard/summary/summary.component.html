@@ -2,36 +2,46 @@
 <div class="row m-3">
     <div class="col-12 col-md-4 col-lg-2 offset-lg-1 d-flex flex-column border border-secondary text-center p-0">
         <h5 class="m-0 h-50 bg-striped-light pt-2">Incomes total: </h5>
-        <p class="pt-2">
+        <p class="pt-2" *ngIf="!(isIncomesLoading | async) else incomeSpinner">
             {{ totalIncomes | HufPipe }}
         </p>
+        <ng-template #incomeSpinner>
+            <spinner></spinner>
+        </ng-template>
     </div>
     <div class="col-12 col-md-4 col-lg-2 d-flex flex-column border border-secondary text-center p-0">
         <h5 class="m-0 h-50 bg-striped-light pt-2">Spendings total: </h5>
-        <p 
-          class="pt-2"
-          [ngClass]="{'text-danger' : remainder < 0}">
+        <p class="pt-2" [ngClass]="{'text-danger' : remainder < 0}" 
+           *ngIf="!(isTransactionsLoading | async) else spendingSpinner">
             {{ totalSpendings | HufPipe }}
         </p>
+        <ng-template #spendingSpinner>
+            <spinner></spinner>
+        </ng-template>
     </div>
     <div class="col-12 col-md-4 col-lg-2 d-flex flex-column border border-secondary text-center p-0">
         <app-saving-form></app-saving-form>
     </div>
     <div class="col-12 col-md-6 col-lg-2 d-flex flex-column border border-secondary text-center p-0">
         <h5 class="m-0 h-50 bg-striped-light pt-2">Saving total: </h5>
-        <p class="pt-2">
+        <p class="pt-2" *ngIf="!(isMonthlySavingLoading | async) else savingSpinner2">
             {{ savingTotal | HufPipe }}
         </p>
+        <ng-template #savingSpinner2>
+            <spinner></spinner>
+        </ng-template>
     </div>
     <div class="col-12 col-md-6 col-lg-2 d-flex flex-column border border-secondary text-center p-0">
         <h5 class="m-0 h-50 bg-striped-light pt-2">Remainder: </h5>
-        <p 
-          class="pt-2"
+        <p class="pt-2" *ngIf="!(isIncomesLoading | async) && !(isTransactionsLoading | async) else remainderSpinner"
           [ngClass]="{
               'text-success' : remainder > totalIncomes * 0.1,
               'text-warning' : remainder < totalIncomes * 0.1,
               'text-danger' : remainder < 0}">
             {{ remainder | HufPipe }}
         </p>
+        <ng-template #remainderSpinner>
+            <spinner></spinner>
+        </ng-template>
     </div>
 </div>
