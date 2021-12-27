@@ -58,11 +58,13 @@ export class SummaryComponent implements OnInit {
 
   private calculateSaving(): void {
     this.savingTotal = this.saving
-      ? (this.totalIncomes * this.saving) / 100
+      ? Math.round(this.totalIncomes * (this.saving / 100))
       : 0;
   }
 
   private calcRemainder(): void {
-    this.remainder = this.totalIncomes - this.totalSpendings - this.savingTotal;
+    this.remainder = Math.round(
+      this.totalIncomes - this.totalSpendings - this.savingTotal
+    );
   }
 }

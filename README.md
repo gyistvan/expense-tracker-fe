@@ -2,26 +2,34 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
 
-## Development server
+## Development purpose
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This project has been started because I wanted to practice the following:
 
-## Code scaffolding
+- angular
+- ngrx
+- rxjs
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You can found the BE part of this project here:
+https://github.com/gyistvan/expense-tracker-be-node-mongo
 
-## Build
+## Try out:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Registration
 
-## Running unit tests
+navigate to:
+https://expense-tracker-vyno.herokuapp.com/register
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Here you can register into the app.
+The email has to be formally valid, but is don't need to be a live one
 
-## Running end-to-end tests
+### Login
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+https://expense-tracker-vyno.herokuapp.com/login
 
-## Further help
+Here you can login with the previously registered credentials
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Usage
+
+You can track your incomes / spendings throught this app, and you can set a saving % to each month.
+You can create a group (eg. for your family) to track incomes / spendings together.
