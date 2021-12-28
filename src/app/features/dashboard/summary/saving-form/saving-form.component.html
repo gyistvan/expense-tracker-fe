@@ -28,19 +28,21 @@
               </label>
             </div>
             <div class="col-12">
-              <input 
-                id="amount"
-                [focus-me]="true"
-                autocomplete="off"
-                class="form-control"
-                [ngClass]="{
-                  'is-invalid': (amount.touched || saveForm.submitted) &&
-                                (amount.errors?.required || amount.errors?.max || amount.errors?.min)
-                }"
-                type="text"
-                placeholder="5"
-                formControlName="amount"
-                required />
+              <div class="me-3 ms-3">
+                <input 
+                  id="amount"
+                  [focus-me]="true"
+                  autocomplete="off"
+                  class="form-control"
+                  [ngClass]="{
+                    'is-invalid': (amount.touched || saveForm.submitted) &&
+                                  (amount.errors?.required || amount.errors?.max || amount.errors?.min)
+                  }"
+                  type="text"
+                  placeholder="5"
+                  formControlName="amount"
+                  required />
+              </div>
                 <div
                   class="text-danger"
                   *ngIf="(amount.touched || saveForm.submitted) &&
