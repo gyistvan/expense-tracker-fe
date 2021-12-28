@@ -1,4 +1,4 @@
-  <div *ngIf="!showSavingForm && monthlySaving" class="h-100">
+  <div *ngIf="!showSavingForm && monthlySaving !== undefined" class="h-100">
     <h5 class="m-0 h-50 bg-striped-light pt-2">
       {{ 'DASHBOARD.SAVING_FORM.SAVING_FOR_THIS_MONTH' | translate}}:
     </h5>   
@@ -17,7 +17,7 @@
       <spinner></spinner>
     </ng-template>
   </div>
-  <div *ngIf="!monthlySaving || showSavingForm">
+  <div *ngIf="monthlySaving === undefined || showSavingForm">
       <form [formGroup]="savingForm" class="form" (ngSubmit)="onSubmit()" #saveForm="ngForm">
           <div class="row">
             <div class="col-12">
