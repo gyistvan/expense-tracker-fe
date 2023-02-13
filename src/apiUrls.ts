@@ -42,5 +42,5 @@ export const apiUrls = {
 };
 
 export const BASE_URL = environment.production
-  ? 'https://expense-tracker-be-node-mongo.herokuapp.com'
-  : 'http://localhost:4200';
+  ? 'https://expense-tracker-f29ef5no3-gyistvan.vercel.app/'
+  : 'http://localhost:3000';
